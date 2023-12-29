@@ -16,12 +16,17 @@
 
 <body>
     <div class="w-full">
-        <h1 class="text-3xl font-bold underline text-red-500">
-            Hello world!
-        </h1>
+        <!-- Awal Navbar -->
+        @include("components.organisme.navbar")
+        <!-- Akhir Navbar -->
+        
+        <!-- Main Content -->
+        @yield("mainContent")
+        <!-- Akhir Main Content -->
     </div>
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
 </body>
 
 </html>
