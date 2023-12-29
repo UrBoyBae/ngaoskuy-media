@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\User;
+namespace App\Http\Controllers\Member;
 
 use App\Http\Controllers\Controller;
 use App\Models\Article;
@@ -9,18 +9,22 @@ use App\Models\Kitab;
 use App\Models\Question;
 use Illuminate\Http\Request;
 
-class VideoListController extends Controller
+class DashboardController extends Controller
 {
     public function index(Request $request)
     {
         $user = auth()->user();
-        $episode = Episode::all()->sortBy('id_judul');
+        $episode = Episode::all();
+        $question = Question::all();
         $kitab = Kitab::all();
+        $article  = Article::all();
         return [
-            'title' => 'Video',
+            'title' => 'Home',
             'user' => $user,
             'episode' => $episode,
+            'question' => $question,
             'kitab' => $kitab,
+            'article' => $article,
         ];
     }
 }

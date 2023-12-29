@@ -16,7 +16,7 @@ class VideoPlayerController extends Controller
         $episodelist = Episode::all()->sortBy('id_judul');
         $kitab = Kitab::all();
         return [
-            'title' => 'Home',
+            'title' => 'Video Player',
             'user' => $user,
             'episode' => $episode,
             'episodelist' => $episodelist,

@@ -16,7 +16,7 @@ class QuestionController extends Controller
         $question = Question::all()->where('id', $request)->first();
         $chat = ChatDetail::with(['chat'])->where('id_chat', $request)->get();
         return [
-            'title' => 'Home',
+            'title' => 'Chat',
             'user' => $user,
             'question' => $question,
             'chat' => $chat,
