@@ -16,7 +16,7 @@ class DashboardController extends Controller
         $user = auth()->user();
         $episode = Episode::all();
         $question = Question::all();
-        $kitab = Kitab::all();
+        $kitab = Kitab::with(['bab', 'subbab', 'judul', 'episode'])->get();
         $article  = Article::all();
         return [
             'title' => 'Home',
