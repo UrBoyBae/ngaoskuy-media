@@ -313,12 +313,12 @@
                             <span class="font-bold text-white">Profile</span>
                         </div>
                     </a>
-                    <a href="">
+                    {{-- <a href="">
                         <div class="flex items-center cursor-pointer px-6 py-4 gap-3 border-b border-[#d6c3c3]/50 hover:bg-[#d6c3c3]/10">
                             <ion-icon name="chatbubbles-outline" class="text-xl font-bold text-white"></ion-icon>
                             <span class="font-bold text-white">Pertanyaan Anda</span>
                         </div>
-                    </a>
+                    </a> --}}
                     <a href="">
                         <div class="flex items-center cursor-pointer px-6 py-4 gap-3 hover:bg-[#d6c3c3]/10 hover:rounded-b-[30px]">
                             <ion-icon name="log-out-outline" class="text-xl font-bold text-white"></ion-icon>
