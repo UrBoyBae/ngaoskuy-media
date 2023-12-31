@@ -14,7 +14,7 @@ class VideoPlayerController extends Controller
         $user = auth()->user();
         $episode = Episode::all()->where('id', $request)->first();
         $episodelist = Episode::all()->sortBy('id_judul');
-        $kitab = Kitab::all();
+        $kitab = Kitab::with(['bab', 'subbab', 'judul', 'episode'])->get();
         return [
             'title' => 'Video Player',
             'user' => $user,
