@@ -19,7 +19,7 @@
         <!-- Awal Navbar -->
         @include("components.organisme.navbar")
         <!-- Akhir Navbar -->
-        
+
         <!-- Main Content -->
         @yield("mainContent")
         <!-- Akhir Main Content -->
