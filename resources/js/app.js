@@ -1,5 +1,14 @@
 $(document).ready(function () {
-    // Login Validation
+    // Splash Screen
+    $("#masuk-splashscreen").on("click", function() {
+        window.location.href = "/dashboard";
+    });
+    
+    $("#login-splashscreen").on("click", function() {
+        window.location.href = "/login";
+    });
+    
+    // Login Page
     $("#login-form").submit(function (e) {
         if ($("#username").val() === "" && $("#password").val() === "") {
             e.preventDefault();
