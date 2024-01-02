@@ -3,28 +3,26 @@
 namespace App\Http\Controllers\Member;
 
 use App\Http\Controllers\Controller;
-use App\Models\Article;
 use App\Models\Episode;
+use App\Models\Judul;
 use App\Models\Kitab;
-use App\Models\Question;
 use Illuminate\Http\Request;
 
-class DashboardController extends Controller
+class VideoPlayerController extends Controller
 {
-    public function index(Request $request)
+    public function index(Request $request, $param)
     {
         $user = auth()->user();
-        $episode = Episode::all();
-        $question = Question::all();
+        $episode = Episode::findOrFail($param);
+        $judul = Judul::where('id', $episode->id_judul)->first();
+        $episodelist = Episode::where('id_judul', $judul->id)->get();
         $kitab = Kitab::with(['bab', 'subbab', 'judul', 'episode'])->get();
-        $article  = Article::all();
         return [
-            'title' => 'Home',
+            'title' => 'Video Player',
             'user' => $user,
             'episode' => $episode,
-            'question' => $question,
+            'episodelist' => $episodelist,
             'kitab' => $kitab,
-            'article' => $article,
         ];
     }
 }

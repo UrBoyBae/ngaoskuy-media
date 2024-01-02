@@ -3,28 +3,28 @@
 namespace App\Http\Controllers\Member;
 
 use App\Http\Controllers\Controller;
-use App\Models\Article;
+use App\Models\Bab;
 use App\Models\Episode;
 use App\Models\Kitab;
-use App\Models\Question;
+use App\Models\SubBab;
 use Illuminate\Http\Request;
 
-class DashboardController extends Controller
+class KitabController extends Controller
 {
-    public function index(Request $request)
+    public function index(Request $request, $id)
     {
         $user = auth()->user();
-        $episode = Episode::all();
-        $question = Question::all();
+        $episode = Episode::orderBy('id_judul')->get();
         $kitab = Kitab::with(['bab', 'subbab', 'judul', 'episode'])->get();
-        $article  = Article::all();
+        $bab = Bab::findOrFail($id);
+        $subbab = SubBab::where('id_bab', $id)->get();
         return [
-            'title' => 'Home',
+            'title' => 'Video',
             'user' => $user,
             'episode' => $episode,
-            'question' => $question,
             'kitab' => $kitab,
-            'article' => $article,
+            'bab' => $bab,
+            'subbab' => $subbab,
         ];
     }
 }
