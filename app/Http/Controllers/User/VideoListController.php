@@ -15,7 +15,7 @@ class VideoListController extends Controller
     {
         $user = auth()->user();
         $episode = Episode::all()->sortBy('id_judul');
-        $kitab = Kitab::all();
+        $kitab = Kitab::with(['bab', 'subbab', 'judul', 'episode'])->get();
         return [
             'title' => 'Video',
             'user' => $user,
