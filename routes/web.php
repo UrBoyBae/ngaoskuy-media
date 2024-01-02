@@ -14,5 +14,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
+    return view('components.templates.splash-screen');
+});
+
+Route::get('/login', function () {
     return view('authentication.login');
 });
