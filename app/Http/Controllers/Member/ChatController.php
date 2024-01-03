@@ -35,7 +35,7 @@ class ChatController extends Controller
         $request->validate([
             'isi' => 'required|text',
         ]);
-        $request->Chat::create([
+        Chat::create([
             'id_chat' => $chat->id,
             'id_user' => $user->id,
             'isi' => $request->isi,
