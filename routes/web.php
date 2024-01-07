@@ -1,6 +1,9 @@
 <?php
 
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\Member\DashboardController;
 use Illuminate\Support\Facades\Route;
+use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,9 +20,11 @@ Route::get('/', function () {
     return view('components.templates.splash-screen');
 });
 
-Route::get('/login', function () {
-    return view('authentication.login');
-});
+Route::get('/login', [AuthController::class, 'index'])->middleware('guest')->name('login.index');
+Route::post('/login', [AuthController::class, 'authenticate'])->name('login.authenticate');
+Route::post('/logut', [AuthController::class, 'logout'])->name('logout');
+
+Route::get('/home', [DashboardController::class, 'index'])->name('member.home.index');
 
 Route::get('/user/dashboard', function () {
     return view('components.templates.dashboard');
