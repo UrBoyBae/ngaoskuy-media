@@ -28,4 +28,57 @@ class DashboardController extends Controller
             'article' => $article,
         ];
     }
+    //Kitab
+    public function createKitab(Request $request)
+    {
+        Kitab::create([
+            'name' => $request->name,
+            'description' => $request->description,
+        ]);
+        return to_route('namarute')->with('success', 'Kitab created succesfully');
+    }
+
+    public function editKitab(Request $request, $id)
+    {
+        $kitab = Kitab::findOrFail($id);
+        $kitab->update([
+            'name' => $request->name,
+            'description' => $request->description,
+        ]);
+        return to_route('namarute')->with('success', 'Kitab updated succesfully');
+    }
+
+    public function deleteKitab($id)
+    {
+        $kitab = Kitab::findOrFail($id);
+        $kitab->delete();
+        return to_route('namarute')->with('success', 'Kitab deleted succesfully');
+    }
+
+    //Bab
+    public function createBab(Request $request, $kitabid)
+    {
+        $kitab = Kitab::findOrFail($kitabid);
+        Bab::create([
+            'id_kitab' => $kitab->id,
+            'name' => $request->name,
+        ]);
+        return to_route('namarute')->with('success', 'Bab created succesfully');
+    }
+
+    public function editBab(Request $request, $id)
+    {
+        $bab = Bab::findOrFail($id);
+        $bab->update([
+            'name' => $request->name,
+        ]);
+        return to_route('namarute')->with('success', 'Bab updated succesfully');
+    }
+
+    public function deleteBab($id)
+    {
+        $bab = Bab::findOrFail($id);
+        $bab->delete();
+        return to_route('namarute')->with('success', 'Bab deleted succesfully');
+    }
 }

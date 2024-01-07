@@ -25,3 +25,7 @@ Route::post('/login', [AuthController::class, 'authenticate'])->name('login.auth
 Route::post('/logut', [AuthController::class, 'logout'])->name('logout');
 
 Route::get('/home', [DashboardController::class, 'index'])->name('member.home.index');
+
+Route::get('/user/dashboard', function () {
+    return view('components.templates.dashboard');
+});
