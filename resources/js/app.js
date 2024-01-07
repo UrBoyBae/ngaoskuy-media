@@ -1,7 +1,7 @@
 $(document).ready(function () {
     // Splash Screen
     $("#masuk-splashscreen").on("click", function() {
-        window.location.href = "/dashboard";
+        window.location.href = "/user/dashboard";
     });
     
     $("#login-splashscreen").on("click", function() {
@@ -88,17 +88,23 @@ $(document).ready(function () {
     });
 
     // Sidebar
-    $("#toggleSidebar, #closeSidebar").on("click", () => {
-        const mainSidebar = $("#mainSidebar");
+    $("#toggle-sidebar, #close-sidebar").on("click", () => {
+        const mainSidebar = $("#main-sidebar");
 
         if (mainSidebar.hasClass("hidden")) {
             mainSidebar.removeClass("hidden").addClass("fixed");
+            window.addEventListener("click", clickOutsideSidebar);
         } else {
             mainSidebar.removeClass("fixed").addClass("hidden");
+            window.addEventListener("click", clickOutsideSidebar);
         }
+
+        event.stopPropagation();
     });
-    $("#toggleNavProfile").on("click", () => {
-        const navProfile = $("#navProfile");
+
+    // Profile
+    $("#toggle-navbar-profile").on("click", () => {
+        const navProfile = $("#navbar-profile");
 
         if (navProfile.hasClass("hidden")) {
             navProfile.removeClass("hidden").addClass("block");
@@ -113,8 +119,8 @@ $(document).ready(function () {
 });
 
 function clickOutsideNavProfile(event) {
-    const navProfile = $("#navProfile");
-    const toggleNavProfile = $("#toggleNavProfile");
+    const navProfile = $("#navbar-profile");
+    const toggleNavProfile = $("#toggle-navbar-profile");
 
     if (
         !navProfile.hasClass("hidden") &&
@@ -125,5 +131,21 @@ function clickOutsideNavProfile(event) {
     ) {
         navProfile.removeClass("block").addClass("hidden");
         window.removeEventListener("click", clickOutsideNavProfile);
+    }
+}
+
+function clickOutsideSidebar(event) {
+    const mainSidebar = $("#main-sidebar");
+    const toggleSidebar = $("#toggle-sidebar");
+
+    if (
+        !mainSidebar.hasClass("hidden") &&
+        !mainSidebar.is(event.target) &&
+        !mainSidebar.has(event.target).length &&
+        !toggleSidebar.is(event.target) &&
+        !toggleSidebar.has(event.target).length
+    ) {
+        mainSidebar.removeClass("block").addClass("hidden");
+        window.removeEventListener("click", clickOutsideSidebar);
     }
 }
