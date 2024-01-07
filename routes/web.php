@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\Member\DashboardController;
+use App\Http\Controllers\RegistrasionController;
 use Illuminate\Support\Facades\Route;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
@@ -18,11 +19,16 @@ use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 Route::get('/', function () {
     return view('components.templates.splash-screen');
-});
+})->name('splash-screen');
 
+//authentication routes
 Route::get('/login', [AuthController::class, 'index'])->middleware('guest')->name('login.index');
 Route::post('/login', [AuthController::class, 'authenticate'])->name('login.authenticate');
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+
+// registrasion router
+Route::get('/registrasi', [RegistrasionController::class, 'index'])->middleware('guest')->name('registrasi.index');
+Route::post('/registrasi', [RegistrasionController::class, 'registrasion'])->name('registrasi.proses');
 
 Route::get('/home', [DashboardController::class, 'index']) ->name('member.home.index');
 

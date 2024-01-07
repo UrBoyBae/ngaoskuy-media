@@ -15,7 +15,7 @@ return new class extends Migration
             $table->uuid('id')->primary();
             $table->foreignUuid('id_user');
             $table->string('name');
-            $table->text('profile_link');
+            $table->text('profile_link')->nullable();
             $table->timestamps();
 
             $table->foreign('id_user')
