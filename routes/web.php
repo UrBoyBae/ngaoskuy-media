@@ -22,9 +22,9 @@ Route::get('/', function () {
 
 Route::get('/login', [AuthController::class, 'index'])->middleware('guest')->name('login.index');
 Route::post('/login', [AuthController::class, 'authenticate'])->name('login.authenticate');
-Route::post('/logut', [AuthController::class, 'logout'])->name('logout');
+Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
-Route::get('/home', [DashboardController::class, 'index'])->name('member.home.index');
+Route::get('/home', [DashboardController::class, 'index']) ->name('member.home.index');
 
 Route::get('/user/dashboard', function () {
     return view('components.templates.dashboard');
