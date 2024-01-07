@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ngaos Kuy!</title>
+    <title>NGAOS KUY</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -16,13 +16,8 @@
 
 <body>
     <div class="w-full">
-        <!-- Awal Navbar -->
         @include("components.organisme.navbar")
-        <!-- Akhir Navbar -->
-        
-        <!-- Main Content -->
         @yield("mainContent")
-        <!-- Akhir Main Content -->
     </div>
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
