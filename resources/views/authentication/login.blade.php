@@ -18,7 +18,7 @@
 <body>
     <div class="w-full h-screen bg-[#EEEBDD] lg:flex">
         <div class="h-screen lg:w-3/5 flex justify-center items-center">
-            <form method="" action="" id="login-form">
+            <form method="post" action="{{ route('login.authenticate') }}" id="login-form">
                 @csrf
                 <div class="flex flex-col gap-9 lg:gap-11 xl:lg:gap-14">
                     <div class="text-4xl font-medium sm:text-5xl text-right">
