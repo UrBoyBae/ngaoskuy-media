@@ -13,7 +13,6 @@ class Kitab extends Model
     protected $fillable = [
         'name',
         'description',
-        'photo_link',
     ];
     public function bab()
     {
