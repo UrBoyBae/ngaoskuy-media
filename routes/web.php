@@ -20,3 +20,7 @@ Route::get('/', function () {
 Route::get('/login', function () {
     return view('authentication.login');
 });
+
+Route::get('/user/dashboard', function () {
+    return view('components.templates.dashboard');
+});
