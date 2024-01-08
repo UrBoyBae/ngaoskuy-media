@@ -33,7 +33,16 @@ class BabController extends Controller
         ];
     }
 
-    public function createSubbab(Request $request, $idbab)
+    public function createSubbab()
+    {
+        $user = auth()->user();
+        return [
+            'title' => 'Create Sub-Bab',
+            'user' => $user,
+        ];
+    }
+
+    public function storeSubbab(Request $request, $idbab)
     {
         $bab = Bab::findOrFail($idbab);
         SubBab::create([
@@ -43,7 +52,18 @@ class BabController extends Controller
         return to_route('namarute')->with('success', 'SubBab created succesfully');
     }
 
-    public function editSubbab(Request $request, $id)
+    public function editSubbab($id)
+    {
+        $subbab = SubBab::findOrFail($id);
+        $user = auth()->user();
+        return [
+            'title' => 'Create Bab',
+            'user' => $user,
+            'subbab' => $subbab,
+        ];
+    }
+
+    public function updateSubbab(Request $request, $id)
     {
         $subbab = SubBab::findOrFail($id);
         $subbab->update([

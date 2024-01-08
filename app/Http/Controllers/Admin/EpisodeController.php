@@ -53,7 +53,16 @@ class EpisodeController extends Controller
         ];
     }
 
-    public function createJudul(Request $request, $idsubbab)
+    public function createEpisode()
+    {
+        $user = auth()->user();
+        return [
+            'title' => 'Create Episode',
+            'user' => $user,
+        ];
+    }
+
+    public function storeEpisode(Request $request, $idsubbab)
     {
         $judul = Judul::findOrFail($idsubbab);
         try {
@@ -71,10 +80,26 @@ class EpisodeController extends Controller
             'resume' => $request->resume,
             'tag' => $request->tag,
         ]);
+
+        $episode = Episode::where('id_judul', $judul->id)->where('name', $request->name)->first();
+        $question = Question::where('id_episode', $episode->id)->first();
+        $question->update([
+            'status' => '1',
+        ]);
         return redirect()->route('namarute')->with('success', 'Episode created succesfully');
     }
 
-    public function editEpisode(Request $request, $id)
+    public function editEpisode($id)
+    {
+        $episode = Episode::findOrFail($id);
+        $user = auth()->user();
+        return [
+            'title' => 'Create Judul',
+            'user' => $user,
+            'episode' => $episode,
+        ];
+    }
+    public function updateEpisode(Request $request, $id)
     {
         $episode = Episode::findOrFail($id);
         $episode->update([

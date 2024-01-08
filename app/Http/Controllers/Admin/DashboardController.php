@@ -12,7 +12,7 @@ use Illuminate\Http\Request;
 
 class DashboardController extends Controller
 {
-    public function index(Request $request)
+    public function index()
     {
         $user = auth()->user();
         $episode = Episode::all();
@@ -29,7 +29,15 @@ class DashboardController extends Controller
         ];
     }
     //Kitab
-    public function createKitab(Request $request)
+    public function createKitab()
+    {
+        $user = auth()->user();
+        return [
+            'title' => 'Create Kitab',
+            'user' => $user,
+        ];
+    }
+    public function storeKitab(Request $request)
     {
         Kitab::create([
             'name' => $request->name,
@@ -38,7 +46,18 @@ class DashboardController extends Controller
         return to_route('namarute')->with('success', 'Kitab created succesfully');
     }
 
-    public function editKitab(Request $request, $id)
+    public function editKitab($id)
+    {
+        $kitab = Kitab::findOrFail($id);
+        $user = auth()->user();
+        return [
+            'title' => 'Create Kitab',
+            'user' => $user,
+            'kitab' => $kitab,
+        ];
+    }
+
+    public function updateKitab(Request $request, $id)
     {
         $kitab = Kitab::findOrFail($id);
         $kitab->update([
@@ -56,7 +75,15 @@ class DashboardController extends Controller
     }
 
     //Bab
-    public function createBab(Request $request, $kitabid)
+    public function createBab()
+    {
+        $user = auth()->user();
+        return [
+            'title' => 'Create Bab',
+            'user' => $user,
+        ];
+    }
+    public function storeBab(Request $request, $kitabid)
     {
         $kitab = Kitab::findOrFail($kitabid);
         Bab::create([
@@ -66,7 +93,18 @@ class DashboardController extends Controller
         return to_route('namarute')->with('success', 'Bab created succesfully');
     }
 
-    public function editBab(Request $request, $id)
+    public function editBab($id)
+    {
+        $bab = Bab::findOrFail($id);
+        $user = auth()->user();
+        return [
+            'title' => 'Create Bab',
+            'user' => $user,
+            'bab' => $bab,
+        ];
+    }
+
+    public function updateBab(Request $request, $id)
     {
         $bab = Bab::findOrFail($id);
         $bab->update([
