@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Ustadz;
+namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Article;

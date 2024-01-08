@@ -5,39 +5,42 @@ namespace App\Http\Controllers\Member;
 use App\Http\Controllers\Controller;
 use App\Models\Bab;
 use App\Models\Episode;
+use App\Models\Judul;
 use App\Models\Kitab;
 use App\Models\SubBab;
 use Illuminate\Http\Request;
 
 class VideoListController extends Controller
 {
-    public function index(Request $request)
+    public function index($id)
     {
         $user = auth()->user();
-        $episode = Episode::orderBy('id_judul')->get();
+        $subbab = SubBab::where('id_bab', $id)->first();
+        $judul = Judul::where('id_subbab', $subbab->id)->get();
         $kitab = Kitab::with(['bab', 'subbab', 'judul', 'episode'])->get();
         return [
             'title' => 'Video',
             'user' => $user,
-            'episode' => $episode,
+            'judul' => $judul,
+            'subbab' => $subbab,
             'kitab' => $kitab,
         ];
     }
 
-    // public function show($id)
-    // {
-    //     $user = auth()->user();
-    //     $episode = Episode::orderBy('id_judul')->get();
-    //     $kitab = Kitab::with(['bab', 'subbab', 'judul', 'episode'])->get();
-    //     $bab = Bab::findOrFail($id);
-    //     $subbab = SubBab::where('id_bab', $id)->get();
-    //     return [
-    //         'title' => 'Video',
-    //         'user' => $user,
-    //         'episode' => $episode,
-    //         'kitab' => $kitab,
-    //         'bab' => $bab,
-    //         'subbab' => $subbab,
-    //     ];
-    // }
+    public function show($id)
+    {
+        $user = auth()->user();
+        $judul = Judul::where('id_subbab', $id)->get();
+        $episode = Episode::where('id_judul', $judul->id)->first();
+        $episodelist = Episode::where('id_judul', $judul->id)->get();
+        $kitab = Kitab::with(['bab', 'subbab', 'judul', 'episode'])->get();
+        return [
+            'title' => 'Video Player',
+            'user' => $user,
+            'judul' => $judul,
+            'episode' => $episode,
+            'episodelist' => $episodelist,
+            'kitab' => $kitab,
+        ];
+    }
 }

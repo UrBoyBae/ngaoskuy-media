@@ -11,14 +11,14 @@ use Illuminate\Http\Request;
 
 class DashboardController extends Controller
 {
-    public function index(Request $request)
+    public function index()
     {
         $user = auth()->user();
         $episode = Episode::all();
         $question = Question::all();
         $kitab = Kitab::with(['bab', 'subbab', 'judul', 'episode'])->get();
         $article  = Article::all();
-        return[
+        return [
             'title' => 'Home',
             'user' => $user,
             'episode' => $episode,

@@ -34,7 +34,16 @@ class SubBabController extends Controller
         ];
     }
 
-    public function createJudul(Request $request, $idsubbab)
+    public function createJudul()
+    {
+        $user = auth()->user();
+        return [
+            'title' => 'Create Judul',
+            'user' => $user,
+        ];
+    }
+
+    public function storeJudul(Request $request, $idsubbab)
     {
         $subbab = SubBab::findOrFail($idsubbab);
         Judul::create([
@@ -44,7 +53,17 @@ class SubBabController extends Controller
         return to_route('namarute')->with('success', 'Judul created succesfully');
     }
 
-    public function editJudul(Request $request, $id)
+    public function editJudul($id)
+    {
+        $judul = Judul::findOrFail($id);
+        $user = auth()->user();
+        return [
+            'title' => 'Create Judul',
+            'user' => $user,
+            'judul' => $judul,
+        ];
+    }
+    public function updateJudul(Request $request, $id)
     {
         $judul = Judul::findOrFail($id);
         $judul->update([

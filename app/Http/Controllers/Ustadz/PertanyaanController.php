@@ -45,7 +45,7 @@ class PertanyaanController extends Controller
         ];
     }
 
-    public function create(Request $request, $id)
+    public function store(Request $request, $id)
     {
         $user = auth()->user();
         $user = auth()->user();

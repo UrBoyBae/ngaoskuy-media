@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Member;
 
 use App\Http\Controllers\Controller;
+use App\Models\Chat;
 use App\Models\ChatDetail;
 use App\Models\Episode;
 use App\Models\Kitab;
@@ -11,20 +12,45 @@ use Illuminate\Http\Request;
 
 class QuestionController extends Controller
 {
-    public function index(Request $request)
+    public function index()
     {
         $user = auth()->user();
-        $question = Question::all()->where('id', $request)->first();
-        $chat = ChatDetail::with(['chat'])->where('id_chat', $request)->get();
+        $question = Question::all();
         $kitab = Kitab::with(['bab', 'subbab', 'judul', 'episode'])->get();
         return [
             'title' => 'Question',
             'user' => $user,
             'question' => $question,
-            'chat' => $chat,
             'kitab' => $kitab,
         ];
     }
+
+    public function show($id)
+    {
+        $user = auth()->user();
+        $question = Question::where('id', $id)->first();
+        $myquestion = Question::where('id_user', $user->id)->first();
+        $kitab = Kitab::with(['bab', 'subbab', 'judul', 'episode'])->get();
+        return [
+            'title' => 'Question',
+            'user' => $user,
+            'question' => $question,
+            'myquestion' => $myquestion,
+            'kitab' => $kitab,
+        ];
+    }
+
+    public function create()
+    {
+        $user = auth()->user();
+        $kitab = Kitab::with(['bab', 'subbab', 'judul', 'episode'])->get();
+        return [
+            'title' => 'Craete Question',
+            'user' => $user,
+            'kitab' => $kitab,
+        ];
+    }
+
     public function store(Request $request, $id)
     {
         $user = auth()->user();
@@ -40,6 +66,12 @@ class QuestionController extends Controller
             'id_episode' => $episode->id,
             'question'   => $request->question,
             'status'     => $request->status,
+        ]);
+        $question = Question::where('id_user', $user->id)->where('question', $request->question)->first();
+
+        Chat::create([
+            'id_question' => $question->id,
+            'id_user' => $user,
         ]);
 
         return to_route('namarute')->with('success', 'Question created succesfully');
