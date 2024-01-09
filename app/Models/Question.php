@@ -12,7 +12,9 @@ class Question extends Model
     protected $fillable = [
         'id_user',
         'id_episode',
+        'subject',
         'question',
+        'tipe',
         'status',
     ];
 

@@ -18,13 +18,13 @@ class DashboardController extends Controller
         $question = Question::all();
         $kitab = Kitab::with(['bab', 'subbab', 'judul', 'episode'])->get();
         $article  = Article::all();
-        return [
+        return view('member.dashboard', [
             'title' => 'Home',
             'user' => $user,
             'episode' => $episode,
             'question' => $question,
             'kitab' => $kitab,
             'article' => $article,
-        ];
+        ]);
     }
 }
