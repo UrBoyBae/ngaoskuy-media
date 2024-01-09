@@ -17,12 +17,12 @@ class QuestionController extends Controller
         $user = auth()->user();
         $question = Question::all();
         $kitab = Kitab::with(['bab', 'subbab', 'judul', 'episode'])->get();
-        return [
+        return view('dashboard', [
             'title' => 'Question',
             'user' => $user,
             'question' => $question,
             'kitab' => $kitab,
-        ];
+        ]);
     }
 
     public function show($id)
@@ -31,49 +31,49 @@ class QuestionController extends Controller
         $question = Question::where('id', $id)->first();
         $myquestion = Question::where('id_user', $user->id)->first();
         $kitab = Kitab::with(['bab', 'subbab', 'judul', 'episode'])->get();
-        return [
+        return view('member.question.show', [
             'title' => 'Question',
             'user' => $user,
             'question' => $question,
             'myquestion' => $myquestion,
             'kitab' => $kitab,
-        ];
+        ]);
     }
 
     public function create()
     {
         $user = auth()->user();
         $kitab = Kitab::with(['bab', 'subbab', 'judul', 'episode'])->get();
-        return [
+        return view('member.quesstion', [
             'title' => 'Craete Question',
             'user' => $user,
             'kitab' => $kitab,
-        ];
+        ]);
     }
 
-    public function store(Request $request, $id)
+    public function store(Request $request)
     {
         $user = auth()->user();
-        $episode = Episode::findOrFail($id);
-        $request->validate([
-            'id_user'    => 'required|exists:users,id',
-            'id_episode' => 'required|exists:episodes,id',
-            'question'   => 'required|string',
-            'status'     => 'required|string',
-        ]);
+        // $request->validate([
+        //     // 'id_user'    => 'required|exists:users,id',
+        //     'question'   => 'required',
+        //     'status'     => 'required',
+        // ]);
         Question::create([
             'id_user'    => $user->id,
-            'id_episode' => $episode->id,
-            'question'   => $request->question,
+            'subject'   => $request->subject,
+            'question'   => $request->pertanyaan,
+            'tipe'     => $request->tipe,
             'status'     => $request->status,
         ]);
-        $question = Question::where('id_user', $user->id)->where('question', $request->question)->first();
+        $question = Question::where('id_user', $user->id)->where('subject', $request->subject)->first();
+        // dd($question);
 
         Chat::create([
             'id_question' => $question->id,
-            'id_user' => $user,
+            'id_user' => $user->id,
         ]);
 
-        return to_route('namarute')->with('success', 'Question created succesfully');
+        return to_route('member.home.index')->with('success', 'Question created succesfully');
     }
 }

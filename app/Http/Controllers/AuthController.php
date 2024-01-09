@@ -19,8 +19,7 @@ class AuthController extends Controller
             'password' => 'required',
         ]);
 
-        if(Auth::attempt($credential))
-        {
+        if (Auth::attempt($credential)) {
             $request->session()->regenerate();
 
             return redirect()->intended(route('member.home.index'));
@@ -34,10 +33,10 @@ class AuthController extends Controller
     {
         Auth::logout();
 
-        $request->session()-> invalidate();
+        $request->session()->invalidate();
 
         $request->session()->regenerateToken();
 
-        return redirect(route('login.index'));
+        return redirect(route('splash-screen'));
     }
 }
