@@ -130,7 +130,7 @@
                 id="toggle-navbar-profile">
             <div class="flex flex-col justify-center items-center">
                 <span class="text-base font-bold text-white">YourBoyBae</span>
-                <span class="text-base font-bold text-[#d6c3c3]/50">aliakbara97@yahoo.com</span>
+                <span class="text-base font-bold text-[#d6c3c3]/50">{{ Auth::user()->email }}</span>
             </div>
         </div>
         <div class="w-full rounded-[30px] bg-[#942626] mt-3">
