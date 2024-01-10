@@ -14,8 +14,10 @@ return new class extends Migration
         Schema::create('questions', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->foreignUuid('id_user');
-            $table->foreignUuid('id_episode');
+            $table->foreignUuid('id_episode')->nullable();
+            $table->string('subject');
             $table->text('question');
+            $table->boolean('tipe');
             $table->boolean('status');
             $table->timestamps();
 
