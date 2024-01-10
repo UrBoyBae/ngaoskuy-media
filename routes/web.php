@@ -150,3 +150,7 @@ Route::middleware(['ustadz'])->group(function () {
     Route::get('/ustadz/video/{param}', [VideoController::class, 'index'])->name('ustadz.video.index');
     Route::get('/ustadz/video-show/{param}', [VideoController::class, 'show'])->name('ustadz.video.show');
 });
+
+Route::get('/about-us', function () {
+    return view('components.templates.about-us');
+});
