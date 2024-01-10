@@ -149,3 +149,4 @@
         </div>
     </div>
 </div>
+<div class="w-full h-[21px] bg-[#CEA59B]"></div>

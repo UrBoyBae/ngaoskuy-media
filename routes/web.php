@@ -29,3 +29,7 @@ Route::get('/home', [DashboardController::class, 'index']) ->name('member.home.i
 Route::get('/user/dashboard', function () {
     return view('components.templates.dashboard');
 });
+
+Route::get('/about-us', function () {
+    return view('components.templates.about-us');
+});
