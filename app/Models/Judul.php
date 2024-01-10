@@ -18,10 +18,10 @@ class Judul extends Model
     ];
     public function subbab()
     {
-        $this->belongsTo(SubBab::class);
+        return $this->belongsTo(SubBab::class, 'id_subbab');
     }
     public function episode()
     {
-        $this->hasMany(Episode::class);
+        return $this->hasMany(Episode::class, 'id_judul');
     }
 }

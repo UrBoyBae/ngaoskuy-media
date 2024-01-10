@@ -20,6 +20,6 @@ class Episode extends Model
 
     public function judul()
     {
-        $this->belongsTo(Judul::class);
+        return $this->belongsTo(Judul::class, 'id_judul');
     }
 }

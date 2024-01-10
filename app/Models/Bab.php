@@ -16,10 +16,10 @@ class Bab extends Model
     ];
     public function kitab()
     {
-        $this->belongsTo(Kitab::class);
+        return $this->belongsTo(Kitab::class, 'id_kitab');
     }
     public function subbab()
     {
-        $this->hasMany(Subbab::class);
+        return $this->hasMany(Subbab::class, 'id_bab');
     }
 }
