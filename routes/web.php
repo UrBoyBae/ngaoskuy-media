@@ -47,7 +47,7 @@ Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 Route::get('/registrasi', [RegistrasionController::class, 'index'])->middleware('guest')->name('registrasi.index');
 Route::post('/registrasi', [RegistrasionController::class, 'registrasion'])->name('registrasi.proses');
 
-// Route::get('/home', [DashboardController::class, 'index'])->name('member.home.index');
+Route::get('/home', [DashboardController::class, 'index'])->name('member.home.index');
 
 // user routes
 
@@ -64,7 +64,7 @@ Route::get('/user/video-show/{param}', [VideoListController::class, 'show'])->na
 
 //member router
 Route::middleware(['member'])->group(function () {
-
+    Route::get('/member/dashboard', [DashboardController::class, 'index'])->name('member.index');
     Route::get('/member/dashboard', [DashboardController::class, 'index'])->name('member.home.index');
 
     Route::get('/member/artikel', [MemberArticleController::class, 'index'])->name('member.artikel.index');
@@ -81,7 +81,7 @@ Route::middleware(['member'])->group(function () {
     Route::get('/member/video/{param}', [MemberVideoListController::class, 'index'])->name('member.video.index');
     Route::get('/member/video-show/{param}', [MemberVideoListController::class, 'show'])->name('member.video.show');
 });
-
+//
 //admin routes
 Route::middleware(['admin'])->group(function () {
 

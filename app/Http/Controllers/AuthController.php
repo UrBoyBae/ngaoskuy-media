@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\DetailUser;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -22,10 +23,20 @@ class AuthController extends Controller
         if (Auth::attempt($credential)) {
             $request->session()->regenerate();
 
+            // dd(Auth::user());
+
+            $name = DetailUser::where('id_user', auth()->user()->id)->first();
+
+            // dd($name);
             return redirect()->intended(route('member.home.index'));
+
             // $user = Auth::User();
             // $roles = $user->getRoleNames()->first();
 
+        }
+        else
+        {
+            return redirect()->back()->with('error', 'Invalid username or password');
         }
     }
 
