@@ -32,13 +32,13 @@ class QuestionController extends Controller
         // $chat = Chat::where('id_question', $question->id)->first();
         // $chatdetail = ChatDetail::where('id_chat', $chat->id)->get()->sortBy('created_at');
         $kitab = Kitab::with(['bab'])->get();
-        return [
+        return view('user.question', [
             'title' => 'Chat',
             'user' => $user,
             'question' => $question,
             // 'chat' => $chat,
             // 'chatdetail' => $chatdetail,
             'kitab' => $kitab,
-        ];
+        ]);
     }
 }
