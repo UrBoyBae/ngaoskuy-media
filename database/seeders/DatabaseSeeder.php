@@ -18,7 +18,9 @@ class DatabaseSeeder extends Seeder
             KitabSeeder::class,
             BabSeeder::class,
             SubBabSeeder::class,
-            JudulSeeder::class
+            JudulSeeder::class,
+            QuestionSeeder::class,
+            ArticleSeeder::class
         ]);
     }
 }

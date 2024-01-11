@@ -26,16 +26,28 @@ class AuthController extends Controller
             // dd(Auth::user());
 
             $name = DetailUser::where('id_user', auth()->user()->id)->first();
+            $user = Auth::user();
+            $roles = $user->getRoleNames()->toArray();
+            // dd($roles);
 
-            // dd($name);
-            return redirect()->intended(route('member.home.index'));
-
+            switch (true) {
+                case in_array('member', $roles):
+                    return redirect()->intended(route('member.home.index'));
+                    break;
+                case in_array('ustadz', $roles):
+                    return redirect()->intended(route('ustadz.home.index'));
+                    break;
+                case in_array('admin', $roles):
+                    return redirect()->intended(route('admin.home.index'));
+                    break;
+                default:
+                    return redirect()->back()->with('error', 'Role malfunction');
+                    break;
+            }
             // $user = Auth::User();
             // $roles = $user->getRoleNames()->first();
 
-        }
-        else
-        {
+        } else {
             return redirect()->back()->with('error', 'Invalid username or password');
         }
     }
