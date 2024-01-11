@@ -153,3 +153,7 @@ Route::get('/ustadz/video-show/{param}', [VideoController::class, 'show'])->name
 Route::get('/about-us', function () {
     return view('components.templates.about-us');
 });
+
+Route::get('/photo-gallery', function () {
+    return view('components.templates.photo-gallery');
+});

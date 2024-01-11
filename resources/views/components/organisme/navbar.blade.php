@@ -130,13 +130,11 @@
                 id="toggle-navbar-profile">
             <div class="flex flex-col justify-center items-center">
                 <span class="text-base font-bold text-white">YourBoyBae</span>
-                <span class="text-base font-bold text-[#d6c3c3]/50">
-                    @if (Auth::check())
-                        {{ Auth::user()->email }}
-                    @else
-                        <h2>Silahkan login</h2>
-                    @endif
-                </span>
+                <span class="text-base font-bold text-[#d6c3c3]/50">@if (Auth::check())
+                    {{ Auth::user()->email }}
+                @else
+                    <h2>Silahkan login</h2>
+                @endif</span>
             </div>
         </div>
         <div class="w-full rounded-[30px] bg-[#942626] mt-3">
