@@ -51,7 +51,8 @@ Route::get('/home', [DashboardController::class, 'index'])->name('member.home.in
 
 // user routes
 
-Route::get('/user/dashboard', [UserDashboardController::class, 'index'])->middleware('user')->name('user.index');
+Route::get('/user/dashboard', [UserDashboardController::class, 'index'])
+->name('user.index');
 
 Route::get('/user/artikel', [ArticleController::class, 'index'])->name('user.artikel.index');
 Route::get('/user/artikel/{param}', [ArticleController::class, 'show'])->name('user.artikel.show');
@@ -153,4 +154,8 @@ Route::middleware(['ustadz'])->group(function () {
 
 Route::get('/about-us', function () {
     return view('components.templates.about-us');
+});
+
+Route::get('/photo-gallery', function () {
+    return view('components.templates.photo-gallery');
 });
