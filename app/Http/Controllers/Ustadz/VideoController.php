@@ -17,7 +17,7 @@ class VideoController extends Controller
     {
         $user = auth()->user();
         $episode = Episode::all();
-        $kitab = Kitab::with(['bab', 'subbab', 'judul', 'episode'])->get();
+        $kitab = Kitab::with(['bab'])->get();
         $article  = Article::all();
         return [
             'title' => 'Home',
@@ -33,7 +33,7 @@ class VideoController extends Controller
         $user = auth()->user();
         $episode = Episode::all();
         $subbab = SubBab::where('id_bab', $id)->get();
-        $kitab = Kitab::with(['bab', 'subbab', 'judul', 'episode'])->get();
+        $kitab = Kitab::with(['bab'])->get();
         $article  = Article::all();
         return [
             'title' => 'Home',
@@ -50,7 +50,7 @@ class VideoController extends Controller
         $user = auth()->user();
         $judul = Judul::where('id_subbab', $id);
         $episode = Episode::where('id_judul', $judul->id);
-        $kitab = Kitab::with(['bab', 'subbab', 'judul', 'episode'])->get();
+        $kitab = Kitab::with(['bab'])->get();
         $article  = Article::all();
         return [
             'title' => 'Home',

@@ -19,7 +19,7 @@ class ChatController extends Controller
         $question = Question::all()->where('id', $id)->first();
         $chat = Chat::where('id_question', $question->id)->first();
         $chatdetail = ChatDetail::with(['chat'])->where('id_chat', $chat->id)->get();
-        $kitab = Kitab::with(['bab', 'subbab', 'judul', 'episode'])->get();
+        $kitab = Kitab::with(['bab'])->get();
         return [
             'title' => 'Chat',
             'user' => $user,

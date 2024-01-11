@@ -16,7 +16,7 @@ class QuestionController extends Controller
     {
         $user = auth()->user();
         $question = Question::all();
-        $kitab = Kitab::with(['bab', 'subbab', 'judul', 'episode'])->get();
+        $kitab = Kitab::with(['bab'])->get();
         return view('dashboard', [
             'title' => 'Question',
             'user' => $user,
@@ -30,7 +30,7 @@ class QuestionController extends Controller
         $user = auth()->user();
         $question = Question::where('id', $id)->first();
         $myquestion = Question::where('id_user', $user->id)->first();
-        $kitab = Kitab::with(['bab', 'subbab', 'judul', 'episode'])->get();
+        $kitab = Kitab::with(['bab'])->get();
         return view('member.question.show', [
             'title' => 'Question',
             'user' => $user,
@@ -43,7 +43,7 @@ class QuestionController extends Controller
     public function create()
     {
         $user = auth()->user();
-        $kitab = Kitab::with(['bab', 'subbab', 'judul', 'episode'])->get();
+        $kitab = Kitab::with(['bab'])->get();
         return view('member.quesstion', [
             'title' => 'Craete Question',
             'user' => $user,

@@ -14,7 +14,7 @@ class ArticleController extends Controller
     {
         $user = auth()->user();
         $episode = Episode::all();
-        $kitab = Kitab::with(['bab', 'subbab', 'judul', 'episode'])->get();
+        $kitab = Kitab::with(['bab'])->get();
         $article  = Article::all()->sortBy('created_at');
         return [
             'title' => 'Article',
