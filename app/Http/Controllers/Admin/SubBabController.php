@@ -20,7 +20,7 @@ class SubBabController extends Controller
         $subbab = SubBab::where('id_bab', $id)->get();
         $episode = Episode::all();
         $question = Question::all();
-        $kitab = Kitab::with(['bab', 'subbab', 'judul', 'episode'])->get();
+        $kitab = Kitab::with(['bab'])->get();
         $article  = Article::all();
 
         return [

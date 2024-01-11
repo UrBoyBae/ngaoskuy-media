@@ -12,7 +12,7 @@ class ArticleController extends Controller
     public function index()
     {
         $user = auth()->user();
-        $kitab = Kitab::with(['bab', 'subbab', 'judul', 'episode'])->get();
+        $kitab = Kitab::with(['bab'])->get();
         $article = Article::all()->sortBy('updated_at');
         return [
             'title' => 'Question',
@@ -25,7 +25,7 @@ class ArticleController extends Controller
     public function show($id)
     {
         $user = auth()->user();
-        $kitab = Kitab::with(['bab', 'subbab', 'judul', 'episode'])->get();
+        $kitab = Kitab::with(['bab'])->get();
         $article = Article::where('id', $id)->first();
         return [
             'title' => 'Question',
