@@ -17,7 +17,7 @@ class VideoListController extends Controller
         $user = auth()->user();
         $subbab = SubBab::where('id_bab', $id)->first();
         $judul = Judul::where('id_subbab', $subbab->id)->get();
-        $kitab = Kitab::with(['bab', 'subbab', 'judul', 'episode'])->get();
+        $kitab = Kitab::with(['bab'])->get();
         return [
             'title' => 'Video',
             'user' => $user,
@@ -33,7 +33,7 @@ class VideoListController extends Controller
         $judul = Judul::where('id_subbab', $id)->get();
         $episode = Episode::where('id_judul', $judul->id)->first();
         $episodelist = Episode::where('id_judul', $judul->id)->get();
-        $kitab = Kitab::with(['bab', 'subbab', 'judul', 'episode'])->get();
+        $kitab = Kitab::with(['bab'])->get();
         return [
             'title' => 'Video Player',
             'user' => $user,

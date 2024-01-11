@@ -138,14 +138,15 @@
             </div>
         </div>
         <div class="w-full rounded-[30px] bg-[#942626] mt-3">
-            <div
-                class="flex items-center cursor-pointer px-6 py-4 gap-3 border-b border-[#d6c3c3]/50 hover:bg-[#d6c3c3]/10 hover:rounded-t-[30px]" id="setting-profile">
+            <div class="flex items-center cursor-pointer px-6 py-4 gap-3 border-b border-[#d6c3c3]/50 hover:bg-[#d6c3c3]/10 hover:rounded-t-[30px]"
+                id="setting-profile">
                 <ion-icon name="settings-outline" id="a" class="text-xl font-bold text-white"></ion-icon>
                 <span class="font-bold text-white">Settings</span>
             </div>
             <form method="post" action="{{ route('logout') }}" id="logout-form">
                 @csrf
-                <button type="submit" class="flex items-center cursor-pointer px-6 py-4 gap-3 hover:bg-[#d6c3c3]/10 hover:rounded-b-[30px] w-full">
+                <button type="submit"
+                    class="flex items-center cursor-pointer px-6 py-4 gap-3 hover:bg-[#d6c3c3]/10 hover:rounded-b-[30px] w-full">
                     <ion-icon name="log-out-outline" class="text-xl font-bold text-white"></ion-icon>
                     <span class="font-bold text-white">Logout</span>
                 </button>
