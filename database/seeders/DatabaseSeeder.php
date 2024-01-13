@@ -19,6 +19,7 @@ class DatabaseSeeder extends Seeder
             BabSeeder::class,
             SubBabSeeder::class,
             JudulSeeder::class,
+            DetailUserSeeder::class,
             QuestionSeeder::class,
             ArticleSeeder::class
         ]);

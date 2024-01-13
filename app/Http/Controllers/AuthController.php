@@ -21,14 +21,12 @@ class AuthController extends Controller
         ]);
 
         if (Auth::attempt($credential)) {
+
             $request->session()->regenerate();
-
-            // dd(Auth::user());
-
+            
             $name = DetailUser::where('id_user', auth()->user()->id)->first();
             $user = Auth::user();
             $roles = $user->getRoleNames()->toArray();
-            // dd($roles);
 
             switch (true) {
                 case in_array('member', $roles):
@@ -44,8 +42,6 @@ class AuthController extends Controller
                     return redirect()->back()->with('error', 'Role malfunction');
                     break;
             }
-            // $user = Auth::User();
-            // $roles = $user->getRoleNames()->first();
 
         } else {
             return redirect()->back()->with('error', 'Invalid username or password');
