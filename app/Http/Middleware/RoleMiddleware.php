@@ -19,8 +19,8 @@ class RoleMiddleware
 
         if(Auth::check() && Auth::user()->getRoleNames() == $role)
         {
-            return response()->json(["Anda tidak memiliki hak akses untuk halaman ini"]);
+            return $next($request);
         }
-        return $next($request);
+        return response()->json(["Anda tidak memiliki hak akses untuk halaman ini"]);
     }
 }

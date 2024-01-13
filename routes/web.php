@@ -36,7 +36,7 @@ use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 Route::get('/', function () {
     return view('components.templates.splash-screen');
-})->name('splash-screen');
+})->middleware('guest')->name('splash-screen');
 
 //authentication routes
 Route::get('/login', [AuthController::class, 'index'])->middleware('guest')->name('login.index');
@@ -47,7 +47,7 @@ Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 Route::get('/registrasi', [RegistrasionController::class, 'index'])->middleware('guest')->name('registrasi.index');
 Route::post('/registrasi', [RegistrasionController::class, 'registrasion'])->name('registrasi.proses');
 
-Route::get('/home', [DashboardController::class, 'index'])->name('member.home.index');
+// Route::get('/home', [DashboardController::class, 'index'])->name('member.home.index');
 
 // user routes
 
@@ -63,8 +63,7 @@ Route::get('/user/video/{param}', [VideoListController::class, 'index'])->name('
 Route::get('/user/video-show/{param}', [VideoListController::class, 'show'])->name('user.video.show');
 
 //member router
-// Route::middleware(['member'])->group(function () {
-    Route::get('/member/dashboard', [DashboardController::class, 'index'])->name('member.index');
+Route::middleware(['auth','user-role:member'])->group(function () {
     Route::get('/member/dashboard', [DashboardController::class, 'index'])->name('member.home.index');
 
     Route::get('/member/artikel', [MemberArticleController::class, 'index'])->name('member.artikel.index');
@@ -80,10 +79,10 @@ Route::get('/user/video-show/{param}', [VideoListController::class, 'show'])->na
 
     Route::get('/member/video/{param}', [MemberVideoListController::class, 'index'])->name('member.video.index');
     Route::get('/member/video-show/{param}', [MemberVideoListController::class, 'show'])->name('member.video.show');
-// });
+});
 //
 //admin routes
-Route::middleware(['admin'])->group(function () {
+Route::middleware(['auth', 'user-role:admin'])->group(function () {
 
     Route::get('/admin/dashboard', [AdminDashboardController::class, 'index'])->name('admin.dashboard.index');
 
@@ -131,7 +130,7 @@ Route::middleware(['admin'])->group(function () {
 
 
 //ustadz routes
-Route::middleware(['ustadz'])->group(function () {
+Route::middleware(['auth','user-role:ustadz'])->group(function () {
 
     Route::get('/ustadz/dashboard', [UstadzDashboardController::class, 'index'])->name('ustadz.dashboard');
 
