@@ -1,13 +1,13 @@
 $(document).ready(function () {
     // Splash Screen
-    $("#masuk-splashscreen").on("click", function() {
+    $("#masuk-splashscreen").on("click", function () {
         window.location.href = "/user/dashboard";
     });
-    
-    $("#login-splashscreen").on("click", function() {
+
+    $("#login-splashscreen").on("click", function () {
         window.location.href = "/login";
     });
-    
+
     // Login Page
     $("#login-form").submit(function (e) {
         if ($("#username").val() === "" && $("#password").val() === "") {
@@ -149,3 +149,59 @@ function clickOutsideSidebar(event) {
         window.removeEventListener("click", clickOutsideSidebar);
     }
 }
+
+// Slider
+var TrandingSlider = new Swiper(".tranding-slider", {
+    effect: "coverflow",
+    grabCursor: true,
+    centeredSlides: true,
+    slidesPerView: "auto",
+    coverflowEffect: {
+        rotate: 0,
+        stretch: 0,
+        depth: 200,
+        modifier: 2.5,
+    },
+    pagination: {
+        el: ".swiper-pagination",
+        clickable: true,
+    },
+    navigation: {
+        nextEl: ".swiper-button-next",
+        prevEl: ".swiper-button-prev",
+        clickable: true,
+    },
+});
+
+// FullCalender
+document.addEventListener("DOMContentLoaded", function () {
+    var calendarEl = document.getElementById("calendar-dashboard");
+    var calendar = new FullCalendar.Calendar(calendarEl, {
+        initialView: "dayGridMonth",
+        headerToolbar: {
+            start: "prev",
+            center: "title",
+            end: "next",
+        },
+        events: [
+            {
+                title: "Event Senin",
+                daysOfWeek: [1],
+                color: "#31499C",
+            },
+            {
+                title: "Event Kamis",
+                daysOfWeek: [4],
+                description: "Ini adalah deskripsi event Kamis.",
+                color: "#315B3D",
+            },
+            {
+                title: "Event Sabtu",
+                daysOfWeek: [6],
+                description: "Ini adalah deskripsi event Sabtu.",
+                color: "#B03737",
+            },
+        ],
+    });
+    calendar.render();
+});
