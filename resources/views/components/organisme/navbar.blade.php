@@ -129,7 +129,7 @@
             <img src="{{ asset('assets/images/kobo.jpg') }}" alt="profilePict" class="w-20 rounded-full"
                 id="toggle-navbar-profile">
             <div class="flex flex-col justify-center items-center">
-                <span class="text-base font-bold text-white">YourBoyBae</span>
+                <span class="text-base font-bold text-white">{{ session('full_name') }}</span>
                 <span class="text-base font-bold text-[#d6c3c3]/50">{{ Auth::user()->email }}</span>
             </div>
         </div>

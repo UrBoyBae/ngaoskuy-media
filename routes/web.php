@@ -63,7 +63,7 @@ Route::get('/user/video/{param}', [VideoListController::class, 'index'])->name('
 Route::get('/user/video-show/{param}', [VideoListController::class, 'show'])->name('user.video.show');
 
 //member router
-Route::middleware(['member'])->group(function () {
+// Route::middleware(['member'])->group(function () {
     Route::get('/member/dashboard', [DashboardController::class, 'index'])->name('member.index');
     Route::get('/member/dashboard', [DashboardController::class, 'index'])->name('member.home.index');
 
@@ -80,7 +80,7 @@ Route::middleware(['member'])->group(function () {
 
     Route::get('/member/video/{param}', [MemberVideoListController::class, 'index'])->name('member.video.index');
     Route::get('/member/video-show/{param}', [MemberVideoListController::class, 'show'])->name('member.video.show');
-});
+// });
 //
 //admin routes
 Route::middleware(['admin'])->group(function () {

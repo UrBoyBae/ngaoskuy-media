@@ -16,16 +16,18 @@ class DashboardController extends Controller
         $user = auth()->user();
         $episode = Episode::all();
         $question = Question::all();
-        $kitab = Kitab::with(['bab', 'subbab', 'judul', 'episode'])->get();
+        // $kitab = Kitab::with(['bab', 'subbab', 'judul', 'episode'])->get();
         $article  = Article::all();
 
-        return view('member.dashboard', [
-            'title' => 'Home',
-            'user' => $user,
-            'episode' => $episode,
-            'question' => $question,
-            'kitab' => $kitab,
-            'article' => $article,
-        ]);
+        // return view('member.dashboard', [
+        //     'title' => 'Home',
+        //     'user' => $user,
+        //     'episode' => $episode,
+        //     'question' => $question,
+        //     'kitab' => $kitab,
+        //     'article' => $article,
+        // ]);
+
+        return view('layouts.index');
     }
 }

@@ -21,17 +21,11 @@ class AuthController extends Controller
         ]);
 
         if (Auth::attempt($credential)) {
+
             $request->session()->regenerate();
+            $name = DetailUser::where('id_user', auth()->user()->id)->first()->name;
 
-            // dd(Auth::user());
-
-            $name = DetailUser::where('id_user', auth()->user()->id)->first();
-
-            // dd($name);
-            return redirect()->intended(route('member.home.index'));
-
-            // $user = Auth::User();
-            // $roles = $user->getRoleNames()->first();
+            return redirect()->intended(route('member.home.index'))->with('full_name', $name);
 
         }
         else
