@@ -15,8 +15,8 @@ class QuestionController extends Controller
     public function index()
     {
         $user = auth()->user();
-        $question = Question::where('status', 1)->get();
-        $kitab = Kitab::with(['bab', 'subbab', 'judul', 'episode'])->get();
+        $question = Question::where('status')->get();
+        $kitab = Kitab::with(['bab'])->get();
         return [
             'title' => 'Question',
             'user' => $user,
@@ -29,16 +29,16 @@ class QuestionController extends Controller
     {
         $user = auth()->user();
         $question = Question::where('id', $id)->first();
-        $chat = Chat::where('id_question', $question->id)->first();
-        $chatdetail = ChatDetail::where('id_chat', $chat->id)->get()->sortBy('created_at');
-        $kitab = Kitab::with(['bab', 'subbab', 'judul', 'episode'])->get();
-        return [
+        // $chat = Chat::where('id_question', $question->id)->first();
+        // $chatdetail = ChatDetail::where('id_chat', $chat->id)->get()->sortBy('created_at');
+        $kitab = Kitab::with(['bab'])->get();
+        return view('user.question', [
             'title' => 'Chat',
             'user' => $user,
             'question' => $question,
-            'chat' => $chat,
-            'chatdetail' => $chatdetail,
+            // 'chat' => $chat,
+            // 'chatdetail' => $chatdetail,
             'kitab' => $kitab,
-        ];
+        ]);
     }
 }

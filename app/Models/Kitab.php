@@ -16,6 +16,6 @@ class Kitab extends Model
     ];
     public function bab()
     {
-        $this->hasMany(Bab::class);
+        return $this->hasMany(Bab::class, 'id_kitab');
     }
 }

@@ -18,7 +18,7 @@ class PertanyaanController extends Controller
         $user = auth()->user();
         $episode = Episode::all();
         $question = Question::where('status', 1)->get();
-        $kitab = Kitab::with(['bab', 'subbab', 'judul', 'episode'])->get();
+        $kitab = Kitab::with(['bab'])->get();
         $article  = Article::all();
         return [
             'title' => 'Pertanyaan',
@@ -34,7 +34,7 @@ class PertanyaanController extends Controller
     {
         $user = auth()->user();
         $episode = Episode::all();
-        $kitab = Kitab::with(['bab', 'subbab', 'judul', 'episode'])->get();
+        $kitab = Kitab::with(['bab'])->get();
         $chat = ChatDetail::where('id_chat', $id)->get();
         return [
             'title' => 'Chat',

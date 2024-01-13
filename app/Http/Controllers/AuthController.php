@@ -23,13 +23,27 @@ class AuthController extends Controller
         if (Auth::attempt($credential)) {
 
             $request->session()->regenerate();
-            $name = DetailUser::where('id_user', auth()->user()->id)->first()->name;
+            
+            $name = DetailUser::where('id_user', auth()->user()->id)->first();
+            $user = Auth::user();
+            $roles = $user->getRoleNames()->toArray();
 
-            return redirect()->intended(route('member.home.index'))->with('full_name', $name);
+            switch (true) {
+                case in_array('member', $roles):
+                    return redirect()->intended(route('member.home.index'));
+                    break;
+                case in_array('ustadz', $roles):
+                    return redirect()->intended(route('ustadz.home.index'));
+                    break;
+                case in_array('admin', $roles):
+                    return redirect()->intended(route('admin.home.index'));
+                    break;
+                default:
+                    return redirect()->back()->with('error', 'Role malfunction');
+                    break;
+            }
 
-        }
-        else
-        {
+        } else {
             return redirect()->back()->with('error', 'Invalid username or password');
         }
     }

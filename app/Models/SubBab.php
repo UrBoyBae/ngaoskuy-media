@@ -16,6 +16,10 @@ class SubBab extends Model
     ];
     public function bab()
     {
-        $this->belongsTo(Bab::class);
+        return $this->belongsTo(Bab::class, 'id_bab');
+    }
+    public function judul()
+    {
+        return $this->hasMany(Judul::class, 'id_subbab');
     }
 }

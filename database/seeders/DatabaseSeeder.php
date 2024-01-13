@@ -20,6 +20,8 @@ class DatabaseSeeder extends Seeder
             SubBabSeeder::class,
             JudulSeeder::class,
             DetailUserSeeder::class,
+            QuestionSeeder::class,
+            ArticleSeeder::class
         ]);
     }
 }
