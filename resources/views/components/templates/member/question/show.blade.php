@@ -1,5 +1,5 @@
 @extends('layouts.index')
 
 @section('mainContent')
-    <h1>INI MEMBER</h1>
+    <h1>INI Question show</h1>
 @endsection
