@@ -14,12 +14,12 @@ class ArticleController extends Controller
         $user = auth()->user();
         $kitab = Kitab::with(['bab'])->get();
         $article = Article::all()->sortBy('updated_at');
-        return [
+        return view('components.templates.user.article.index',[
             'title' => 'Question',
             'user' => $user,
             'kitab' => $kitab,
             'article' => $article
-        ];
+        ]);
     }
 
     public function show($id)
@@ -27,11 +27,11 @@ class ArticleController extends Controller
         $user = auth()->user();
         $kitab = Kitab::with(['bab'])->get();
         $article = Article::where('id', $id)->first();
-        return [
-            'title' => 'Question',
+        return view('components.templates.user.article.show',[
+            'title' => 'Question Show',
             'user' => $user,
             'kitab' => $kitab,
             'article' => $article
-        ];
+        ]);
     }
 }
