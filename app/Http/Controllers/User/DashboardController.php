@@ -4,6 +4,7 @@ namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
 use App\Models\Article;
+use App\Models\Bab;
 use App\Models\Episode;
 use App\Models\Kitab;
 use App\Models\Question;
@@ -17,6 +18,7 @@ class DashboardController extends Controller
         $episode = Episode::all();
         $question = Question::all();
         $kitab = Kitab::with(['bab'])->get();
+        $bab = Bab::with(['subbab'])->get();
         $article  = Article::all();
         return view('components.templates.user.dashboard.index', [
             'title' => 'Home',
@@ -24,6 +26,7 @@ class DashboardController extends Controller
             'episode' => $episode,
             'question' => $question,
             'kitab' => $kitab,
+            'bab' => $bab,
             'article' => $article,
         ]);
     }

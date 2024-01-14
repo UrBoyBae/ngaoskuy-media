@@ -14,8 +14,7 @@ class Episode extends Model
         'name',
         'thumbnail',
         'video_link',
-        'resume',
-        'tag',
+        'resume'
     ];
 
     public function judul()
