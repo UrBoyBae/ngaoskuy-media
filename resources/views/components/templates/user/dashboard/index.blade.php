@@ -1,13 +1,48 @@
 @extends('layouts.index')
 
 @section('mainContent')
-    <H1>INI USER</H1>
-    @foreach ($question as $q)
-        <a href="{{ route('user.pertanyaan.show', $q->id) }}"
-            class="block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
-
-            <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{{ $q->subject }}</h5>
-            <p class="font-normal text-gray-700 dark:text-gray-400">{{ $q->question }}</p>
-        </a>
-    @endforeach
+    <div class="w-full pt-9 bg-[#EEEBDD]">
+        @include('components.organisme.episode-slider')
+        <div class="w-full mt-5 md:mt-10">
+            <div class="flex items-center justify-between pl-8 pr-8 md:pr-12 md:pl-12">
+                <span class="text-2xl font-bold text-black">Pertanyaan</span>
+                <a href="{{ route("user.pertanyaan.index") }}">
+                    <div class="flex justify-center items-center gap-1">
+                        <span class="text-base font-semibold md:text-xl">See All</span>
+                        <ion-icon name="chevron-forward-outline" class="text-base md:text-xl"></ion-icon>
+                    </div>
+                </a>
+            </div>
+            <div class="w-full min-h-[170px] mt-3 flex gap-5 overflow-x-auto snap-mandatory snap-x custom-x-scrollbar px-5">
+                {{-- Masukkan variabel yang menampung data pertanyaan kedalam foreach --}}
+                @foreach ($question as $data)
+                    <x-molekuls.question-card :data="$data" route="user.pertanyaan.show"/>
+                @endforeach
+            </div>
+        </div>
+        <div class="w-full mt-5 md:mt-5">
+            <div class="flex items-center justify-between pl-8 pr-8 md:pr-12 md:pl-12">
+                <span class="text-2xl font-bold text-black">Artikel</span>
+                <a href="{{ route("user.artikel.index") }}">
+                    <div class="flex justify-center items-center gap-1">
+                        <span class="text-base font-semibold md:text-xl">See All</span>
+                        <ion-icon name="chevron-forward-outline" class="text-base md:text-xl"></ion-icon>
+                    </div>
+                </a>
+            </div>
+            {{-- Masukkan variabel yang menampung data artikel kedalam foreach --}}
+            <div class="w-full min-h-[170px] mt-3 flex gap-5 overflow-x-auto snap-mandatory snap-x custom-x-scrollbar px-5">
+                @foreach ($article as $data)
+                    <x-molekuls.article-card :data="$data" route="user.artikel.show"/>
+                @endforeach
+            </div>
+            
+        </div>
+        <div class="flex flex-col lg:mt-3">
+            <span class="text-2xl font-bold text-black inline-block text-center w-full mt-7">Kalender</span>
+            <div class="w-full px-4 pt-1 pb-8 md:pb-16">
+                <div id="calendar-dashboard" class="w-full text-xs lg:text-base px-2 lg:px-10"></div>
+            </div>
+        </div>
+    </div>
 @endsection
