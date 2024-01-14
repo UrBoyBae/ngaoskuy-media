@@ -26,5 +26,16 @@ class EpisodeSeeder extends Seeder
             'video_link'=>'5zFL_p22lPg',
             'resume'=>$faker->text
         ]);
+
+        $judulGhusli = Judul::where('name','Apa Itu Ghusli')->first();
+        Episode::insert([
+            'id' => Uuid::uuid4(),
+            'id_judul'=>$judulGhusli->id,
+            'name' => 'satu',
+            'thumbnail'=>'https://i.ytimg.com/vi/5zFL_p22lPg/maxresdefault.jpg',
+            'video_link'=>'5zFL_p22lPg',
+            'resume' => $faker->text()
+        ]);
+
     }
 }

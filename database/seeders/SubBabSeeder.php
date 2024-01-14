@@ -21,5 +21,12 @@ class SubBabSeeder extends Seeder
             'id_bab' => $bab->id,
             'name' => 'Tentang Wudhu',
         ]);
+
+        $babGhusli = Bab::where('name', 'Ghusli')->first();
+        SubBab::insert([
+            'id' => Uuid::uuid4(),
+            'id_bab' => $babGhusli->id,
+            'name' => 'Tentang Ghusli'
+        ]);
     }
 }

@@ -21,5 +21,12 @@ class BabSeeder extends Seeder
             'id_kitab' => $kitab->id,
             'name' => 'Wudhu',
         ]);
+
+        $kitabGhusli = Kitab::where('name', 'Kitabul Ghusli')->first();
+        Bab::insert([
+            'id' => Uuid::uuid4(),
+            'id_kitab' => $kitabGhusli->id,
+            'name' => 'Ghusli',
+        ]);
     }
 }
