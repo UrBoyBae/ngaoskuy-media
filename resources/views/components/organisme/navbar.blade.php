@@ -29,94 +29,21 @@
                 </form>
             </div>
             <div class="space-y-5 px-10 pb-10">
+                @foreach ( $kitab as $k)
                 <div>
-                    <h5 class="font-bold text-slate-900 text-lg mb-3">Kitab 1</h5>
+                    <h5 class="font-bold text-slate-900 text-lg mb-3">{{$k->name}}</h5>
                     <ul class="space-y-3">
                         <ul class="space-y-6 border-l-2 border-slate-300 ml-1">
+                            @foreach ($bab as $b)
                             <li>
                                 <a href=""
-                                    class="block border-l-2 pl-4 -ml-[2px] text-[#810000] border-current font-semibold">Kitabul
-                                    Wudhu</a>
+                                class="block border-l-2 pl-4 -ml-[2px] text-[#810000] border-current font-semibold">{{$b->name}}</a>
                             </li>
-                            <li>
-                                <a href=""
-                                    class="block border-l-2 pl-4 -ml-[2px] border-transparent hover:border-slate-900 text-slate-600 hover:text-slate-900 font-semibold">Kitabul
-                                    Gushli</a>
-                            </li>
-                            <li>
-                                <a href=""
-                                    class="block border-l-2 pl-4 -ml-[2px] border-transparent hover:border-slate-900 text-slate-600 hover:text-slate-900 font-semibold">Kitabul
-                                    Tayamum</a>
-                            </li>
+                            @endforeach
                         </ul>
                     </ul>
                 </div>
-                <div>
-                    <h5 class="font-bold text-slate-900 text-lg mb-3">Kitab 2</h5>
-                    <ul class="space-y-3">
-                        <ul class="space-y-6 border-l-2 border-slate-300 ml-1">
-                            <li>
-                                <a href=""
-                                    class="block border-l-2 pl-4 -ml-[2px] border-transparent hover:border-slate-900 text-slate-600 hover:text-slate-900 font-semibold">Kitabul
-                                    Wudhu</a>
-                            </li>
-                            <li>
-                                <a href=""
-                                    class="block border-l-2 pl-4 -ml-[2px] border-transparent hover:border-slate-900 text-slate-600 hover:text-slate-900 font-semibold">Kitabul
-                                    Gushli</a>
-                            </li>
-                            <li>
-                                <a href=""
-                                    class="block border-l-2 pl-4 -ml-[2px] border-transparent hover:border-slate-900 text-slate-600 hover:text-slate-900 font-semibold">Kitabul
-                                    Tayamum</a>
-                            </li>
-                        </ul>
-                    </ul>
-                </div>
-                <div>
-                    <h5 class="font-bold text-slate-900 text-lg mb-3">Kitab 3</h5>
-                    <ul class="space-y-3">
-                        <ul class="space-y-6 border-l-2 border-slate-300 ml-1">
-                            <li>
-                                <a href=""
-                                    class="block border-l-2 pl-4 -ml-[2px] border-transparent hover:border-slate-900 text-slate-600 hover:text-slate-900 font-semibold">Kitabul
-                                    Wudhu</a>
-                            </li>
-                            <li>
-                                <a href=""
-                                    class="block border-l-2 pl-4 -ml-[2px] border-transparent hover:border-slate-900 text-slate-600 hover:text-slate-900 font-semibold">Kitabul
-                                    Gushli</a>
-                            </li>
-                            <li>
-                                <a href=""
-                                    class="block border-l-2 pl-4 -ml-[2px] border-transparent hover:border-slate-900 text-slate-600 hover:text-slate-900 font-semibold">Kitabul
-                                    Tayamum</a>
-                            </li>
-                        </ul>
-                    </ul>
-                </div>
-                <div>
-                    <h5 class="font-bold text-slate-900 text-lg mb-3">Kitab 4</h5>
-                    <ul class="space-y-3">
-                        <ul class="space-y-6 border-l-2 border-slate-300 ml-1">
-                            <li>
-                                <a href=""
-                                    class="block border-l-2 pl-4 -ml-[2px] border-transparent hover:border-slate-900 text-slate-600 hover:text-slate-900 font-semibold">Kitabul
-                                    Wudhu</a>
-                            </li>
-                            <li>
-                                <a href=""
-                                    class="block border-l-2 pl-4 -ml-[2px] border-transparent hover:border-slate-900 text-slate-600 hover:text-slate-900 font-semibold">Kitabul
-                                    Gushli</a>
-                            </li>
-                            <li>
-                                <a href=""
-                                    class="block border-l-2 pl-4 -ml-[2px] border-transparent hover:border-slate-900 text-slate-600 hover:text-slate-900 font-semibold">Kitabul
-                                    Tayamum</a>
-                            </li>
-                        </ul>
-                    </ul>
-                </div>
+                @endforeach
             </div>
         </div>
     </div>

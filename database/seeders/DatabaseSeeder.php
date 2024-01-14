@@ -21,7 +21,8 @@ class DatabaseSeeder extends Seeder
             JudulSeeder::class,
             DetailUserSeeder::class,
             QuestionSeeder::class,
-            ArticleSeeder::class
+            ArticleSeeder::class,
+            EpisodeSeeder::class
         ]);
     }
 }
