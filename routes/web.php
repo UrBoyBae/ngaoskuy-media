@@ -56,7 +56,7 @@ Route::get('/user/dashboard', [UserDashboardController::class, 'index'])->name('
 Route::get('/user/artikel', [ArticleController::class, 'index'])->name('user.artikel.index');
 Route::get('/user/artikel/{param}', [ArticleController::class, 'show'])->name('user.artikel.show');
 
-Route::get('/user/pertanyaan', [QuestionController::class, 'index'])->middleware('user')->name('user.pertanyaan.index');
+Route::get('/user/pertanyaan', [QuestionController::class, 'index'])->name('user.pertanyaan.index');
 Route::get('/user/pertanyaan/{param}', [QuestionController::class, 'show'])->name('user.pertanyaan.show');
 
 Route::get('/user/video/{param}', [VideoListController::class, 'index'])->name('user.video.index');
