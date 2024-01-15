@@ -4,7 +4,7 @@
         <p class="text-lg text-black font-bold">Quick Link</p>
         <p class="pt-2 text-sm text-black font-medium">Home</p>
         <p class="pt-1 text-sm text-black font-medium"><a href="{{ route('about-us') }}">About Us</a></p>
-        <p class="pt-1 text-sm text-black font-medium"><a href="">Photo Gallery</a></p>
+        <p class="pt-1 text-sm text-black font-medium"><a href="{{route('photo-gallery')}}">Photo Gallery</a></p>
     </div>
     <div class="pl-36">
         <p class="text-lg text-black font-bold">Address</p>
