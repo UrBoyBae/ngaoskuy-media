@@ -12,6 +12,7 @@ use App\Http\Controllers\Member\ChatController;
 use App\Http\Controllers\Member\DashboardController;
 use App\Http\Controllers\Member\QuestionController as MemberQuestionController;
 use App\Http\Controllers\Member\VideoListController as MemberVideoListController;
+use App\Http\Controllers\PhotoGalleryController;
 use App\Http\Controllers\RegistrasionController;
 use App\Http\Controllers\User\ArticleController;
 use App\Http\Controllers\User\DashboardController as UserDashboardController;
@@ -153,6 +154,4 @@ Route::get('/ustadz/video-show/{param}', [VideoController::class, 'show'])->name
 
 Route::get('/about-us', [AboutUsController::class, 'index'])->name('about-us');
 
-Route::get('/photo-gallery', function () {
-    return view('components.templates.photo-gallery');
-})->name('photo-gallery');
+Route::get('/photo-gallery', [PhotoGalleryController::class, 'index'])->name('photo-gallery');
