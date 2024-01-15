@@ -29,5 +29,12 @@ class JudulSeeder extends Seeder
                 'name' => 'Apa Itu Tayamum',
             ],
         ]);
+
+        $subbabGhusli = SubBab::where('name', 'Tentang Ghusli')->first();
+        Judul::insert([
+            'id' => Uuid::uuid4(),
+            'id_subbab' => $subbabGhusli->id,
+            'name' => 'Apa Itu Ghusli',
+        ]);
     }
 }

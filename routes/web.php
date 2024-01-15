@@ -56,7 +56,7 @@ Route::get('/user/dashboard', [UserDashboardController::class, 'index'])->name('
 Route::get('/user/artikel', [ArticleController::class, 'index'])->name('user.artikel.index');
 Route::get('/user/artikel/{param}', [ArticleController::class, 'show'])->name('user.artikel.show');
 
-Route::get('/user/pertanyaan', [QuestionController::class, 'index'])->middleware('user')->name('user.pertanyaan.index');
+Route::get('/user/pertanyaan', [QuestionController::class, 'index'])->name('user.pertanyaan.index');
 Route::get('/user/pertanyaan/{param}', [QuestionController::class, 'show'])->name('user.pertanyaan.show');
 
 Route::get('/user/video/{param}', [VideoListController::class, 'index'])->name('user.video.index');
@@ -66,18 +66,18 @@ Route::get('/user/video-show/{param}', [VideoListController::class, 'show'])->na
 //member router
 Route::middleware(['auth','user-role:member'])->group(function () {
 Route::get('/member/dashboard', [DashboardController::class, 'index'])->name('member.home.index');
-  
+
 Route::get('/member/artikel', [MemberArticleController::class, 'index'])->name('member.artikel.index');
 Route::get('/member/artikel/{param}', [MemberArticleController::class, 'show'])->name('member.artikel.show');
-  
+
 Route::get('/member/question', [MemberQuestionController::class, 'index'])->name('member.question.index');
 Route::get('/member/question/{param}', [MemberQuestionController::class, 'show'])->name('member.question.show');
 Route::get('/member/question/create', [MemberQuestionController::class, 'create'])->name('member.question.create');
 Route::post('/member/question/create', [MemberQuestionController::class, 'store'])->name('member.question.store');
-  
+
 Route::get('/member/chat', [ChatController::class, 'index'])->name('member.chat.index');
 Route::post('/member/chat/{param}', [ChatController::class, 'store'])->name('member.chat.store');
-  
+
 Route::get('/member/video/{param}', [MemberVideoListController::class, 'index'])->name('member.video.index');
 Route::get('/member/video-show/{param}', [MemberVideoListController::class, 'show'])->name('member.video.show');
 });
@@ -152,8 +152,8 @@ Route::get('/ustadz/video-show/{param}', [VideoController::class, 'show'])->name
 
 Route::get('/about-us', function () {
     return view('components.templates.about-us');
-});
+})->name('about-us');
 
 Route::get('/photo-gallery', function () {
     return view('components.templates.photo-gallery');
-});
+})->name('photo-gallery');
