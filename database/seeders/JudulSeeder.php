@@ -16,10 +16,18 @@ class JudulSeeder extends Seeder
     public function run(): void
     {
         $subbab = SubBab::where('name', 'Tentang Wudhu')->first();
+        $tayamum = SubBab::where('name', 'Tentang Tayamum')->first();
         Judul::insert([
-            'id' => Uuid::uuid4(),
-            'id_subbab' => $subbab->id,
-            'name' => 'Apa Itu Wudhu',
+            [
+                'id' => Uuid::uuid4(),
+                'id_subbab' => $subbab->id,
+                'name' => 'Apa Itu Wudhu',
+            ],
+            [
+                'id' => Uuid::uuid4(),
+                'id_subbab' => $subbab->id,
+                'name' => 'Apa Itu Tayamum',
+            ],
         ]);
     }
 }

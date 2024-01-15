@@ -16,10 +16,18 @@ class SubBabSeeder extends Seeder
     public function run(): void
     {
         $bab = Bab::where('name', 'Wudhu')->first();
+        $tayamum = Bab::where('name', 'Tayamum')->first();
         SubBab::insert([
-            'id' => Uuid::uuid4(),
-            'id_bab' => $bab->id,
-            'name' => 'Tentang Wudhu',
+            [
+                'id' => Uuid::uuid4(),
+                'id_bab' => $bab->id,
+                'name' => 'Tentang Wudhu',
+            ],
+            [
+                'id' => Uuid::uuid4(),
+                'id_bab' => $tayamum->id,
+                'name' => 'Tentang Tayamum',
+            ],
         ]);
     }
 }

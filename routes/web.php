@@ -60,6 +60,7 @@ Route::get('/user/pertanyaan', [QuestionController::class, 'index'])->middleware
 Route::get('/user/pertanyaan/{param}', [QuestionController::class, 'show'])->name('user.pertanyaan.show');
 
 Route::get('/user/video/{param}', [VideoListController::class, 'index'])->name('user.video.index');
+
 Route::get('/user/video-show/{param}', [VideoListController::class, 'show'])->name('user.video.show');
 
 //member router

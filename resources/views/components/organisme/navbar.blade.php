@@ -34,10 +34,10 @@
                     <h5 class="font-bold text-slate-900 text-lg mb-3">{{$k->name}}</h5>
                     <ul class="space-y-3">
                         <ul class="space-y-6 border-l-2 border-slate-300 ml-1">
-                            @foreach ($bab as $b)
+                            @foreach ($k->bab as $bab)
                             <li>
-                                <a href=""
-                                class="block border-l-2 pl-4 -ml-[2px] text-[#810000] border-current font-semibold">{{$b->name}}</a>
+                                <a href="{{route('user.video.index',$bab->id)}}"
+                                class="block border-l-2 pl-4 -ml-[2px] text-[#810000] border-current font-semibold">{{$bab->name}}</a>
                             </li>
                             @endforeach
                         </ul>

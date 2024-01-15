@@ -16,10 +16,18 @@ class BabSeeder extends Seeder
     public function run(): void
     {
         $kitab = Kitab::where('name', 'Kitabul Wudhu')->first();
+        $tayamum = Kitab::where('name', 'Kitabul Tayamum')->first();
         Bab::insert([
-            'id' => Uuid::uuid4(),
-            'id_kitab' => $kitab->id,
-            'name' => 'Wudhu',
+            [
+                'id' => Uuid::uuid4(),
+                'id_kitab' => $kitab->id,
+                'name' => 'Wudhu',
+            ],
+            [
+                'id' => Uuid::uuid4(),
+                'id_kitab' => $tayamum->id,
+                'name' => 'Tayamum',
+            ],
         ]);
     }
 }
