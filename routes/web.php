@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AboutUsController;
 use App\Http\Controllers\Admin\ArticleController as AdminArticleController;
 use App\Http\Controllers\Admin\BabController;
 use App\Http\Controllers\Admin\DashboardController as AdminDashboardController;
@@ -150,9 +151,7 @@ Route::get('/ustadz/video/{param}', [VideoController::class, 'index'])->name('us
 Route::get('/ustadz/video-show/{param}', [VideoController::class, 'show'])->name('ustadz.video.show');
 });
 
-Route::get('/about-us', function () {
-    return view('components.templates.about-us');
-})->name('about-us');
+Route::get('/about-us', [AboutUsController::class, 'index'])->name('about-us');
 
 Route::get('/photo-gallery', function () {
     return view('components.templates.photo-gallery');
