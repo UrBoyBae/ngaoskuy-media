@@ -25,7 +25,7 @@ class JudulSeeder extends Seeder
             ],
             [
                 'id' => Uuid::uuid4(),
-                'id_subbab' => $subbab->id,
+                'id_subbab' => $tayamum->id,
                 'name' => 'Apa Itu Tayamum',
             ],
         ]);
