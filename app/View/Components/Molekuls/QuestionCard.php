@@ -21,8 +21,9 @@ class QuestionCard extends Component
     public string $created_at;
     public string $updated_at;
     public string $route;
+    public string $width;
     
-    public function __construct($data, $route="")
+    public function __construct($data, $route="", $width="")
     {
         $this->id = isset($data->id)?$data->id:"";
         $this->id_user = isset($data->id_user)?$data->id_user:"";
@@ -34,6 +35,7 @@ class QuestionCard extends Component
         $this->created_at = isset($data->created_at)?$data->created_at:"";
         $this->updated_at = isset($data->updated_at)?$data->updated_at:"";
         $this->route = isset($route)?$route:"";
+        $this->width = isset($width)&&$width!=""?$width:"full";
     }
 
     /**
