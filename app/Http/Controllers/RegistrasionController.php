@@ -12,7 +12,7 @@ class RegistrasionController extends Controller
 {
     public function index()
     {
-        return view('regis');
+        return view('authentication.registrasi');
     }
 
     public function registrasion(Request $request)

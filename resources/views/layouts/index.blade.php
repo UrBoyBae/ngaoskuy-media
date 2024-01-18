@@ -17,7 +17,7 @@
 </head>
 
 <body>
-    <div class="w-full">
+    <div class="w-full min-h-screen bg-[#EEEBDD] flex flex-col">
         @include("components.organisme.navbar")
         @yield("mainContent")
         @include("components.organisme.footer")

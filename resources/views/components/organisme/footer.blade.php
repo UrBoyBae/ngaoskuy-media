@@ -1,4 +1,4 @@
-<div class="w-full h-56 bg-[#CEA59B] flex items-center">
+<div class="w-full h-56 bg-[#CEA59B] flex items-center mt-auto">
     <p class="text-2xl pl-36 pb-16 text-black font-bold ">NGAOS KUY</p>
     <div class="pl-48">
         <p class="text-lg text-black font-bold">Quick Link</p>

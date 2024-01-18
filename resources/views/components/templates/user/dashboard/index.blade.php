@@ -13,10 +13,10 @@
                     </div>
                 </a>
             </div>
-            <div class="w-full min-h-[170px] mt-3 flex gap-5 overflow-x-auto snap-mandatory snap-x custom-x-scrollbar px-5">
+            <div class="w-full min-h-[190px] mt-3 flex gap-5 overflow-x-auto snap-mandatory snap-x custom-x-scrollbar px-5">
                 {{-- Masukkan variabel yang menampung data pertanyaan kedalam foreach --}}
                 @foreach ($question as $data)
-                    <x-molekuls.question-card :data="$data" route="user.pertanyaan.show"/>
+                    <x-molekuls.question-card :data="$data" route="user.pertanyaan.show" width="300px"/>
                 @endforeach
             </div>
         </div>
