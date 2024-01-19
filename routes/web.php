@@ -50,7 +50,6 @@ Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 Route::get('/registrasi', [RegistrasionController::class, 'index'])->middleware('guest')->name('registrasi.index');
 Route::post('/registrasi', [RegistrasionController::class, 'registrasion'])->name('registrasi.proses');
 
-// Route::get('/home', [DashboardController::class, 'index'])->name('member.home.index');
 
 // user/guest routes
 Route::get('/user/dashboard', [UserDashboardController::class, 'index'])->name('user.home.index');
@@ -134,22 +133,22 @@ Route::middleware(['auth', 'user-role:admin'])->group(function () {
 //ustadz routes
 Route::middleware(['auth','user-role:ustadz'])->group(function () {
 
-Route::get('/ustadz/dashboard', [UstadzDashboardController::class, 'index'])->name('ustadz.home.index');
+    Route::get('/ustadz/dashboard', [UstadzDashboardController::class, 'index'])->name('ustadz.home.index');
 
-Route::get('/ustadz/artikel', [UstadzArticleController::class, 'index'])->name('ustadz.article.index');
-Route::get('/ustadz/artikel/{param}', [UstadzArticleController::class, 'show'])->name('ustadz.article.show');
-Route::get('/ustadz/artikel/create', [UstadzArticleController::class, 'create'])->name('ustadz.article.create');
-Route::post('/ustadz/artikel/store', [UstadzArticleController::class, 'store'])->name('ustadz.article.store');
-Route::get('/ustadz/artikel/edit/{param}', [UstadzArticleController::class, 'edit'])->name('ustadz.article.edit');
-Route::post('/ustadz/artikel/edit/{param}', [UstadzArticleController::class, 'update'])->name('ustadz.article.update');
-Route::post('/ustadz/artikel/delete/{param}', [UstadzArticleController::class, 'delete'])->name('ustadz.article.delete');
+    Route::get('/ustadz/artikel', [UstadzArticleController::class, 'index'])->name('ustadz.article.index');
+    Route::get('/ustadz/artikel/{param}', [UstadzArticleController::class, 'show'])->name('ustadz.article.show');
+    Route::get('/ustadz/artikel/create', [UstadzArticleController::class, 'create'])->name('ustadz.article.create');
+    Route::post('/ustadz/artikel/store', [UstadzArticleController::class, 'store'])->name('ustadz.article.store');
+    Route::get('/ustadz/artikel/edit/{param}', [UstadzArticleController::class, 'edit'])->name('ustadz.article.edit');
+    Route::post('/ustadz/artikel/edit/{param}', [UstadzArticleController::class, 'update'])->name('ustadz.article.update');
+    Route::post('/ustadz/artikel/delete/{param}', [UstadzArticleController::class, 'delete'])->name('ustadz.article.delete');
 
-Route::get('/ustadz/question', [PertanyaanController::class, 'index'])->name('ustadz.question.index');
-Route::get('/ustadz/question/{param}', [PertanyaanController::class, 'show'])->name('ustadz.question.show');
-Route::post('/ustadz/question/{param}', [PertanyaanController::class, 'store'])->name('ustadz.question.store');
+    Route::get('/ustadz/question', [PertanyaanController::class, 'index'])->name('ustadz.question.index');
+    Route::get('/ustadz/question/{param}', [PertanyaanController::class, 'show'])->name('ustadz.question.show');
+    Route::post('/ustadz/question/{param}', [PertanyaanController::class, 'store'])->name('ustadz.question.store');
 
-Route::get('/ustadz/video/{param}', [VideoController::class, 'index'])->name('ustadz.video.index');
-Route::get('/ustadz/video-show/{param}', [VideoController::class, 'show'])->name('ustadz.video.show');
+    Route::get('/ustadz/video/{param}', [VideoController::class, 'index'])->name('ustadz.video.index');
+    Route::get('/ustadz/video-show/{param}', [VideoController::class, 'show'])->name('ustadz.video.show');
 });
 
 Route::get('/about-us', [AboutUsController::class, 'index'])->name('about-us');

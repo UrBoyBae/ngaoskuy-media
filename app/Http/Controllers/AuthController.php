@@ -23,20 +23,25 @@ class AuthController extends Controller
         if (Auth::attempt($credential)) {
 
             $request->session()->regenerate();
-            
+
             $name = DetailUser::where('id_user', auth()->user()->id)->first();
             $user = Auth::user();
-            $roles = $user->getRoleNames()->toArray();
+            $roles = $user->getRoleNames();
 
-            switch (true) {
-                case in_array('member', $roles):
+            // dd($roles);
+
+            switch ($roles[0]) {
+                case ('member'):
                     return redirect()->intended(route('member.home.index'));
+                    // return 'member';
                     break;
-                case in_array('ustadz', $roles):
+                case ('ustadz'):
                     return redirect()->intended(route('ustadz.home.index'));
+                    // return 'ustadz';
                     break;
-                case in_array('admin', $roles):
+                case ('admin'):
                     return redirect()->intended(route('admin.home.index'));
+                    // return 'admin';
                     break;
                 default:
                     return redirect()->back()->with('error', 'Role malfunction');
