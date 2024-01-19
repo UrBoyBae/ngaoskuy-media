@@ -19,7 +19,7 @@ class DashboardController extends Controller
         $question = Question::all();
         $kitab = Kitab::with(['bab'])->get();
         $article  = Article::all();
-        return view('admin.dashboard', [
+        return view('components.templates.admin.dashboard.index', [
             'title' => 'Home',
             'user' => $user,
             'episode' => $episode,
