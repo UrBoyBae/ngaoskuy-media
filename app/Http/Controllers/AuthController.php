@@ -28,20 +28,15 @@ class AuthController extends Controller
             $user = Auth::user();
             $roles = $user->getRoleNames();
 
-            // dd($roles);
-
             switch ($roles[0]) {
                 case ('member'):
                     return redirect()->intended(route('member.home.index'));
-                    // return 'member';
                     break;
                 case ('ustadz'):
                     return redirect()->intended(route('ustadz.home.index'));
-                    // return 'ustadz';
                     break;
                 case ('admin'):
                     return redirect()->intended(route('admin.home.index'));
-                    // return 'admin';
                     break;
                 default:
                     return redirect()->back()->with('error', 'Role malfunction');

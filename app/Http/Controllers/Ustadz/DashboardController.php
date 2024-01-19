@@ -18,7 +18,7 @@ class DashboardController extends Controller
         $question = Question::all();
         $kitab = Kitab::with(['bab'])->get();
         $article  = Article::all();
-        return view('ustadz.dashboard', [
+        return view('components.templates.ustadz.dashboard.index', [
             'title' => 'Home',
             'user' => $user,
             'episode' => $episode,

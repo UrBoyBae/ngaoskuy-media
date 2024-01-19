@@ -2,7 +2,6 @@
 
 namespace App\Http\Middleware;
 
-use App\Providers\RouteServiceProvider;
 use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -21,7 +20,21 @@ class RedirectIfAuthenticated
 
         foreach ($guards as $guard) {
             if (Auth::guard($guard)->check()) {
-                return redirect(RouteServiceProvider::HOME);
+
+                switch (Auth::user()->getRoleNames()[0]) {
+                    case 'member':
+                        return redirect()->intended(route('member.home.index'));
+                        break;
+                    case 'ustadz':
+                        return redirect()->intended(route('ustadz.home.index'));
+                        break;
+                    case 'admin':
+                        return redirect()->intended(route('admin.home.index'));
+                        break;
+                    default:
+                        return redirect()->intended(route('login.index'));
+                        break;
+                }
             }
         }
 

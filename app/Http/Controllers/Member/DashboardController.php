@@ -19,7 +19,7 @@ class DashboardController extends Controller
         $kitab = Kitab::with(['bab'])->get();
         $article  = Article::all();
 
-        return view('layouts.index', [
+        return view('components.templates.member.dashboard.index', [
             'title' => 'Home',
             'user' => $user,
             'episode' => $episode,
