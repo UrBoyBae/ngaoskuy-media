@@ -8,6 +8,10 @@ $(document).ready(function () {
         window.location.href = "/login";
     });
 
+    $("#register-splashscreen").on("click", function () {
+        window.location.href = "/registrasi";
+    });
+
     // Login Page
     $("#login-form").submit(function (e) {
         if ($("#username").val() === "" && $("#password").val() === "") {
