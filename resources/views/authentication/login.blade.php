@@ -59,7 +59,7 @@
             </form>
         </div>
         <div class="h-screen lg:w-2/5 bg-[#810000] hidden lg:flex lg:flex-col lg:gap-5 justify-center items-center">
-            <img src="{{ asset('assets/images/login-icon.png') }}" alt="login-icon" class="w-[265px] h-[265px]">
+            <img src="{{ asset('assets/images/logo.png') }}" alt="login-icon" class="w-[265px] h-[265px]">
             <span class="text-4xl text-white font-bold">NGAOS KUY</span>
         </div>
     </div>

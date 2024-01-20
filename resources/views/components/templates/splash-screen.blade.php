@@ -20,15 +20,18 @@
         <div class="h-screen w-3/5 hidden lg:flex lg:flex-col">
         </div>
         <div class="lg:w-2/5 w-full h-screen flex flex-col justify-center items-center bg-[#810000]">
-            <img class="object-cover h-48 w-48 lg:w-[256px] lg:h-[256px]" src="{{ asset('assets/images/icon.png') }}">
-            <div class="mt-3 text-4xl font-bold text-white">NGAOS KUY</div>
+            <img class="object-cover h-48 w-48 lg:w-[256px] lg:h-[256px]" src="{{ asset('assets/images/logo.png') }}">
+            <div class="mt-5 text-4xl font-bold text-white">NGAOS KUY</div>
             <div class="pt-6 flex flex-col w-40">
                 <button
                     class="mt-10 h-8 w-160 lg:h-[33px] lg:w-[180px] rounded-full text-base font-medium text-white bg-[#942626]"
-                    id="masuk-splashscreen">Masuk</button>
+                    id="masuk-splashscreen">MASUK</button>
                 <button
                     class="mt-5 h-8 w-160 lg:h-[33px] lg:w-[180px] rounded-full text-base font-medium text-white bg-[#942626]"
-                    id="login-splashscreen">Login</button>
+                    id="login-splashscreen">LOGIN</button>
+                <button
+                    class="mt-5 h-8 w-160 lg:h-[33px] lg:w-[180px] rounded-full text-base font-medium text-white bg-[#942626]"
+                    id="register-splashscreen">REGISTER</button>
             </div>
         </div>
     </div>
