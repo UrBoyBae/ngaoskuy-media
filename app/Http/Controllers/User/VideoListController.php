@@ -13,6 +13,16 @@ use Illuminate\Http\Request;
 
 class VideoListController extends Controller
 {
+    protected $roles;
+
+    public function __construct()
+    {
+        $this->middleware(function ($request, $next) {
+            $this->roles = auth()->check() ? auth()->user()->getRoleNames() : [];
+
+            return $next($request);
+        });
+    }
     public function index($id)
     {
         $user = auth()->user();
@@ -20,13 +30,13 @@ class VideoListController extends Controller
         $judul = Judul::with(['episode'])->where('id_subbab', $subbab->id)->get();
         $kitab = Kitab::with(['bab'])->get();
         $judul->load('episode');
-        // dd($judul);
         return view('components.templates.user.video.index',[
             'title' => 'Video',
             'user' => $user,
             'judul' => $judul,
             'subbab' => $subbab,
             'kitab' => $kitab,
+            'roles' => $this->roles,
         ]);
     }
 
@@ -44,6 +54,7 @@ class VideoListController extends Controller
             'episode' => $episode,
             'episodelist' => $episodelist,
             'kitab' => $kitab,
+            'roles' => $this->roles,
         ]);
     }
 }

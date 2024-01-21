@@ -12,6 +12,16 @@ use Illuminate\Http\Request;
 
 class DashboardController extends Controller
 {
+    protected $roles;
+
+    public function __construct()
+    {
+        $this->middleware(function ($request, $next) {
+            $this->roles = auth()->check() ? auth()->user()->getRoleNames() : [];
+
+            return $next($request);
+        });
+    }
     public function index()
     {
         $user = auth()->user();
@@ -20,7 +30,6 @@ class DashboardController extends Controller
         $kitab = Kitab::with(['bab'])->get();
         $bab = Bab::with(['subbab'])->get();
         $article  = Article::all();
-        // dd($kitab);
         return view('components.templates.user.dashboard.index', [
             'title' => 'Home',
             'user' => $user,
@@ -29,6 +38,7 @@ class DashboardController extends Controller
             'kitab' => $kitab,
             'bab' => $bab,
             'article' => $article,
+            'roles' => $this->roles,
         ]);
     }
 }

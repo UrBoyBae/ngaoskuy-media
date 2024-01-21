@@ -12,17 +12,27 @@ use Illuminate\Http\Request;
 
 class QuestionController extends Controller
 {
+    protected $roles;
+
+    public function __construct()
+    {
+        $this->middleware(function ($request, $next) {
+            $this->roles = auth()->check() ? auth()->user()->getRoleNames() : [];
+
+            return $next($request);
+        });
+    }
     public function index()
     {
         $user = auth()->user();
         $question = Question::with(['user'])->get()->sortBy('status');
         $kitab = Kitab::with(['bab'])->get();
-        // dd($question);
         return view('components.templates.user.question.index',[
             'title' => 'Question',
             'user' => $user,
             'question' => $question,
             'kitab' => $kitab,
+            'roles' => $this->roles,
         ]);
     }
 
@@ -40,6 +50,7 @@ class QuestionController extends Controller
             'chat' => $chat,
             'chatdetail' => $chatdetail,
             'kitab' => $kitab,
+            'roles' => $this->roles,
         ]);
     }
 }
