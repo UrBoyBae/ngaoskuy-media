@@ -20,10 +20,10 @@ class Question extends Model
 
     public function user()
     {
-        $this->hasOne(User::class);
+        return $this->belongsTo(User::class, 'id_user');
     }
     public function episode()
     {
-        $this->hasOne(Episode::class);
+        return $this->belongsTo(Episode::class);
     }
 }

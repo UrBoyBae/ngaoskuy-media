@@ -48,14 +48,14 @@ class User extends Authenticatable
     ];
     public function detail_user()
     {
-        $this->hasOne(DetailUser::class);
+        return $this->hasOne(DetailUser::class);
     }
     public function question()
     {
-        $this->hasMany(Question::class);
+        return $this->hasMany(Question::class);
     }
     public function chat()
     {
-        $this->hasMany(Chat::class);
+        return $this->hasMany(Chat::class);
     }
 }
