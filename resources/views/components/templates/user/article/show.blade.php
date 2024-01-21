@@ -2,8 +2,8 @@
 
 @section('mainContent')
     <div class="w-full h-full bg-[#EEEBDD] content-center px-12 py-10 md:px-20 md:py-12 lg:px-36 lg:py-20">
-        <p class="text-[18px] font-medium text-[#808080]">Januari 21, 2024</p>
-        <p class="pt-3 text-[23px] md:text-[25px] lg:text-[28px] font-bold">Cara Menjadikan Ibadah Sebagai Kebiasaan Sehari-hari</p>
-        <p class="pt-2 text-[18px] text-justify font-medium text-[#808080]">Lorem ipsum dolor sit amet consectetur adipisicing elit. At officia facilis temporibus hic eligendi reiciendis numquam quasi recusandae est labore rerum, corporis omnis id repudiandae ex, dolores reprehenderit voluptatum. Obcaecati, sit molestiae distinctio explicabo deserunt voluptates in? Odio porro, beatae itaque laborum nemo rerum labore est possimus qui vel voluptatibus cupiditate hic animi error sequi debitis. Quam deserunt officiis iure vitae incidunt, voluptas aliquid assumenda! Dolorum, eum saepe voluptates sunt ipsum veniam alias laudantium voluptas? Consequatur, corrupti quae sequi natus officiis totam reiciendis libero perferendis voluptates debitis doloribus odio aut laborum possimus maiores. Expedita accusamus ipsa, aliquam earum animi sit, saepe eos incidunt aperiam corporis impedit est. Quod cupiditate non facere cumque corporis, inventore, debitis enim consequuntur neque nihil distinctio ipsam hic earum, quos amet natus eaque illo architecto vero facilis expedita iste. Iusto pariatur minus doloribus quo, tempora, expedita voluptas quasi, aliquid fugiat dicta obcaecati rerum numquam ea molestiae maxime recusandae sed. Velit, eius. Aspernatur rerum velit nostrum deleniti odio maxime fugit aliquid, natus optio animi architecto qui tempora veniam debitis ex praesentium quisquam fugiat nemo ut? Deserunt veniam sunt, quo magni quod unde voluptatum debitis temporibus, obcaecati iusto est aperiam cumque aspernatur tenetur atque a, accusamus tempore officia?</p>
+        <p class="text-[18px] font-medium text-[#808080]">{{$formattedDate}}</p>
+        <p class="pt-3 text-[23px] md:text-[25px] lg:text-[28px] font-bold">{{$article->name}}</p>
+        <p class="pt-2 text-[18px] text-justify font-medium text-[#808080]">{{$article->content}}</p>
     </div>
 @endsection
