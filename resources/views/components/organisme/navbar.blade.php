@@ -9,7 +9,7 @@
                         <div class="border p-1 flex items-center rounded-lg shadow-sm mr-4">
                             <ion-icon name="grid" size="small" class="text-[#810000]"></ion-icon>
                         </div>
-                        <span class="font-bold text-[#810000] text-lg">Kategori</span>
+                        <span class="font-bold text-[#810000] text-xl">Kategori</span>
                     </div>
                     <ion-icon name="close" id="close-sidebar"
                         class="text-2xl cursor-pointer text-slate-900"></ion-icon>
@@ -47,7 +47,7 @@
             </div>
         </div>
     </div>
-    <a href="" class="text-base font-bold text-white">NGAOS KUY</a>
+    <a href="" class="text-base font-bold text-white md:text-[21px] lg:text-[27px]">NGAOS KUY</a>
     @if (Auth::check())
         <img src="{{ asset('assets/images/kobo.jpg') }}" alt="profilePict"
             class="w-7 h-7 lg:w-8 lg:h-8 rounded-full cursor-pointer" id="toggle-navbar-profile">
