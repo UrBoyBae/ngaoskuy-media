@@ -43,9 +43,9 @@ class VideoListController extends Controller
     public function show($id)
     {
         $user = auth()->user();
-        $judul = Judul::where('id_subbab', $id)->get();
-        $episode = Episode::where('id_judul', $judul->id)->first();
-        $episodelist = Episode::where('id_judul', $judul->id)->get();
+        $judul = Judul::where('id', $id)->get();
+        $episode = Episode::where('id_judul', $id)->first();
+        $episodelist = Episode::where('id_judul', $id)->get();
         $kitab = Kitab::with(['bab'])->get();
         return view('components.templates.user.video.show',[
             'title' => 'Video Player',

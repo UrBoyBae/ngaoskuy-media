@@ -17,7 +17,7 @@ class QuestionController extends Controller
         $user = auth()->user();
         $question = Question::all();
         $kitab = Kitab::with(['bab'])->get();
-        return view('dashboard', [
+        return view('components.templates.member.question.index', [
             'title' => 'Question',
             'user' => $user,
             'question' => $question,
@@ -31,7 +31,7 @@ class QuestionController extends Controller
         $question = Question::where('id', $id)->first();
         $myquestion = Question::where('id_user', $user->id)->first();
         $kitab = Kitab::with(['bab'])->get();
-        return view('member.question.show', [
+        return view('components.templates.member.question.show', [
             'title' => 'Question',
             'user' => $user,
             'question' => $question,

@@ -36,7 +36,7 @@
                     <x-molekuls.article-card :data="$data" route="user.artikel.show"/>
                 @endforeach
             </div>
-            
+
         </div>
         <div class="flex flex-col lg:mt-3">
             <span class="text-2xl font-bold text-black inline-block text-center w-full mt-7">Kalender</span>
