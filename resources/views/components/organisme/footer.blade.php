@@ -2,7 +2,7 @@
     <div class="w-full flex flex-col md:flex-row pt-8 pb-9 justify-center">
         <div class="flex flex-row justify-center lg:pt-2">
             <div class="w-[120px] lg:w-full">
-                <p class="text-lg lg:text-[28px] lg:pb-16 text-black font-bold">NGAOS KUY</p>
+                <p class="text-lg lg:text-[26px] lg:pb-16 text-black font-extrabold">NGAOS KUY</p>
             </div>
             <div class="pl-16 lg:pl-36 w-[150px] lg:w-full">
                 <p class=" text-base lg:text-lg text-black font-bold">Quick Link</p>
