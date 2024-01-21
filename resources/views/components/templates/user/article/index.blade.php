@@ -21,6 +21,8 @@
         </div>
         <div class="mt-8 md:mt-12 md:w-[90%] lg:w-[80%]">
             <ul>
+                @foreach ($article as $data )
+                    
                 <li class="flex justify-center pb-[14px]">
                     <div class="hidden md:block md:pt-1">
                         <span class="text-lg text-[#808080] font-medium">Januari 03, 2024</span>
@@ -30,11 +32,11 @@
                     </div>
                     <div class="flex flex-col gap-3 pt-[2px] pb-6 w-full md:w-[65%] lg:w-[70%] ml-4 md:ml-8">
                         <div class="flex flex-col gap-1">
-                            <span class="text-xl text-black font-semibold">Cara Menjadikan Ibadah Sebagai Kebiasaan Sehari hari</span>
+                            <span class="text-xl text-black font-semibold">{{$data->name}}</span>
                             <span class="text-base text-[#808080] font-medium md:hidden">Januari 03, 2024</span>
                         </div>
-                        <p class="text-lg text-[#808080] font-medium line-clamp-3">Horem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus. Sed dignissim, metus nec fringilla accumsan, risus sem sollicitudin lacus, ut interdum tellus elit sed risus. </p>
-                        <a href="">
+                        <p class="text-lg text-[#808080] font-medium line-clamp-3">{{$data->content}} </p>
+                        <a href="{{route('user.artikel.show',$data->id)}}">
                             <div class="flex items-end gap-1">
                                 <span class="text-lg text-[#810000] font-bold">read more</span>
                                 <ion-icon name="chevron-forward-outline" class="text-[#810000] font-bold mb-1"></ion-icon>
@@ -42,7 +44,9 @@
                         </a>
                     </div>
                 </li>
+                @endforeach
             </ul>
         </div>
     </div>
-@endsection
+    @endsection
+    

@@ -158,6 +158,10 @@ function clickOutsideSidebar(event) {
 var TrandingSlider = new Swiper(".tranding-slider", {
     effect: "coverflow",
     grabCursor: true,
+    autoplay: {
+        delay: 2500,
+        disableOnInteraction: false,
+    },
     centeredSlides: true,
     slidesPerView: "auto",
     coverflowEffect: {

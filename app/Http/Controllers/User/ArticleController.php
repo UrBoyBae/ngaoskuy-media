@@ -15,7 +15,7 @@ class ArticleController extends Controller
         $kitab = Kitab::with(['bab'])->get();
         $article = Article::all()->sortBy('updated_at');
         return view('components.templates.user.article.index',[
-            'title' => 'Question',
+            'title' => 'Article',
             'user' => $user,
             'kitab' => $kitab,
             'article' => $article
@@ -28,7 +28,7 @@ class ArticleController extends Controller
         $kitab = Kitab::with(['bab'])->get();
         $article = Article::where('id', $id)->first();
         return view('components.templates.user.article.show',[
-            'title' => 'Question Show',
+            'title' => 'Article Show',
             'user' => $user,
             'kitab' => $kitab,
             'article' => $article

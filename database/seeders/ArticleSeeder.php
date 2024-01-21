@@ -16,52 +16,12 @@ class ArticleSeeder extends Seeder
     public function run(): void
     {
         $faker = Factory::create();
-        Article::insert([
-            [
+        for ($i = 0; $i < 10; $i++) {
+            Article::insert([
                 'id' => Uuid::uuid4(),
-                'name' => $faker->name,
+                'name' => $faker->sentence(5),
                 'content' => $faker->text,
-            ],
-            [
-                'id' => Uuid::uuid4(),
-                'name' => $faker->name,
-                'content' => $faker->text,
-            ],
-            [
-                'id' => Uuid::uuid4(),
-                'name' => $faker->name,
-                'content' => $faker->text,
-            ],
-            [
-                'id' => Uuid::uuid4(),
-                'name' => $faker->name,
-                'content' => $faker->text,
-            ],
-            [
-                'id' => Uuid::uuid4(),
-                'name' => $faker->name,
-                'content' => $faker->text,
-            ],
-            [
-                'id' => Uuid::uuid4(),
-                'name' => $faker->name,
-                'content' => $faker->text,
-            ],
-            [
-                'id' => Uuid::uuid4(),
-                'name' => $faker->name,
-                'content' => $faker->text,
-            ],
-            [
-                'id' => Uuid::uuid4(),
-                'name' => $faker->name,
-                'content' => $faker->text,
-            ],
-            [
-                'id' => Uuid::uuid4(),
-                'name' => $faker->name,
-                'content' => $faker->text,
-            ],
-        ]);
+            ]);
+        }
     }
 }
