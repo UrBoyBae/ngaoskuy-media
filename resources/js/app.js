@@ -14,7 +14,7 @@ $(document).ready(function () {
 
     // Login Page
     $("#login-form").submit(function (e) {
-        if ($("#username").val() === "" && $("#password").val() === "") {
+        if ($("#username").val() === "" && $("#password").val() === "" && $("#email").val() === "") {
             e.preventDefault();
             var parent = $("#username").parent();
             parent.removeClass("border-[#808080]");
@@ -36,6 +36,16 @@ $(document).ready(function () {
             $("#password").addClass("placeholder-red-700");
             $("#error-password").removeClass("hidden");
             $("#error-password").addClass("flex");
+            var parent = $("#email").parent();
+            parent.removeClass("border-[#808080]");
+            parent.addClass("border-red-700");
+            var ionIcon = $("#email").closest("div").find("ion-icon");
+            ionIcon.removeClass("text-[#808080]");
+            ionIcon.addClass("text-red-700");
+            $("#email").removeClass("placeholder-[#808080]");
+            $("#email").addClass("placeholder-red-700");
+            $("#error-email").removeClass("hidden");
+            $("#error-email").addClass("flex");
         } else if ($("#username").val() === "") {
             e.preventDefault();
             var parent = $("#username").parent();
@@ -60,6 +70,18 @@ $(document).ready(function () {
             $("#password").addClass("placeholder-red-700");
             $("#error-password").removeClass("hidden");
             $("#error-password").addClass("flex");
+        } else if ($("#email").val() === "") {
+            e.preventDefault();
+            var parent = $("#email").parent();
+            parent.removeClass("border-[#808080]");
+            parent.addClass("border-red-700");
+            var ionIcon = $("#email").closest("div").find("ion-icon");
+            ionIcon.removeClass("text-[#808080]");
+            ionIcon.addClass("text-red-700");
+            $("#email").removeClass("placeholder-[#808080]");
+            $("#email").addClass("placeholder-red-700");
+            $("#error-email").removeClass("hidden");
+            $("#error-email").addClass("flex");
         }
     });
     $("#username").on("input", function () {
@@ -88,6 +110,20 @@ $(document).ready(function () {
             $("#password").removeClass("placeholder-red-700");
             $("#error-password").addClass("hidden");
             $("#error-password").removeClass("flex");
+        }
+    });
+    $("#email").on("input", function () {
+        if ($(this).val().trim() !== "") {
+            var parent = $("#email").parent();
+            parent.addClass("border-[#808080]");
+            parent.removeClass("border-red-700");
+            var ionIcon = $("#email").closest("div").find("ion-icon");
+            ionIcon.addClass("text-[#808080]");
+            ionIcon.removeClass("text-red-700");
+            $("#email").addClass("placeholder-[#808080]");
+            $("#email").removeClass("placeholder-red-700");
+            $("#error-email").addClass("hidden");
+            $("#error-email").removeClass("flex");
         }
     });
 
