@@ -22,7 +22,9 @@ class DatabaseSeeder extends Seeder
             DetailUserSeeder::class,
             QuestionSeeder::class,
             ArticleSeeder::class,
-            EpisodeSeeder::class
+            EpisodeSeeder::class,
+            ChatSeeder::class,
+            ChatDetailSeeder::class,
         ]);
     }
 }
