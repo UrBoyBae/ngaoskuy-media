@@ -18,15 +18,15 @@ class Chat extends Model
 
     public function question()
     {
-        $this->belongsTo(Question::class);
+        return $this->belongsTo(Question::class,'id_question');
     }
 
     public function user()
     {
-        $this->belongsTo(User::class);
+        return $this->belongsTo(User::class,'id_user');
     }
     public function chatdetail()
     {
-        $this->hasMany(ChatDetail::class);
+        return $this->hasMany(ChatDetail::class);
     }
 }

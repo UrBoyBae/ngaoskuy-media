@@ -17,10 +17,10 @@ class ChatDetail extends Model
 
     public function chat()
     {
-        $this->belongsTo(Chat::class);
+        return $this->belongsTo(Chat::class, 'id_chat');
     }
     public function user()
     {
-        $this->belongsTo(User::class);
+        return $this->belongsTo(User::class, 'id_user');
     }
 }
