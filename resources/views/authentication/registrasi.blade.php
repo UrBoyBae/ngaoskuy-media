@@ -65,7 +65,7 @@
                     <div class="flex justify-center">
                         <button type="submit"
                             class="h-8 sm:h-9 w-[160px] sm:w-[180px] bg-[#942626] text-base font-medium rounded-[23px] sm:rounded-[26px] text-white"
-                            name="login" id="login">Register</button>
+                            name="register" id="register">Register</button>
                     </div>
                 </div>
             </form>
