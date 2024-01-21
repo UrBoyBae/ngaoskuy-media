@@ -25,7 +25,7 @@
                     
                 <li class="flex justify-center pb-[14px]">
                     <div class="hidden md:block md:pt-1">
-                        <span class="text-lg text-[#808080] font-medium">Januari 03, 2024</span>
+                        <span class="text-lg text-[#808080] font-medium">{{ \Carbon\Carbon::parse($data->created_at)->format('F d, Y') }}</span>
                     </div>
                     <div class="relative before:absolute before:left-[45%] before:top-4 before:h-full before:w-[1px] before:bg-[#808080] md:ml-9">
                         <ion-icon name="ellipse-outline" class="text-[#808080] text-lg"></ion-icon>
@@ -33,7 +33,7 @@
                     <div class="flex flex-col gap-3 pt-[2px] pb-6 w-full md:w-[65%] lg:w-[70%] ml-4 md:ml-8">
                         <div class="flex flex-col gap-1">
                             <span class="text-xl text-black font-semibold">{{$data->name}}</span>
-                            <span class="text-base text-[#808080] font-medium md:hidden">Januari 03, 2024</span>
+                            <span class="text-base text-[#808080] font-medium md:hidden">{{ \Carbon\Carbon::parse($data->created_at)->format('F d, Y') }}</span>
                         </div>
                         <p class="text-lg text-[#808080] font-medium line-clamp-3">{{$data->content}} </p>
                         <a href="{{route('user.artikel.show',$data->id)}}">
