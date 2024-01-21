@@ -29,57 +29,78 @@
                 </form>
             </div>
             <div class="space-y-5 px-10 pb-10">
-                @foreach ( $kitab as $k)
-                <div>
-                    <h5 class="font-bold text-slate-900 text-lg mb-3">{{$k->name}}</h5>
-                    <ul class="space-y-3">
-                        <ul class="space-y-6 border-l-2 border-slate-300 ml-1">
-                            @foreach ($k->bab as $bab)
-                            <li>
-                                <a href="{{route('user.video.index',$bab->id)}}"
-                                class="block border-l-2 pl-4 -ml-[2px] text-[#810000] border-current font-semibold">{{$bab->name}}</a>
-                            </li>
-                            @endforeach
+                @foreach ($kitab as $k)
+                    <div>
+                        <h5 class="font-bold text-slate-900 text-lg mb-3">{{ $k->name }}</h5>
+                        <ul class="space-y-3">
+                            <ul class="space-y-6 border-l-2 border-slate-300 ml-1">
+                                @foreach ($k->bab as $bab)
+                                    <li>
+                                        <a href="{{ route('user.video.index', $bab->id) }}"
+                                            class="block border-l-2 pl-4 -ml-[2px] text-[#810000] border-current font-semibold">{{ $bab->name }}</a>
+                                    </li>
+                                @endforeach
+                            </ul>
                         </ul>
-                    </ul>
-                </div>
+                    </div>
                 @endforeach
             </div>
         </div>
     </div>
     <a href="" class="text-base font-bold text-white">NGAOS KUY</a>
-    <img src="{{ asset('assets/images/kobo.jpg') }}" alt="profilePict"
-        class="w-7 h-7 lg:w-8 lg:h-8 rounded-full cursor-pointer" id="toggle-navbar-profile">
-    <div class="hidden absolute top-16 right-5 lg:right-10 z-50 bg-[#810000] w-[266px] rounded-[30px] pt-6 pb-5 px-5 shadow-[5px_-5px_0_0_rgba(238,235,221,1)]"
+    @if (Auth::check())
+        <img src="{{ asset('assets/images/kobo.jpg') }}" alt="profilePict"
+            class="w-7 h-7 lg:w-8 lg:h-8 rounded-full cursor-pointer" id="toggle-navbar-profile">
+    @else
+        <img src="{{ asset('assets/images/user.png') }}" alt="profilePict" class="w-7 h-7 lg:w-8 lg:h-8 rounded-full"
+            id="toggle-navbar-profile">
+    @endif
+    <div class="hidden absolute top-16 right-5 lg:right-10 z-50 bg-[#810000] w-[266px] rounded-[30px] pt-6 pb-5 px-5"
         id="navbar-profile">
         <div class="flex justify-center items-center flex-col space-y-2">
-            <img src="{{ asset('assets/images/kobo.jpg') }}" alt="profilePict" class="w-20 rounded-full"
-                id="toggle-navbar-profile">
-            <div class="flex flex-col justify-center items-center">
-                <span class="text-base font-bold text-white">{{ session('full_name') }}</span
-                <span class="text-base font-bold text-[#d6c3c3]/50">
-                @if (Auth::check())
-                    {{ Auth::user()->email }}
-                @else
-                    <h2>Silahkan login</h2>
-                @endif</span>
-            </div>
+            @if (Auth::check())
+                <img src="{{ asset('assets/images/kobo.jpg') }}" alt="profilePict" class="w-20 rounded-full"
+                    id="toggle-navbar-profile">
+                <div class="flex flex-col justify-center items-center">
+                    <span class="text-base font-bold text-white">{{ session('full_name') }}</span>
+                    <span class="text-base font-bold text-[#d6c3c3]/50">{{ Auth::user()->email }}</span>
+                </div>
+                <div class="w-full rounded-[30px] bg-[#942626] mt-3">
+                    <div class="flex items-center cursor-pointer px-6 py-4 gap-3 border-b border-[#d6c3c3]/50 hover:bg-[#d6c3c3]/10 hover:rounded-t-[30px]"
+                        id="setting-profile">
+                        <ion-icon name="settings-outline" id="a"
+                            class="text-xl font-bold text-white"></ion-icon>
+                        <span class="font-bold text-white">Settings</span>
+                    </div>
+                    <form method="post" action="{{ route('logout') }}" id="logout-form">
+                        @csrf
+                        <button type="submit"
+                            class="flex items-center cursor-pointer px-6 py-4 gap-3 hover:bg-[#d6c3c3]/10 hover:rounded-b-[30px] w-full">
+                            <ion-icon name="log-out-outline" class="text-xl font-bold text-white"></ion-icon>
+                            <span class="font-bold text-white">Logout</span>
+                        </button>
+                    </form>
+                </div>
+            @else
+                <img src="{{ asset('assets/images/user.png') }}" alt="profilePict" class="w-20 rounded-full mb-5 mt-5"
+                    id="toggle-navbar-profile">
+                <div class="flex flex-col justify-center items-center">
+                    <span class="text-base font-bold text-white">{{ session('full_name') }}</span>
+                    <span class="text-base font-bold text-[#d6c3c3]/50"></span>
+                </div>
+                <div class="w-full rounded-[30px] bg-[#942626] mt-3">
+                    <a href="{{ route("login.index") }}">
+                        <div
+                            class="flex items-center cursor-pointer px-6 py-4 gap-3 hover:bg-[#d6c3c3]/10 hover:rounded-[30px] w-full">
+                            <ion-icon name="log-out-outline" class="text-xl font-bold text-white"></ion-icon>
+                            <span class="font-bold text-white">Login</span>
+                        </div>
+                    </a>
+                </div>
+            @endif
+
         </div>
-        <div class="w-full rounded-[30px] bg-[#942626] mt-3">
-            <div class="flex items-center cursor-pointer px-6 py-4 gap-3 border-b border-[#d6c3c3]/50 hover:bg-[#d6c3c3]/10 hover:rounded-t-[30px]"
-                id="setting-profile">
-                <ion-icon name="settings-outline" id="a" class="text-xl font-bold text-white"></ion-icon>
-                <span class="font-bold text-white">Settings</span>
-            </div>
-            <form method="post" action="{{ route('logout') }}" id="logout-form">
-                @csrf
-                <button type="submit"
-                    class="flex items-center cursor-pointer px-6 py-4 gap-3 hover:bg-[#d6c3c3]/10 hover:rounded-b-[30px] w-full">
-                    <ion-icon name="log-out-outline" class="text-xl font-bold text-white"></ion-icon>
-                    <span class="font-bold text-white">Logout</span>
-                </button>
-            </form>
-        </div>
+
     </div>
 </div>
 <div class="w-full h-[21px] bg-[#CEA59B]"></div>
