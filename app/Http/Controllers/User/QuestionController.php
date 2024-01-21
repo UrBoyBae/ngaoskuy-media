@@ -15,8 +15,9 @@ class QuestionController extends Controller
     public function index()
     {
         $user = auth()->user();
-        $question = Question::where('status')->get();
+        $question = Question::all()->sortBy('status');
         $kitab = Kitab::with(['bab'])->get();
+        // dd($question);
         return view('components.templates.user.question.index',[
             'title' => 'Question',
             'user' => $user,
