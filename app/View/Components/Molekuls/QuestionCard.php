@@ -13,6 +13,7 @@ class QuestionCard extends Component
      */
     public string $id;
     public string $id_user;
+    public string $username;
     public string $id_episode;
     public string $subject;
     public string $question;
@@ -27,6 +28,7 @@ class QuestionCard extends Component
     {
         $this->id = isset($data->id)?$data->id:"";
         $this->id_user = isset($data->id_user)?$data->id_user:"";
+        $this->username = isset($data->user->username)?$data->user->username:"";
         $this->id_episode = isset($data->id_episode)?$data->id_episode:"";
         $this->subject = isset($data->subject)?$data->subject:"";
         $this->question = isset($data->question)?$data->question:"";
