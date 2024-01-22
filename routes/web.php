@@ -63,6 +63,7 @@ Route::get('/user/pertanyaan/{param}', [QuestionController::class, 'show'])->nam
 Route::get('/user/video/{param}', [VideoListController::class, 'index'])->name('user.video.index');
 
 Route::get('/user/video-show/{param}', [VideoListController::class, 'show'])->name('user.video.show');
+Route::get('/user/video-display/{param}', [VideoListController::class, 'display'])->name('user.video.display');
 
 //member router
 Route::middleware(['auth', 'user-role:member'])->group(function () {
