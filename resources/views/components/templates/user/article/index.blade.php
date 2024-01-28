@@ -29,11 +29,9 @@
                     <x-molekuls.list-view-article :data="$data" route="{{ $role }}.article.show" />
                 @endforeach
             </ul>
+        </div>
+        <div class="w-full pt-12">
             {{ $article->links() }}
         </div>
-        <div>
-
-        </div>
-
     </div>
 @endsection

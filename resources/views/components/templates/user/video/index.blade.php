@@ -11,7 +11,7 @@
                 <x-molekuls.video-card :data="$data" route="{{ $role }}.video.show" />
             @endforeach
         </div>
-        <div class="pt-7">
+        <div class="pt-12">
             {{ $judul->links() }}
         </div>
     </div>
