@@ -44,7 +44,7 @@ class QuestionController extends Controller
     {
         $user = auth()->user();
         $kitab = Kitab::with(['bab'])->get();
-        return view('member.quesstion', [
+        return view('components.templates.member.question.create', [
             'title' => 'Craete Question',
             'user' => $user,
             'kitab' => $kitab,
