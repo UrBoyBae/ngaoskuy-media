@@ -30,7 +30,7 @@
         <div class="w-full mt-5 md:mt-5">
             <div class="flex items-center justify-between pl-8 pr-8 md:pr-12 md:pl-12">
                 <span class="text-2xl font-bold text-black">Artikel</span>
-                <a href="{{ route("member.artikel.index") }}">
+                <a href="{{ route("member.article.index") }}">
                     <div class="flex justify-center items-center gap-1">
                         <span class="text-base font-semibold md:text-xl">See All</span>
                         <ion-icon name="chevron-forward-outline" class="text-base md:text-xl"></ion-icon>
@@ -38,9 +38,9 @@
                 </a>
             </div>
             {{-- Masukkan variabel yang menampung data artikel kedalam foreach --}}
-            <div class="w-full min-h-[170px] mt-3 flex gap-5 overflow-x-auto snap-mandatory snap-x custom-x-scrollbar px-5">
+            <div class="w-full min-h-[190px] mt-3 flex gap-5 overflow-x-auto snap-mandatory snap-x custom-x-scrollbar px-5">
                 @foreach ($article as $data)
-                    <x-molekuls.article-card :data="$data" route="member.artikel.show"/>
+                    <x-molekuls.article-card :data="$data" route="member.article.show"/>
                 @endforeach
             </div>
 
