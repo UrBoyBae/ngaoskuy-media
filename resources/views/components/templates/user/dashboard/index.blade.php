@@ -6,7 +6,7 @@
         <div class="w-full mt-5 md:mt-10">
             <div class="flex items-center justify-between pl-8 pr-8 md:pr-12 md:pl-12">
                 <span class="text-2xl font-bold text-black">Pertanyaan</span>
-                <a href="{{ route("user.pertanyaan.index") }}">
+                <a href="{{ route("user.question.index") }}">
                     <div class="flex justify-center items-center gap-1">
                         <span class="text-base font-semibold md:text-xl">See All</span>
                         <ion-icon name="chevron-forward-outline" class="text-base md:text-xl"></ion-icon>
@@ -16,14 +16,14 @@
             <div class="w-full min-h-[190px] mt-3 flex gap-5 overflow-x-auto snap-mandatory snap-x custom-x-scrollbar px-5">
                 {{-- Masukkan variabel yang menampung data pertanyaan kedalam foreach --}}
                 @foreach ($question as $data)
-                    <x-molekuls.question-card :data="$data" route="user.pertanyaan.show" width="300px"/>
+                    <x-molekuls.question-card :data="$data" route="user.question.show" width="300px"/>
                 @endforeach
             </div>
         </div>
         <div class="w-full mt-5 md:mt-5">
             <div class="flex items-center justify-between pl-8 pr-8 md:pr-12 md:pl-12">
                 <span class="text-2xl font-bold text-black">Artikel</span>
-                <a href="{{ route("user.artikel.index") }}">
+                <a href="{{ route("user.article.index") }}">
                     <div class="flex justify-center items-center gap-1">
                         <span class="text-base font-semibold md:text-xl">See All</span>
                         <ion-icon name="chevron-forward-outline" class="text-base md:text-xl"></ion-icon>
@@ -33,7 +33,7 @@
             {{-- Masukkan variabel yang menampung data artikel kedalam foreach --}}
             <div class="w-full min-h-[190px] mt-3 flex gap-5 overflow-x-auto snap-mandatory snap-x custom-x-scrollbar px-5">
                 @foreach ($article as $data)
-                    <x-molekuls.article-card :data="$data" route="user.artikel.show"/>
+                    <x-molekuls.article-card :data="$data" route="user.article.show"/>
                 @endforeach
             </div>
 

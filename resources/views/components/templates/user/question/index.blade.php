@@ -6,7 +6,7 @@
         <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3 mt-5">
             {{-- Masukkan variabel yang menampung data pertanyaan kedalam foreach --}}
             @foreach ($question as $data)
-                <x-molekuls.question-card :data="$data" route="user.pertanyaan.show" />
+                <x-molekuls.question-card :data="$data" route="user.question.show" />
             @endforeach
         </div>
     </div>

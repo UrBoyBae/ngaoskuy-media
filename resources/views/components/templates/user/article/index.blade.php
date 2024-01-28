@@ -22,7 +22,7 @@
         <div class="mt-8 md:mt-12 md:w-[90%] lg:w-[80%]">
             <ul>
                 @foreach ($article as $data )
-                    <x-molekuls.list-view-article :data="$data" route="user.artikel.show"/>
+                    <x-molekuls.list-view-article :data="$data" route="user.article.show"/>
                 @endforeach
             </ul>
         </div>
