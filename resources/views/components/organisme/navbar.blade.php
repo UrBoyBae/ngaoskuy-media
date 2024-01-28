@@ -1,5 +1,9 @@
+@php
+    $role = empty($roles) ? "user" : $roles[0];
+@endphp
+
 <div class="w-full py-3 px-5 bg-[#810000] flex justify-between items-center">
-    <ion-icon name="menu" class="cursor-pointer text-white text-xl lg:text-2xl" id="toggle-sidebar"></ion-icon>
+    <ion-icon name="menu" class="cursor-pointer text-white text-2xl" id="toggle-sidebar"></ion-icon>
     <div class="hidden z-50 inset-0" id="main-sidebar">
         <div class="fixed inset-0 bg-black/30 backdrop-blur-sm"></div>
         <div class="relative bg-white w-72 h-screen overflow-y-auto">
@@ -36,7 +40,7 @@
                             <ul class="space-y-6 border-l-2 border-slate-300 ml-1">
                                 @foreach ($k->bab as $bab)
                                     <li>
-                                        <a href="{{ route('user.video.index', $bab->id) }}"
+                                        <a href="{{ route($role.'.video.index', $bab->id) }}"
                                             class="block border-l-2 pl-4 -ml-[2px] text-[#810000] border-current font-semibold">{{ $bab->name }}</a>
                                     </li>
                                 @endforeach
@@ -47,12 +51,12 @@
             </div>
         </div>
     </div>
-    <a href="" class="text-base font-bold text-white md:text-[21px] lg:text-[27px]">NGAOS KUY</a>
+    <a href="{{ route($role.'.home.index') }}" class="text-lg font-bold text-white md:text-xl">NGAOS KUY</a>
     @if (Auth::check())
         <img src="{{ asset('assets/images/kobo.jpg') }}" alt="profilePict"
-            class="w-7 h-7 lg:w-8 lg:h-8 rounded-full cursor-pointer" id="toggle-navbar-profile">
+            class="w-8 h-8 rounded-full cursor-pointer" id="toggle-navbar-profile">
     @else
-        <img src="{{ asset('assets/images/user.png') }}" alt="profilePict" class="w-7 h-7 lg:w-8 lg:h-8 rounded-full"
+        <img src="{{ asset('assets/images/user.png') }}" alt="profilePict" class="w-8 h-8 rounded-full cursor-pointer"
             id="toggle-navbar-profile">
     @endif
     <div class="hidden absolute top-16 right-5 lg:right-10 z-50 bg-[#810000] w-[266px] rounded-[30px] pt-6 pb-5 px-5"
