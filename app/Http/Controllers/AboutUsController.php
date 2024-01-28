@@ -12,10 +12,12 @@ class AboutUsController extends Controller
     {
 
         $user = Auth()->user();
+        $roles = $user->getRoleNames();
         $kitab = Kitab::with(['bab'])->get();
 
         return view('components.templates.about-us', [
             'title' => 'About US',
+            'roles' => $roles,
             'user' => $user,
             'kitab' => $kitab,
         ]);

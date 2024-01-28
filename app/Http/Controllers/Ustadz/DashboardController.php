@@ -22,14 +22,20 @@ class DashboardController extends Controller
     }
     public function index()
     {
+
+        // default role
+        $roles = 'user';
+
         $user = auth()->user();
         $episode = Episode::all();
         $question = Question::all();
+        $roles = $user->getRoleNames();
         $kitab = Kitab::with(['bab'])->get();
         $article  = Article::all();
         return view('components.templates.ustadz.dashboard.index', [
             'title' => 'Home',
             'user' => $user,
+            'roles' => $roles,
             'episode' => $episode,
             'kitab' => $kitab,
             'question' => $question,
