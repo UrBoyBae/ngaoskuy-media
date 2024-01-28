@@ -54,4 +54,22 @@ class VideoListController extends Controller
             'roles' => $this->roles,
         ];
     }
+    public function display($id)
+    {
+        $user = auth()->user();
+        $episode = Episode::with(['judul'])->where('id', $id)->first();
+        $judul = Judul::where('id',$episode->judul->id)->first();
+        $episodevideo = Episode::with(['judul'])->where('id', $id)->first();
+        $episodelist = Episode::with(['judul'])->where('id_judul', $judul->id)->get();
+        $kitab = Kitab::with(['bab'])->get();
+        return view('components.templates.user.video.show',[
+            'title' => 'Video Player',
+            'user' => $user,
+            'episode' => $episode,
+            'episodevideo' => $episodevideo,
+            'episodelist' => $episodelist,
+            'kitab' => $kitab,
+            'roles' => $this->roles,
+        ]);
+    }
 }

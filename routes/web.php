@@ -82,6 +82,7 @@ Route::middleware(['auth', 'user-role:member'])->group(function () {
 
     Route::get('/member/video/{param}', [MemberVideoListController::class, 'index'])->name('member.video.index');
     Route::get('/member/video-show/{param}', [MemberVideoListController::class, 'show'])->name('member.video.show');
+    Route::get('/member/video-show/{param}', [MemberVideoListController::class, 'display'])->name('member.video.display');
 });
 
 //admin routes
