@@ -54,11 +54,11 @@ Route::post('/registrasi', [RegistrasionController::class, 'registrasion'])->nam
 // user/guest routes
 Route::get('/user/dashboard', [UserDashboardController::class, 'index'])->name('user.home.index');
 
-Route::get('/user/artikel', [ArticleController::class, 'index'])->name('user.artikel.index');
-Route::get('/user/artikel/{param}', [ArticleController::class, 'show'])->name('user.artikel.show');
+Route::get('/user/artikel', [ArticleController::class, 'index'])->name('user.article.index');
+Route::get('/user/artikel/{param}', [ArticleController::class, 'show'])->name('user.article.show');
 
-Route::get('/user/pertanyaan', [QuestionController::class, 'index'])->name('user.pertanyaan.index');
-Route::get('/user/pertanyaan/{param}', [QuestionController::class, 'show'])->name('user.pertanyaan.show');
+Route::get('/user/pertanyaan', [QuestionController::class, 'index'])->name('user.question.index');
+Route::get('/user/pertanyaan/{param}', [QuestionController::class, 'show'])->name('user.question.show');
 
 Route::get('/user/video/{param}', [VideoListController::class, 'index'])->name('user.video.index');
 
@@ -69,8 +69,8 @@ Route::get('/user/video-display/{param}', [VideoListController::class, 'display'
 Route::middleware(['auth', 'user-role:member'])->group(function () {
     Route::get('/member/dashboard', [DashboardController::class, 'index'])->name('member.home.index');
 
-    Route::get('/member/artikel', [MemberArticleController::class, 'index'])->name('member.artikel.index');
-    Route::get('/member/artikel/{param}', [MemberArticleController::class, 'show'])->name('member.artikel.show');
+    Route::get('/member/artikel', [MemberArticleController::class, 'index'])->name('member.article.index');
+    Route::get('/member/artikel/{param}', [MemberArticleController::class, 'show'])->name('member.article.show');
 
     Route::get('/member/question', [MemberQuestionController::class, 'index'])->name('member.question.index');
     Route::get('/member/question/{param}', [MemberQuestionController::class, 'show'])->name('member.question.show');
