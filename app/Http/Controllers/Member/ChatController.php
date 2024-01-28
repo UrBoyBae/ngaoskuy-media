@@ -29,14 +29,14 @@ class ChatController extends Controller
         $chat = Chat::where('id_question', $question->id)->first();
         $chatdetail = ChatDetail::with(['chat'])->where('id_chat', $chat->id)->get();
         $kitab = Kitab::with(['bab'])->get();
-        return [
+        return view('components.templates.member.chat.index',[
             'title' => 'Chat',
             'user' => $user,
             'question' => $question,
             'chatdetail' => $chatdetail,
             'kitab' => $kitab,
             'roles'=>$this->roles,
-        ];
+        ]);
     }
 
     public function store(Request $request, $id)
@@ -52,6 +52,6 @@ class ChatController extends Controller
             'isi' => $request->isi,
         ]);
 
-        return to_route('namarute')->with('success', 'Chat created succesfully');
+        return to_route('components.templates.member.chat.index')->with('success', 'Chat created succesfully');
     }
 }

@@ -66,26 +66,36 @@ class QuestionController extends Controller
     public function store(Request $request)
     {
         $user = auth()->user();
-        // $request->validate([
-        //     // 'id_user'    => 'required|exists:users,id',
-        //     'question'   => 'required',
-        //     'status'     => 'required',
-        // ]);
-        Question::create([
+        $request->validate([
+            'subject' => 'required',
+            'pertanyaan' => 'required',
+            'tipe' => 'required',
+        ]);
+
+        $pertanyaan=Question::create([
             'id_user'    => $user->id,
             'subject'   => $request->subject,
             'question'   => $request->pertanyaan,
             'tipe'     => $request->tipe,
             'status'     => $request->status,
         ]);
-        $question = Question::where('id_user', $user->id)->where('subject', $request->subject)->first();
-        // dd($question);
+        // Create a new question
+    $question = Question::create([
+        'id_user' => $user->id,
+        'subject' => $request->subject,
+        'question' => $request->pertanyaan,
+        'tipe' => $request->tipe,
+        'status' => $request->status,
+    ]);
 
-        Chat::create([
-            'id_question' => $question->id,
-            'id_user' => $user->id,
-        ]);
+    // Create a chat associated with the new question
+    Chat::create([
+        'id_question' => $question->id,
+        'id_user' => $user->id,
+    ]);
 
-        return to_route('member.home.index')->with('success', 'Question created succesfully');
+    // Redirect to the show page for the newly created question
+    return redirect()->route('components.templates.member.question.show', $question->id)
+                    ->with('success', 'Question created successfully');
     }
 }
