@@ -12,6 +12,15 @@ use Illuminate\Http\Request;
 
 class DashboardController extends Controller
 {
+    protected $roles;
+    public function __construct()
+    {
+        $this->middleware(function ($request, $next) {
+            $this->roles = auth()->check() ? auth()->user()->getRoleNames() : [];
+
+            return $next($request);
+        });
+    }
     public function index()
     {
         $user = auth()->user();
@@ -24,17 +33,21 @@ class DashboardController extends Controller
             'user' => $user,
             'episode' => $episode,
             'question' => $question,
-            'kitab' => $kitab,
             'article' => $article,
+            'kitab' => $kitab,
+            'roles'=>$this->roles,
         ]);
     }
     //Kitab
     public function createKitab()
     {
         $user = auth()->user();
+        $kitab = Kitab::with(['bab'])->get();
         return [
             'title' => 'Create Kitab',
             'user' => $user,
+            'kitab' => $kitab,
+            'roles'=>$this->roles,
         ];
     }
     public function storeKitab(Request $request)
@@ -45,18 +58,20 @@ class DashboardController extends Controller
         ]);
         return to_route('namarute')->with('success', 'Kitab created succesfully');
     }
-
+    
     public function editKitab($id)
     {
         $kitab = Kitab::findOrFail($id);
         $user = auth()->user();
+        $kitab = Kitab::with(['bab'])->get();
         return [
             'title' => 'Create Kitab',
             'user' => $user,
             'kitab' => $kitab,
+            'roles'=>$this->roles,
         ];
     }
-
+    
     public function updateKitab(Request $request, $id)
     {
         $kitab = Kitab::findOrFail($id);
@@ -66,21 +81,24 @@ class DashboardController extends Controller
         ]);
         return to_route('namarute')->with('success', 'Kitab updated succesfully');
     }
-
+    
     public function deleteKitab($id)
     {
         $kitab = Kitab::findOrFail($id);
         $kitab->delete();
         return to_route('namarute')->with('success', 'Kitab deleted succesfully');
     }
-
+    
     //Bab
     public function createBab()
     {
         $user = auth()->user();
+        $kitab = Kitab::with(['bab'])->get();
         return [
             'title' => 'Create Bab',
             'user' => $user,
+            'kitab' => $kitab,
+            'roles'=>$this->roles,
         ];
     }
     public function storeBab(Request $request, $kitabid)
@@ -92,18 +110,21 @@ class DashboardController extends Controller
         ]);
         return to_route('namarute')->with('success', 'Bab created succesfully');
     }
-
+    
     public function editBab($id)
     {
-        $bab = Bab::findOrFail($id);
         $user = auth()->user();
+        $bab = Bab::findOrFail($id);
+        $kitab = Kitab::with(['bab'])->get();
         return [
             'title' => 'Create Bab',
             'user' => $user,
             'bab' => $bab,
+            'kitab' => $kitab,
+            'roles'=>$this->roles,
         ];
     }
-
+    
     public function updateBab(Request $request, $id)
     {
         $bab = Bab::findOrFail($id);
@@ -112,7 +133,7 @@ class DashboardController extends Controller
         ]);
         return to_route('namarute')->with('success', 'Bab updated succesfully');
     }
-
+    
     public function deleteBab($id)
     {
         $bab = Bab::findOrFail($id);

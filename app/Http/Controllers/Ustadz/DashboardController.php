@@ -11,6 +11,15 @@ use Illuminate\Http\Request;
 
 class DashboardController extends Controller
 {
+    protected $roles;
+    public function __construct()
+    {
+        $this->middleware(function ($request, $next) {
+            $this->roles = auth()->check() ? auth()->user()->getRoleNames() : [];
+
+            return $next($request);
+        });
+    }
     public function index()
     {
         $user = auth()->user();
@@ -22,9 +31,10 @@ class DashboardController extends Controller
             'title' => 'Home',
             'user' => $user,
             'episode' => $episode,
-            'question' => $question,
             'kitab' => $kitab,
+            'question' => $question,
             'article' => $article,
+            'roles' => $this->roles,
         ]);
     }
 }

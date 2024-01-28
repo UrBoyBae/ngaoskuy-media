@@ -12,6 +12,15 @@ use Illuminate\Http\Request;
 
 class VideoListController extends Controller
 {
+    protected $roles;
+    public function __construct()
+    {
+        $this->middleware(function ($request, $next) {
+            $this->roles = auth()->check() ? auth()->user()->getRoleNames() : [];
+
+            return $next($request);
+        });
+    }
     public function index($id)
     {
         $user = auth()->user();
@@ -24,6 +33,7 @@ class VideoListController extends Controller
             'judul' => $judul,
             'subbab' => $subbab,
             'kitab' => $kitab,
+            'roles' => $this->roles,
         ];
     }
 
@@ -41,6 +51,7 @@ class VideoListController extends Controller
             'episode' => $episode,
             'episodelist' => $episodelist,
             'kitab' => $kitab,
+            'roles' => $this->roles,
         ];
     }
 }

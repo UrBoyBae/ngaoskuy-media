@@ -14,6 +14,15 @@ use Illuminate\Support\Facades\Http;
 
 class EpisodeController extends Controller
 {
+    protected $roles;
+    public function __construct()
+    {
+        $this->middleware(function ($request, $next) {
+            $this->roles = auth()->check() ? auth()->user()->getRoleNames() : [];
+
+            return $next($request);
+        });
+    }
     private function getYouTubeVideoId($url)
     {
         $pattern = '/(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?\/\s]{11})/';
@@ -41,27 +50,31 @@ class EpisodeController extends Controller
         $question = Question::all();
         $kitab = Kitab::with(['bab'])->get();
         $article  = Article::all();
-
-        return [
+        
+        return ([
             'title' => 'Sub Bab',
             'subbab' => $subbab,
             'user' => $user,
             'episode' => $episode,
             'question' => $question,
-            'kitab' => $kitab,
             'article' => $article,
-        ];
+            'kitab' => $kitab,
+            'roles' => $this->roles,
+        ]);
     }
-
+    
     public function createEpisode()
     {
         $user = auth()->user();
+        $kitab = Kitab::with(['bab'])->get();
         return [
             'title' => 'Create Episode',
             'user' => $user,
+            'kitab' => $kitab,
+            'roles' => $this->roles,
         ];
     }
-
+    
     public function storeEpisode(Request $request, $idsubbab)
     {
         $judul = Judul::findOrFail($idsubbab);
@@ -80,7 +93,7 @@ class EpisodeController extends Controller
             'resume' => $request->resume,
             'tag' => $request->tag,
         ]);
-
+        
         $episode = Episode::where('id_judul', $judul->id)->where('name', $request->name)->first();
         $question = Question::where('id_episode', $episode->id)->first();
         $question->update([
@@ -88,15 +101,18 @@ class EpisodeController extends Controller
         ]);
         return redirect()->route('namarute')->with('success', 'Episode created succesfully');
     }
-
+    
     public function editEpisode($id)
     {
         $episode = Episode::findOrFail($id);
         $user = auth()->user();
+        $kitab = Kitab::with(['bab'])->get();
         return [
             'title' => 'Create Judul',
             'user' => $user,
             'episode' => $episode,
+            'kitab' => $kitab,
+            'roles' => $this->roles,
         ];
     }
     public function updateEpisode(Request $request, $id)

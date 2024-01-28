@@ -10,41 +10,57 @@ use Illuminate\Http\Request;
 
 class ArticleController extends Controller
 {
+    protected $roles;
+    public function __construct()
+    {
+        $this->middleware(function ($request, $next) {
+            $this->roles = auth()->check() ? auth()->user()->getRoleNames() : [];
+
+            return $next($request);
+        });
+    }
     public function index()
     {
         $user = auth()->user();
         $episode = Episode::all();
         $kitab = Kitab::with(['bab'])->get();
         $article  = Article::all()->sortBy('created_at');
-        return [
+        return ([
             'title' => 'Article',
             'user' => $user,
             'episode' => $episode,
             'kitab' => $kitab,
             'article' => $article,
-        ];
+            'roles' => $this->roles,
+        ]);
     }
-
+    
     public function show($id)
     {
         $user = auth()->user();
+        $kitab = Kitab::with(['bab'])->get();
         $article  = Article::where('id', $id)->first();
-        return [
+        return ([
             'title' => $article->name,
             'user' => $user,
+            'kitab' => $kitab,
             'article' => $article,
-        ];
+            'roles' => $this->roles,
+        ]);
     }
-
+    
     public function create()
     {
         $user = auth()->user();
-        return [
+        $kitab = Kitab::with(['bab'])->get();
+        return ([
             'title' => 'Create Article',
             'user' => $user,
-        ];
+            'roles' => $this->roles,
+            'kitab' => $kitab,
+        ]);
     }
-
+    
     public function store(Request $request)
     {
         $user = auth()->user();
@@ -56,18 +72,21 @@ class ArticleController extends Controller
             'name' => $request->name,
             'content' => $request->content,
         ]);
-
+        
         return to_route('namarute')->with('success', 'Article Successfuly Created');
     }
     public function edit($id)
     {
         $user = auth()->user();
         $article = Article::findOrFail($id);
-        return [
+        $kitab = Kitab::with(['bab'])->get();
+        return ([
             'title' => 'Article Edit',
             'user' => $user,
-            'article' => $article
-        ];
+            'roles' => $this->roles,
+            'article' => $article,
+            'kitab' => $kitab,
+        ]);
     }
     public function update(Request $request, $id)
     {

@@ -9,6 +9,15 @@ use Illuminate\Http\Request;
 
 class ArticleController extends Controller
 {
+    protected $roles;
+    public function __construct()
+    {
+        $this->middleware(function ($request, $next) {
+            $this->roles = auth()->check() ? auth()->user()->getRoleNames() : [];
+
+            return $next($request);
+        });
+    }
     public function index()
     {
         $user = auth()->user();
@@ -18,7 +27,8 @@ class ArticleController extends Controller
             'title' => 'Question',
             'user' => $user,
             'kitab' => $kitab,
-            'article' => $article
+            'article' => $article,
+            'roles'=>$this->roles,
         ];
     }
 
@@ -31,7 +41,8 @@ class ArticleController extends Controller
             'title' => 'Question',
             'user' => $user,
             'kitab' => $kitab,
-            'article' => $article
+            'article' => $article,
+            'roles'=> $this->roles,
         ];
     }
 }

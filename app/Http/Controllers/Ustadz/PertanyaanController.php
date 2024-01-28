@@ -13,6 +13,15 @@ use Illuminate\Http\Request;
 
 class PertanyaanController extends Controller
 {
+    protected $roles;
+    public function __construct()
+    {
+        $this->middleware(function ($request, $next) {
+            $this->roles = auth()->check() ? auth()->user()->getRoleNames() : [];
+
+            return $next($request);
+        });
+    }
     public function index(Request $request)
     {
         $user = auth()->user();
@@ -20,14 +29,15 @@ class PertanyaanController extends Controller
         $question = Question::where('status', 1)->get();
         $kitab = Kitab::with(['bab'])->get();
         $article  = Article::all();
-        return [
+        return ([
             'title' => 'Pertanyaan',
             'user' => $user,
             'episode' => $episode,
             'question' => $question,
             'kitab' => $kitab,
             'article' => $article,
-        ];
+            'roles'=> $this->roles,
+        ]);
     }
 
     public function show($id)
@@ -42,6 +52,7 @@ class PertanyaanController extends Controller
             'episode' => $episode,
             'kitab' => $kitab,
             'chat' => $chat,
+            'roles' => $this->roles,
         ];
     }
 

@@ -13,6 +13,15 @@ use Illuminate\Support\Facades\Auth;
 
 class ChatController extends Controller
 {
+    protected $roles;
+    public function __construct()
+    {
+        $this->middleware(function ($request, $next) {
+            $this->roles = auth()->check() ? auth()->user()->getRoleNames() : [];
+
+            return $next($request);
+        });
+    }
     public function index($id)
     {
         $user = auth()->user();
@@ -26,6 +35,7 @@ class ChatController extends Controller
             'question' => $question,
             'chatdetail' => $chatdetail,
             'kitab' => $kitab,
+            'roles'=>$this->roles,
         ];
     }
 

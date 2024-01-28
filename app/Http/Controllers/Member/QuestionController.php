@@ -12,6 +12,15 @@ use Illuminate\Http\Request;
 
 class QuestionController extends Controller
 {
+    protected $roles;
+    public function __construct()
+    {
+        $this->middleware(function ($request, $next) {
+            $this->roles = auth()->check() ? auth()->user()->getRoleNames() : [];
+
+            return $next($request);
+        });
+    }
     public function index()
     {
         $user = auth()->user();
@@ -22,6 +31,7 @@ class QuestionController extends Controller
             'user' => $user,
             'question' => $question,
             'kitab' => $kitab,
+            'roles' => $this->roles,
         ]);
     }
 
@@ -37,6 +47,7 @@ class QuestionController extends Controller
             'question' => $question,
             'myquestion' => $myquestion,
             'kitab' => $kitab,
+            'roles' => $this->roles,
         ]);
     }
 
@@ -48,6 +59,7 @@ class QuestionController extends Controller
             'title' => 'Craete Question',
             'user' => $user,
             'kitab' => $kitab,
+            'roles' => $this->roles,
         ]);
     }
 

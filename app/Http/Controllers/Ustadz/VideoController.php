@@ -13,19 +13,29 @@ use Illuminate\Http\Request;
 
 class VideoController extends Controller
 {
+    protected $roles;
+    public function __construct()
+    {
+        $this->middleware(function ($request, $next) {
+            $this->roles = auth()->check() ? auth()->user()->getRoleNames() : [];
+
+            return $next($request);
+        });
+    }
     public function index()
     {
         $user = auth()->user();
         $episode = Episode::all();
         $kitab = Kitab::with(['bab'])->get();
         $article  = Article::all();
-        return [
+        return ([
             'title' => 'Home',
             'user' => $user,
             'episode' => $episode,
             'kitab' => $kitab,
             'article' => $article,
-        ];
+            'roles'=>$this->roles
+        ]);
     }
 
     public function show($id)
@@ -42,6 +52,7 @@ class VideoController extends Controller
             'subbab' => $subbab,
             'kitab' => $kitab,
             'article' => $article,
+            'roles' => $this->roles,
         ];
     }
 

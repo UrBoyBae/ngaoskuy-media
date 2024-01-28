@@ -13,6 +13,15 @@ use Illuminate\Http\Request;
 
 class BabController extends Controller
 {
+    protected $roles;
+    public function __construct()
+    {
+        $this->middleware(function ($request, $next) {
+            $this->roles = auth()->check() ? auth()->user()->getRoleNames() : [];
+
+            return $next($request);
+        });
+    }
     public function index($id)
     {
         $user = auth()->user();
@@ -21,27 +30,31 @@ class BabController extends Controller
         $question = Question::all();
         $kitab = Kitab::with(['bab'])->get();
         $article  = Article::all();
-
-        return [
+        
+        return ([
             'title' => 'Sub Bab',
             'subbab' => $subbab,
             'user' => $user,
             'episode' => $episode,
             'question' => $question,
-            'kitab' => $kitab,
             'article' => $article,
-        ];
+            'kitab' => $kitab,
+            'roles' => $this->roles,
+        ]);
     }
-
+    
     public function createSubbab()
     {
         $user = auth()->user();
-        return [
+        $kitab = Kitab::with(['bab'])->get();
+        return ([
             'title' => 'Create Sub-Bab',
             'user' => $user,
-        ];
+            'kitab' => $kitab,
+            'roles' => $this->roles,
+        ]);
     }
-
+    
     public function storeSubbab(Request $request, $idbab)
     {
         $bab = Bab::findOrFail($idbab);
@@ -51,18 +64,21 @@ class BabController extends Controller
         ]);
         return to_route('namarute')->with('success', 'SubBab created succesfully');
     }
-
+    
     public function editSubbab($id)
     {
         $subbab = SubBab::findOrFail($id);
+        $kitab = Kitab::with(['bab'])->get();
         $user = auth()->user();
-        return [
+        return ([
             'title' => 'Create Bab',
             'user' => $user,
             'subbab' => $subbab,
-        ];
+            'kitab' => $kitab,
+            'roles' => $this->roles,
+        ]);
     }
-
+    
     public function updateSubbab(Request $request, $id)
     {
         $subbab = SubBab::findOrFail($id);

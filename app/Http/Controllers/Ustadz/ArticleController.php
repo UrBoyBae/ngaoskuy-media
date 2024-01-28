@@ -10,6 +10,15 @@ use Illuminate\Http\Request;
 
 class ArticleController extends Controller
 {
+    protected $roles;
+    public function __construct()
+    {
+        $this->middleware(function ($request, $next) {
+            $this->roles = auth()->check() ? auth()->user()->getRoleNames() : [];
+
+            return $next($request);
+        });
+    }
     public function index()
     {
         $user = auth()->user();
@@ -22,26 +31,33 @@ class ArticleController extends Controller
             'episode' => $episode,
             'kitab' => $kitab,
             'article' => $article,
+            'roles' => $this->roles,
         ];
     }
-
+    
     public function show($id)
     {
         $user = auth()->user();
+        $kitab = Kitab::with(['bab'])->get();
         $article  = Article::where('id', $id)->first();
         return [
             'title' => $article->name,
             'user' => $user,
+            'kitab' => $kitab,
             'article' => $article,
+            'roles' => $this->roles,
         ];
     }
-
+    
     public function create()
     {
         $user = auth()->user();
+        $kitab = Kitab::with(['bab'])->get();
         return [
             'title' => 'Create Article',
             'user' => $user,
+            'kitab' => $kitab,
+            'roles' => $this->roles,
         ];
     }
 
@@ -63,10 +79,13 @@ class ArticleController extends Controller
     {
         $user = auth()->user();
         $article = Article::findOrFail($id);
+        $kitab = Kitab::with(['bab'])->get();
         return [
             'title' => 'Article Edit',
             'user' => $user,
-            'article' => $article
+            'article' => $article,
+            'kitab' => $kitab,
+            'roles' => $this->roles,
         ];
     }
     public function update(Request $request, $id)

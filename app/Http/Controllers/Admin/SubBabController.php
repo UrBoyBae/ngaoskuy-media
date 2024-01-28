@@ -14,6 +14,15 @@ use Illuminate\Http\Request;
 
 class SubBabController extends Controller
 {
+    protected $roles;
+    public function __construct()
+    {
+        $this->middleware(function ($request, $next) {
+            $this->roles = auth()->check() ? auth()->user()->getRoleNames() : [];
+
+            return $next($request);
+        });
+    }
     public function index($id)
     {
         $user = auth()->user();
@@ -22,27 +31,31 @@ class SubBabController extends Controller
         $question = Question::all();
         $kitab = Kitab::with(['bab'])->get();
         $article  = Article::all();
-
+        
         return [
             'title' => 'Sub Bab',
             'subbab' => $subbab,
             'user' => $user,
             'episode' => $episode,
             'question' => $question,
-            'kitab' => $kitab,
             'article' => $article,
+            'kitab' => $kitab,
+            'roles' => $this->roles,
         ];
     }
-
+    
     public function createJudul()
     {
         $user = auth()->user();
+        $kitab = Kitab::with(['bab'])->get();
         return [
             'title' => 'Create Judul',
             'user' => $user,
+            'kitab' => $kitab,
+            'roles' => $this->roles,
         ];
     }
-
+    
     public function storeJudul(Request $request, $idsubbab)
     {
         $subbab = SubBab::findOrFail($idsubbab);
@@ -52,13 +65,16 @@ class SubBabController extends Controller
         ]);
         return to_route('namarute')->with('success', 'Judul created succesfully');
     }
-
+    
     public function editJudul($id)
     {
         $judul = Judul::findOrFail($id);
+        $kitab = Kitab::with(['bab'])->get();
         $user = auth()->user();
         return [
             'title' => 'Create Judul',
+            'kitab' => $kitab,
+            'roles' => $this->roles,
             'user' => $user,
             'judul' => $judul,
         ];
