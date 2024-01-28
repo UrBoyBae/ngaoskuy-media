@@ -8,5 +8,8 @@
                 <x-molekuls.video-card :data="$data" route="user.video.show"/>
             @endforeach
         </div>
+        <div class="pt-7">
+            {{ $judul->links() }}
+        </div>
     </div>
 @endsection

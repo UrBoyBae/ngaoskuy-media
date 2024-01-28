@@ -13,10 +13,6 @@ class DashboardController extends Controller
 {
     public function index()
     {
-
-        // default role
-        $roles = 'user';
-
         $user = auth()->user();
         $episode = Episode::all();
         $question = Question::all();
