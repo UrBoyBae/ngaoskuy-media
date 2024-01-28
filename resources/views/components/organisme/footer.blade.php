@@ -1,3 +1,7 @@
+@php
+    $role = empty($roles) ? "user" : $roles[0];
+@endphp
+
 <div class="w-full h-2/4 bg-[#CEA59B] lg:w-full lg:h-44 flex items-center mt-auto">
     <div class="w-full flex flex-col md:flex-row pt-8 pb-9 justify-center">
         <div class="flex flex-row justify-center lg:pt-2">
@@ -6,9 +10,9 @@
             </div>
             <div class="pl-16 lg:pl-36 w-[150px] lg:w-full">
                 <p class=" text-base lg:text-lg text-black font-bold">Quick Link</p>
-                <p class="pt-2 text-xs lg:text-sm text-black font-medium">Home</p>
+                <p class="pt-2 text-xs lg:text-sm text-black font-medium"><a href="{{ route($role.'.home.index') }}">Home</a></p>
                 <p class="pt-1 text-xs lg:text-sm text-black font-medium"><a href="{{ route('about-us') }}">About Us</a></p>
-                <p class="pt-1 text-xs lg:text-sm text-black font-medium"><a href="{{route('photo-gallery')}}">Photo Gallery</a></p>
+                <p class="pt-1 text-xs lg:text-sm text-black font-medium"><a href="{{ route('photo-gallery') }}">Photo Gallery</a></p>
             </div>
         </div>
         <div class="flex flex-row justify-center lg:pt-2 md:pt-0 pt-7 md:pl-20">
