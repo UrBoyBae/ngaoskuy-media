@@ -73,7 +73,7 @@ Route::middleware(['auth', 'user-role:member'])->group(function () {
     Route::get('/member/artikel/{param}', [MemberArticleController::class, 'show'])->name('member.article.show');
 
     Route::get('/member/question', [MemberQuestionController::class, 'index'])->name('member.question.index');
-    Route::get('/member/question/{param}', [MemberQuestionController::class, 'show'])->name('member.question.show');
+    Route::get('/member/question/key={param}', [MemberQuestionController::class, 'show'])->name('member.question.show');
     Route::get('/member/question/create', [MemberQuestionController::class, 'create'])->name('member.question.create');
     Route::post('/member/question/create', [MemberQuestionController::class, 'store'])->name('member.question.store');
 
