@@ -27,7 +27,7 @@ class AuthController extends Controller
             $name = DetailUser::where('id_user', auth()->user()->id)->first();
             $user = Auth::user();
             $roles = $user->getRoleNames();
-
+            session(['full_name' => $name->name]);
             switch ($roles[0]) {
                 case ('member'):
                     return redirect()->intended(route('member.home.index'));
@@ -46,6 +46,7 @@ class AuthController extends Controller
         } else {
             return redirect()->back()->with('error', 'Invalid username or password');
         }
+
     }
 
     public function logout(Request $request)
