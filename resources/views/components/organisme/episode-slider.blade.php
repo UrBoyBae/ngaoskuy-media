@@ -7,7 +7,7 @@
         <div class="swiper-wrapper">
             @foreach ($episode as $data)
                 <div class="swiper-slide tranding-slide">
-                    <a href="{{ route($role.'.video.show', $data->id) }}">
+                    <a href="{{ route($role.'.video.display', $data->id) }}">
                         <div class="tranding-slide-img">
                             <img src="{{ $data->thumbnail }}" alt="Tranding">
                         </div>

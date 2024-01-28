@@ -1,6 +1,9 @@
 @extends('layouts.index')
 
 @section('mainContent')
+    @php
+        $role = empty($roles) ? 'user' : $roles[0];
+    @endphp
     <div class="w-full pt-7 pb-12 bg-[#EEEBDD] px-7 md:px-10 flex flex-col items-center">
         <div class="flex justify-center items-center">
             <span class="text-2xl font-bold text-black text-center">Latest Update</span>
@@ -23,7 +26,7 @@
         <div class="mt-8 md:mt-12 md:w-[90%] lg:w-[80%]">
             <ul>
                 @foreach ($article as $data)
-                    <x-molekuls.list-view-article :data="$data" route="user.article.show" />
+                    <x-molekuls.list-view-article :data="$data" route="{{ $role }}.article.show" />
                 @endforeach
             </ul>
             {{ $article->links() }}
