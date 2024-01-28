@@ -38,7 +38,7 @@
                 </a>
             </div>
             {{-- Masukkan variabel yang menampung data artikel kedalam foreach --}}
-            <div class="w-full min-h-[170px] mt-3 flex gap-5 overflow-x-auto snap-mandatory snap-x custom-x-scrollbar px-5">
+            <div class="w-full min-h-[190px] mt-3 flex gap-5 overflow-x-auto snap-mandatory snap-x custom-x-scrollbar px-5">
                 @foreach ($article as $data)
                     <x-molekuls.article-card :data="$data" route="member.article.show"/>
                 @endforeach

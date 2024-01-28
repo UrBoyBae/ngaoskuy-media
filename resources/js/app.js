@@ -156,6 +156,26 @@ $(document).ready(function () {
 
         event.stopPropagation();
     });
+
+    // Setting Profile
+    $("#setting-profile").on("click", () => {
+        const navProfile = $("#navbar-profile");
+        const settingProfile = $("#main-setting-profile");
+
+        navProfile.removeClass("block").addClass("hidden");
+        if (settingProfile.hasClass("hidden")) {
+            settingProfile.removeClass("hidden").addClass("fixed");
+        }
+    });
+
+    $("#close-main-setting-profile").on("click", () => {
+        const settingProfile = $("#main-setting-profile");
+
+        if (settingProfile.hasClass("fixed")) {
+            settingProfile.removeClass("fixed").addClass("hidden");
+        }
+    });
+
 });
 
 function clickOutsideNavProfile(event) {
