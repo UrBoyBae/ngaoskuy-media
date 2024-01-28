@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Member;
 use App\Http\Controllers\Controller;
 use App\Models\Article;
 use App\Models\Kitab;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class ArticleController extends Controller
@@ -22,7 +23,7 @@ class ArticleController extends Controller
     {
         $user = auth()->user();
         $kitab = Kitab::with(['bab'])->get();
-        $article = Article::all()->sortBy('updated_at');
+        $article = Article::orderByDesc('created_at')->paginate(5);
         return view('components.templates.member.article.index',[
             'title' => 'Question',
             'user' => $user,
@@ -37,12 +38,14 @@ class ArticleController extends Controller
         $user = auth()->user();
         $kitab = Kitab::with(['bab'])->get();
         $article = Article::where('id', $id)->first();
-        return view('components.templates.member.article.index',[
+        $formattedDate = Carbon::parse($article->created_at)->format('F d, Y');
+        return view('components.templates.member.article.show',[
             'title' => 'Question',
             'user' => $user,
             'kitab' => $kitab,
             'article' => $article,
             'roles'=> $this->roles,
+            'formattedDate' => $formattedDate,
         ]);
     }
 }

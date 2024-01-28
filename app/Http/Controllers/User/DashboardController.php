@@ -27,14 +27,12 @@ class DashboardController extends Controller
         $user = auth()->user();
         $episode = Episode::all();
         $question = Question::with(['user'])->get()->sortBy('status');
-        $roles = 'user';
         $kitab = Kitab::with(['bab'])->get();
         $bab = Bab::with(['subbab'])->get();
         $article  = Article::all();
         return view('components.templates.user.dashboard.index', [
             'title' => 'Home',
             'user' => $user,
-            'roles' => $roles,
             'episode' => $episode,
             'question' => $question,
             'kitab' => $kitab,
