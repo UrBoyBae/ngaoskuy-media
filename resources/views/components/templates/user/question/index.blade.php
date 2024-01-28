@@ -12,5 +12,8 @@
                 <x-molekuls.question-card :data="$data" route="{{ $role }}.question.show" />
             @endforeach
         </div>
+        <div class="pt-7">
+            {{ $question->links('pagination::tailwind') }}
+        </div>
     </div>
 @endsection
