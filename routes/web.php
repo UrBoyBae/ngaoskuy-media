@@ -128,6 +128,9 @@ Route::middleware(['auth', 'user-role:admin'])->group(function () {
     Route::get('/admin/artikel/edit/{param}', [AdminArticleController::class, 'edit'])->name('admin.article.edit');
     Route::post('/admin/artikel/edit/{param}', [AdminArticleController::class, 'update'])->name('admin.article.update');
     Route::post('/admin/artikel/delete/{param}', [AdminArticleController::class, 'delete'])->name('admin.article.delete');
+
+    Route::get('/admin/video/{param}', [VideoController::class, 'index'])->name('admin.video.index');
+    Route::get('/admin/video-show/{param}', [VideoController::class, 'show'])->name('admin.video.show');
 });
 
 

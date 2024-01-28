@@ -17,11 +17,13 @@ class DashboardController extends Controller
         $user = auth()->user();
         $episode = Episode::all();
         $question = Question::all();
+        $roles = $user->getRoleNames();
         $kitab = Kitab::with(['bab'])->get();
         $article  = Article::all();
         return view('components.templates.admin.dashboard.index', [
             'title' => 'Home',
             'user' => $user,
+            'roles' => $roles,
             'episode' => $episode,
             'question' => $question,
             'kitab' => $kitab,
