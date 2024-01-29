@@ -27,7 +27,7 @@ class QuestionController extends Controller
         $question = Question::paginate(9);
         $kitab = Kitab::with(['bab'])->get();
         return view('components.templates.member.question.index', [
-            'title' => 'Question',
+            'title' => 'Question',    
             'user' => $user,
             'question' => $question,
             'kitab' => $kitab,
@@ -66,36 +66,29 @@ class QuestionController extends Controller
     public function store(Request $request)
     {
         $user = auth()->user();
-        $request->validate([
-            'subject' => 'required',
-            'pertanyaan' => 'required',
-            'tipe' => 'required',
-        ]);
+        // $request->validate([
+        //     'subject' => 'required',
+        //     'pertanyaan' => 'required',
+        //     'tipe' => 'required',
+        // ]);
 
-        $pertanyaan=Question::create([
-            'id_user'    => $user->id,
-            'subject'   => $request->subject,
-            'question'   => $request->pertanyaan,
-            'tipe'     => $request->tipe,
-            'status'     => $request->status,
-        ]);
         // Create a new question
-    $question = Question::create([
+        $question = Question::create([
         'id_user' => $user->id,
         'subject' => $request->subject,
-        'question' => $request->pertanyaan,
+        'question' => $request->question,
         'tipe' => $request->tipe,
-        'status' => $request->status,
-    ]);
+        'status' => false,
+        ]);
+        // dd($question);
+        // Create a chat associated with the new question
+        Chat::create([
+            'id_question' => $question->id,
+            'id_user' => $user->id,
+        ]);
 
-    // Create a chat associated with the new question
-    Chat::create([
-        'id_question' => $question->id,
-        'id_user' => $user->id,
-    ]);
-
-    // Redirect to the show page for the newly created question
-    return redirect()->route('components.templates.member.question.show', $question->id)
-                    ->with('success', 'Question created successfully');
+        // Redirect to the show page for the newly created question
+        return redirect()->route('member.question.show', $question->id)
+                        ->with('success', 'Question created successfully');
     }
 }
