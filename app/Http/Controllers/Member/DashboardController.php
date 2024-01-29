@@ -24,7 +24,7 @@ class DashboardController extends Controller
     {
         $user = auth()->user();
         $episode = Episode::all();
-        $question = Question::all();
+        $question = Question::paginate(4);
         $kitab = Kitab::with(['bab'])->get();
         $article  = Article::all();
 
