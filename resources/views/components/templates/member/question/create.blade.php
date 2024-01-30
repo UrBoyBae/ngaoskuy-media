@@ -11,20 +11,20 @@
                 <form method="POST" action="{{ route($role . '.question.store') }}">
                     @csrf
                     <div class="space-y-12">
-                        <div class="border-b border-gray-300 pb-6">
+                        <div class="pb-6">
                             <div class="mt-2 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
                                 <div class="sm:col-span-4">
                                     <label for="subject" class="block text-lg font-bold leading-6 text-black">Subject</label>
                                     <div class="mt-2">
                                         <div class="flex rounded-[12px] shadow-sm ring-1 ring-inset ring-gray-500 focus-within:ring-1 focus-within:ring-inset sm:max-w-md">
-                                            <input type="text" name="subject" id="subject" autocomplete="subject" class="block flex-1 border-0 bg-transparent py-3 pl-4 text-gray-700 placeholder-[hsl(0,0%,26%)] font-semibold text-sm sm:text-base focus:outline-none focus:border-none " placeholder="Tuliskan topik pertanyaan di sini">
+                                            <input type="text" name="subject" id="subject" autocomplete="subject" class="block flex-1 border-0 bg-transparent py-3 pl-4 text-gray-700 placeholder-[hsl(0,0%,50%)] font-semibold text-sm sm:text-base focus:outline-none focus:border-none " placeholder="Tuliskan topik pertanyaan di sini">
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-span-full">
                                     <label for="question" class="block text-lg font-bold leading-6 text-black">Pertanyaan</label>
                                     <div class="mt-2">
-                                        <textarea id="question" name="question" rows="3" class="w-[450px] bg-transparent block rounded-[9px] border-b border-gray-300py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-500 placeholder-[hsl(0,0%,26%)]focus:ring-2 focus:ring-inset focus:outline-none focus:border-none py-3 pl-4" placeholder="Tuliskan topik anda pertanyaan di sini"></textarea>
+                                        <textarea id="question" name="question" rows="3" class="w-[450px] bg-transparent block rounded-[9px] border-b border-gray-300 text-gray-700 shadow-sm ring-1 ring-inset ring-gray-500 placeholder-[hsl(0,0%,50%)] focus:outline-none focus:border-none py-3 pl-4 font-semibold" placeholder="Tuliskan topik pertanyaan di sini"></textarea>
                                     </div>
                                 </div>
                                 <div class="col-span-full">
