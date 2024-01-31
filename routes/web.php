@@ -77,7 +77,7 @@ Route::middleware(['auth', 'user-role:member'])->group(function () {
     Route::get('/member/question/create', [MemberQuestionController::class, 'create'])->name('member.question.create');
     Route::post('/member/question/create', [MemberQuestionController::class, 'store'])->name('member.question.store');
 
-    Route::get('/member/chat', [ChatController::class, 'index'])->name('member.chat.index');
+    Route::get('/member/chat/id={param}', [ChatController::class, 'index'])->name('member.chat.index');
     Route::post('/member/chat/{param}', [ChatController::class, 'store'])->name('member.chat.store');
 
     Route::get('/member/video/{param}', [MemberVideoListController::class, 'index'])->name('member.video.index');
