@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Chat;
 use App\Models\ChatDetail;
 use App\Models\Episode;
+use App\Models\Judul;
 use App\Models\Kitab;
 use App\Models\Question;
 use Illuminate\Http\Request;
@@ -40,11 +41,17 @@ class QuestionController extends Controller
         $user = auth()->user();
         $question = Question::where('id', $id)->first();
         $myquestion = Question::where('id_user', $user->id)->first();
+        $episode = Episode::with(['judul'])->where('id', $question->id_episode);
+        $chat = Chat::where('id_question', $question->id)->first();
+        $judul = Judul::with(['episode'])->where('id', $episode->first()->id_judul);
         $kitab = Kitab::with(['bab'])->get();
         return view('components.templates.member.question.show', [
             'title' => 'Question',
             'user' => $user,
             'question' => $question,
+            'episode' => $episode,
+            'judul' => $judul,
+            'chat' => $chat,
             'myquestion' => $myquestion,
             'kitab' => $kitab,
             'roles' => $this->roles,

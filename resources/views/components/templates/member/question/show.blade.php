@@ -1,6 +1,9 @@
 @extends('layouts.index')
 
 @section('mainContent')
+    @php
+        $role = empty($roles) ? 'user' : $roles[0];
+    @endphp
     <div class="min-h-screen py-4 px-7">
         <span class="text-center font-bold text-lg md:text-2xl text-black">Status Pertanyaan</span>
         <div class="flex flex-col items-center justify-center">
@@ -43,7 +46,7 @@
                                 </svg>
                                 <span class="ml-2">Belum Dijawab</span>
                             </button>
-                            <a href="">
+                            <a href="{{route($role.'.chat.index',$chat->id)}}">
                                 <button type="button"
                                     class="text-black bg-[#D9D9D9] border-4 border-[#6EBCF4] font-bold rounded-[23px] h-[46px] w-[220px] md:w-[280px] mt-5 text-sm md:text-lg px-5 py-2.5 flex items-center justify-center me-2 mb-2">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28"
@@ -67,7 +70,7 @@
                                 </svg>
                                 <span class="ml-2">Sudah Dijawab</span>
                             </button>
-                            <a href="">
+                            <a href="{{route($role.'.chat.index',$chat->id)}}">
                                 <button type="button"
                                     class="text-black bg-[#D9D9D9] border-4 border-[#6EBCF4] font-bold rounded-[23px] h-[46px] w-[220px] md:w-[280px] mt-5 text-sm md:text-lg px-5 py-2.5 flex items-center justify-center me-2 mb-2">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28"
@@ -85,42 +88,17 @@
                 </form>
             </div>
         </div>
+        @if ($question->status==false)
+            
+        @else
         <div class="mt-5">
             <span class="text-center font-bold text-lg md:text-2xl text-black">Episode Dengan Jawaban Anda</span>
             <div class="w-full flex gap-6 mt-4 overflow-x-auto snap-mandatory snap-x custom-x-scrollbar">
-                <a href="">
+                <a href="{{route($role.'.video.display',$episode->first()->id)}}">
                     <div class="min-w-[286px] max-w-[286px] flex flex-col gap-2">
                         <img class="w-full rounded-xl" src="https://i.ytimg.com/vi/y6wKBTszalY/maxresdefault.jpg"
                             alt="another-video">
-                        <span class="font-semibold text-xl">Apa Itu Tayamum | satu</span>
-                    </div>
-                </a>
-                <a href="">
-                    <div class="min-w-[286px] max-w-[286px] flex flex-col gap-2">
-                        <img class="w-full rounded-xl" src="https://i.ytimg.com/vi/y6wKBTszalY/maxresdefault.jpg"
-                            alt="another-video">
-                        <span class="font-semibold text-xl">Apa Itu Tayamum | satu</span>
-                    </div>
-                </a>
-                <a href="">
-                    <div class="min-w-[286px] max-w-[286px] flex flex-col gap-2">
-                        <img class="w-full rounded-xl" src="https://i.ytimg.com/vi/y6wKBTszalY/maxresdefault.jpg"
-                            alt="another-video">
-                        <span class="font-semibold text-xl">Apa Itu Tayamum | satu</span>
-                    </div>
-                </a>
-                <a href="">
-                    <div class="min-w-[286px] max-w-[286px] flex flex-col gap-2">
-                        <img class="w-full rounded-xl" src="https://i.ytimg.com/vi/y6wKBTszalY/maxresdefault.jpg"
-                            alt="another-video">
-                        <span class="font-semibold text-xl">Apa Itu Tayamum | satu</span>
-                    </div>
-                </a>
-                <a href="">
-                    <div class="min-w-[286px] max-w-[286px] flex flex-col gap-2">
-                        <img class="w-full rounded-xl" src="https://i.ytimg.com/vi/y6wKBTszalY/maxresdefault.jpg"
-                            alt="another-video">
-                        <span class="font-semibold text-xl">Apa Itu Tayamum | satu</span>
+                        <span class="font-semibold text-xl">{{$episode->first()->judul->name}} | {{$episode->first()->name}}</span>
                     </div>
                 </a>
             </div>
@@ -128,42 +106,17 @@
         <div class="mt-3">
             <span class="text-center font-bold text-lg md:text-2xl text-black">Episode Dengan Judul yang Sama</span>
             <div class="w-full flex gap-6 mt-4 overflow-x-auto snap-mandatory snap-x custom-x-scrollbar">
-                <a href="">
-                    <div class="min-w-[286px] max-w-[286px] flex flex-col gap-2">
-                        <img class="w-full rounded-xl" src="https://i.ytimg.com/vi/y6wKBTszalY/maxresdefault.jpg"
-                            alt="another-video">
-                        <span class="font-semibold text-xl">Apa Itu Tayamum | satu</span>
-                    </div>
-                </a>
-                <a href="">
-                    <div class="min-w-[286px] max-w-[286px] flex flex-col gap-2">
-                        <img class="w-full rounded-xl" src="https://i.ytimg.com/vi/y6wKBTszalY/maxresdefault.jpg"
-                            alt="another-video">
-                        <span class="font-semibold text-xl">Apa Itu Tayamum | satu</span>
-                    </div>
-                </a>
-                <a href="">
-                    <div class="min-w-[286px] max-w-[286px] flex flex-col gap-2">
-                        <img class="w-full rounded-xl" src="https://i.ytimg.com/vi/y6wKBTszalY/maxresdefault.jpg"
-                            alt="another-video">
-                        <span class="font-semibold text-xl">Apa Itu Tayamum | satu</span>
-                    </div>
-                </a>
-                <a href="">
-                    <div class="min-w-[286px] max-w-[286px] flex flex-col gap-2">
-                        <img class="w-full rounded-xl" src="https://i.ytimg.com/vi/y6wKBTszalY/maxresdefault.jpg"
-                            alt="another-video">
-                        <span class="font-semibold text-xl">Apa Itu Tayamum | satu</span>
-                    </div>
-                </a>
-                <a href="">
-                    <div class="min-w-[286px] max-w-[286px] flex flex-col gap-2">
-                        <img class="w-full rounded-xl" src="https://i.ytimg.com/vi/y6wKBTszalY/maxresdefault.jpg"
-                            alt="another-video">
-                        <span class="font-semibold text-xl">Apa Itu Tayamum | satu</span>
-                    </div>
-                </a>
+                @foreach ($judul->first()->episode as $episode)
+                    <a href="{{route($role.'.video.display',$episode->id)}}">
+                        <div class="min-w-[286px] max-w-[286px] flex flex-col gap-2">
+                            <img class="w-full rounded-xl" src="{{$episode->thumbnail}}"
+                                alt="another-video">
+                            <span class="font-semibold text-xl">{{$episode->judul->name}} | {{$episode->name}}</span>
+                        </div>
+                    </a>
+                @endforeach
             </div>
+            @endif
         </div>
     </div>
 @endsection

@@ -25,8 +25,8 @@ class ChatController extends Controller
     public function index($id)
     {
         $user = auth()->user();
-        $question = Question::all()->where('id', $id)->first();
-        $chat = Chat::where('id_question', $question->id)->first();
+        $question = Question::where('id', $id)->first();
+        $chat = Chat::where('id', $id)->first();
         $chatdetail = ChatDetail::with(['chat'])->where('id_chat', $chat->id)->get();
         $kitab = Kitab::with(['bab'])->get();
         return view('components.templates.member.chat.index',[
