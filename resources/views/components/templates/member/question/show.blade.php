@@ -94,11 +94,11 @@
         <div class="mt-5">
             <span class="text-center font-bold text-lg md:text-2xl text-black">Episode Dengan Jawaban Anda</span>
             <div class="w-full flex gap-6 mt-4 overflow-x-auto snap-mandatory snap-x custom-x-scrollbar">
-                <a href="{{route($role.'.video.display',$episode->first()->id)}}">
+                <a href="{{route($role.'.video.display',$episode->id)}}">
                     <div class="min-w-[286px] max-w-[286px] flex flex-col gap-2">
                         <img class="w-full rounded-xl" src="https://i.ytimg.com/vi/y6wKBTszalY/maxresdefault.jpg"
                             alt="another-video">
-                        <span class="font-semibold text-xl">{{$episode->first()->judul->name}} | {{$episode->first()->name}}</span>
+                        <span class="font-semibold text-xl">{{$episode->judul->name}} | {{$episode->name}}</span>
                     </div>
                 </a>
             </div>
@@ -106,7 +106,7 @@
         <div class="mt-3">
             <span class="text-center font-bold text-lg md:text-2xl text-black">Episode Dengan Judul yang Sama</span>
             <div class="w-full flex gap-6 mt-4 overflow-x-auto snap-mandatory snap-x custom-x-scrollbar">
-                @foreach ($judul->first()->episode as $episode)
+                @foreach ($judul->episode as $episode)
                     <a href="{{route($role.'.video.display',$episode->id)}}">
                         <div class="min-w-[286px] max-w-[286px] flex flex-col gap-2">
                             <img class="w-full rounded-xl" src="{{$episode->thumbnail}}"
