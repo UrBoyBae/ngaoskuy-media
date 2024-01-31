@@ -41,9 +41,10 @@ class QuestionController extends Controller
         $user = auth()->user();
         $question = Question::where('id', $id)->first();
         $myquestion = Question::where('id_user', $user->id)->first();
-        $episode = Episode::with(['judul'])->where('id', $question->id_episode);
+        $episode = Episode::with(['judul'])->where('id', $question->id_episode)->first();
         $chat = Chat::where('id_question', $question->id)->first();
-        $judul = Judul::with(['episode'])->where('id', $episode->first()->id_judul);
+        $judul = optional($episode)->judul;
+        // dd($judul->episode);
         $kitab = Kitab::with(['bab'])->get();
         return view('components.templates.member.question.show', [
             'title' => 'Question',
