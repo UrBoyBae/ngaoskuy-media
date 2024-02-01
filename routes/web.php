@@ -48,7 +48,7 @@ Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
 // registrasion router
 Route::get('/registrasi', [RegistrasionController::class, 'index'])->middleware('guest')->name('registrasi.index');
-Route::post('/registrasi', [RegistrasionController::class, 'registrasion'])->name('registrasi.proses');
+Route::post('/registrasi', [RegistrasionController::class, 'registrasion'])->name('registrasi.store');
 
 
 // user/guest routes
