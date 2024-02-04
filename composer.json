@@ -6,9 +6,12 @@
     "license": "MIT",
     "require": {
         "php": "^8.1",
+        "ab-alselwi/laravel-arabic-html": "^0.2.0",
         "barryvdh/laravel-dompdf": "^2.0",
+        "dompdf/dompdf": "^2.0",
         "google/apiclient": "^2.15",
         "guzzlehttp/guzzle": "^7.8",
+        "khaled.alshamaa/ar-php": "^6.3",
         "laravel/framework": "^10.10",
         "laravel/sanctum": "^3.3",
         "laravel/tinker": "^2.8",
