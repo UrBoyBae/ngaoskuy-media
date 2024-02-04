@@ -27,7 +27,7 @@ class VideoListController extends Controller
         $subbab = SubBab::where('id_bab', $id)->first();
         $judul = Judul::where('id_subbab', $subbab->id)->paginate(5);
         $kitab = Kitab::with(['bab'])->get();
-            return view('components.templates.member.video.show',[
+            return view('components.templates.member.video.index',[
             'title' => 'Video',
             'user' => $user,
             'judul' => $judul,
