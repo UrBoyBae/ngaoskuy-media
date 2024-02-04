@@ -14,7 +14,11 @@ $(document).ready(function () {
 
     // Login Page
     $("#login-form").submit(function (e) {
-        if ($("#username").val() === "" && $("#password").val() === "" && $("#email").val() === "") {
+        if (
+            $("#username").val() === "" &&
+            $("#password").val() === "" &&
+            $("#email").val() === ""
+        ) {
             e.preventDefault();
             var parent = $("#username").parent();
             parent.removeClass("border-[#808080]");
@@ -175,7 +179,7 @@ $(document).ready(function () {
         }
     });
 
-    // Download Dropdown 
+    // Download Dropdown
     $("#toggle-download-dropdown").on("click", () => {
         const mainDownloadDropdown = $("#main-download-dropdown");
 
@@ -297,4 +301,26 @@ document.addEventListener("DOMContentLoaded", function () {
         ],
     });
     calendar.render();
+});
+
+// tab about us
+document.addEventListener("DOMContentLoaded", function () {
+    // Get all tab buttons
+    const tabButtons = document.querySelectorAll("[data-tab]");
+
+    // Get all tab content elements
+    const tabContents = document.querySelectorAll(".tab-content");
+
+    // Add click event listener to each tab button
+    tabButtons.forEach((button) => {
+        button.addEventListener("click", function () {
+            const tabId = this.dataset.tab;
+
+            // Remove 'hidden' class from the selected tab content
+            tabContents.forEach((content) => {
+                content.classList.add("hidden");
+            });
+            document.getElementById(tabId).classList.remove("hidden");
+        });
+    });
 });
