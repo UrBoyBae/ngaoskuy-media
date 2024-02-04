@@ -11,10 +11,17 @@ class PhotoGalleryController extends Controller
     {
 
         $user = Auth()->user();
+        if(Auth()->user() != null){
+            $roles = $user->getRoleNames();
+        }
+        else{
+            $roles = null;
+        }
         $kitab = Kitab::with(['bab'])->get();
 
         return view('components.templates.photo-gallery', [
             'title' => 'Photo Gallery',
+            'roles' => $roles,
             'user' => $user,
             'kitab' => $kitab
         ]);
