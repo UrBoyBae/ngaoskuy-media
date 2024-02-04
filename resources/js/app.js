@@ -189,6 +189,21 @@ $(document).ready(function () {
 
         event.stopPropagation();
     });
+
+    // Send Message 
+    $("#message").on("keyup", () => {
+        var message = $("#message").val();
+        var send = $("#send");
+        var submitMessage = $("#submit-message");
+
+        if (message.length > 0){
+            send.removeClass("text-gray-400").addClass("text-black");
+            submitMessage.prop('disabled', false);
+        } else {
+            send.removeClass("text-black").addClass("text-gray-400");
+            submitMessage.prop('disabled', true);
+        }
+    });
 });
 
 function clickOutsideNavProfile(event) {
