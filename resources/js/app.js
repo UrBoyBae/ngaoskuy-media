@@ -167,7 +167,6 @@ $(document).ready(function () {
             settingProfile.removeClass("hidden").addClass("fixed");
         }
     });
-
     $("#close-main-setting-profile").on("click", () => {
         const settingProfile = $("#main-setting-profile");
 
@@ -176,6 +175,20 @@ $(document).ready(function () {
         }
     });
 
+    // Download Dropdown 
+    $("#toggle-download-dropdown").on("click", () => {
+        const mainDownloadDropdown = $("#main-download-dropdown");
+
+        if (mainDownloadDropdown.hasClass("hidden")) {
+            mainDownloadDropdown.removeClass("hidden").addClass("block");
+            window.addEventListener("click", clickOutsideDownloadDropdown);
+        } else {
+            mainDownloadDropdown.removeClass("block").addClass("hidden");
+            window.addEventListener("click", clickOutsideDownloadDropdown);
+        }
+
+        event.stopPropagation();
+    });
 });
 
 function clickOutsideNavProfile(event) {
@@ -207,6 +220,22 @@ function clickOutsideSidebar(event) {
     ) {
         mainSidebar.removeClass("block").addClass("hidden");
         window.removeEventListener("click", clickOutsideSidebar);
+    }
+}
+
+function clickOutsideDownloadDropdown(event) {
+    const mainDownloadDropdown = $("#main-download-dropdown");
+    const toggleDownloadDropdown = $("#toggle-download-dropdown");
+
+    if (
+        !mainDownloadDropdown.hasClass("hidden") &&
+        !mainDownloadDropdown.is(event.target) &&
+        !mainDownloadDropdown.has(event.target).length &&
+        !toggleDownloadDropdown.is(event.target) &&
+        !toggleDownloadDropdown.has(event.target).length
+    ) {
+        mainDownloadDropdown.removeClass("block").addClass("hidden");
+        window.removeEventListener("click", clickOutsideDownloadDropdown);
     }
 }
 
