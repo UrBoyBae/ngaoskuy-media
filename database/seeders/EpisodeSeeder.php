@@ -23,7 +23,7 @@ class EpisodeSeeder extends Seeder
             [
                 'id'=>Uuid::uuid4(),
                 'id_judul'=>$judul->id,
-                'name'=>'satu',
+                'name'=>'satu banget yahayu',
                 'thumbnail'=>'https://i.ytimg.com/vi/5zFL_p22lPg/maxresdefault.jpg',
                 'video_link'=>'5zFL_p22lPg',
                 'resume'=>$faker->text

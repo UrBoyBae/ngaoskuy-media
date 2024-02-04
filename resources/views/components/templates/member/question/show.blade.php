@@ -46,7 +46,7 @@
                                 </svg>
                                 <span class="ml-2">Belum Dijawab</span>
                             </button>
-                            <a href="{{route($role.'.chat.index',$chat->id)}}">
+                            <a href="{{ route($role . '.chat.index', $chat->id) }}">
                                 <button type="button"
                                     class="text-black bg-[#D9D9D9] border-4 border-[#6EBCF4] font-bold rounded-[23px] h-[46px] w-[220px] md:w-[280px] mt-5 text-sm md:text-lg px-5 py-2.5 flex items-center justify-center me-2 mb-2">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28"
@@ -70,7 +70,7 @@
                                 </svg>
                                 <span class="ml-2">Sudah Dijawab</span>
                             </button>
-                            <a href="{{route($role.'.chat.index',$chat->id)}}">
+                            <a href="{{ route($role . '.chat.index', $chat->id) }}">
                                 <button type="button"
                                     class="text-black bg-[#D9D9D9] border-4 border-[#6EBCF4] font-bold rounded-[23px] h-[46px] w-[220px] md:w-[280px] mt-5 text-sm md:text-lg px-5 py-2.5 flex items-center justify-center me-2 mb-2">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28"
@@ -88,35 +88,22 @@
                 </form>
             </div>
         </div>
-        @if ($question->status==false)
-            
+        @if ($question->status == false)
         @else
-        <div class="mt-5">
-            <span class="text-center font-bold text-lg md:text-2xl text-black">Episode Dengan Jawaban Anda</span>
-            <div class="w-full flex gap-6 mt-4 overflow-x-auto snap-mandatory snap-x custom-x-scrollbar">
-                <a href="{{route($role.'.video.display',$episode->id)}}">
-                    <div class="min-w-[286px] max-w-[286px] flex flex-col gap-2">
-                        <img class="w-full rounded-xl" src="https://i.ytimg.com/vi/y6wKBTszalY/maxresdefault.jpg"
-                            alt="another-video">
-                        <span class="font-semibold text-xl">{{$episode->judul->name}} | {{$episode->name}}</span>
-                    </div>
-                </a>
+            <div class="mt-5">
+                <span class="text-center font-bold text-lg md:text-2xl text-black">Episode Dengan Jawaban Anda</span>
+                <div class="w-full flex gap-6 mt-4 overflow-x-auto snap-mandatory snap-x custom-x-scrollbar">
+                    <x-molekuls.video-display :data="$episode" route="{{ $role }}.video.display" />
+                </div>
             </div>
-        </div>
-        <div class="mt-3">
-            <span class="text-center font-bold text-lg md:text-2xl text-black">Episode Dengan Judul yang Sama</span>
-            <div class="w-full flex gap-6 mt-4 overflow-x-auto snap-mandatory snap-x custom-x-scrollbar">
-                @foreach ($judul->episode as $episode)
-                    <a href="{{route($role.'.video.display',$episode->id)}}">
-                        <div class="min-w-[286px] max-w-[286px] flex flex-col gap-2">
-                            <img class="w-full rounded-xl" src="{{$episode->thumbnail}}"
-                                alt="another-video">
-                            <span class="font-semibold text-xl">{{$episode->judul->name}} | {{$episode->name}}</span>
-                        </div>
-                    </a>
-                @endforeach
-            </div>
-            @endif
-        </div>
+            <div class="mt-3">
+                <span class="text-center font-bold text-lg md:text-2xl text-black">Episode Dengan Judul yang Sama</span>
+                <div class="w-full flex gap-6 mt-4 overflow-x-auto snap-mandatory snap-x custom-x-scrollbar">
+                    @foreach ($judul->episode as $episode)
+                        <x-molekuls.video-display :data="$episode" route="{{ $role }}.video.display" />
+                    @endforeach
+                </div>
+        @endif
+    </div>
     </div>
 @endsection
