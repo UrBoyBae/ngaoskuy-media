@@ -18,7 +18,8 @@
                         <span class="text-white font-semibold">Download</span>
                         <ion-icon name="chevron-down-outline" class="text-white text-xl"></ion-icon>
                     </div>
-                    <div class="hidden absolute top-10 right-0 bg-[#810000] w-[150px] p-4 rounded-2xl" id="main-download-dropdown">
+                    <div class="hidden absolute top-10 right-0 bg-[#810000] w-[150px] p-4 rounded-2xl"
+                        id="main-download-dropdown">
                         <a href="" target="_blank">
                             <div
                                 class="flex items-center border-b border-[#d6c3c3]/50 gap-2 bg-[#942626] rounded-t-xl px-3 py-2">
