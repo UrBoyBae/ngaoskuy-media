@@ -14,8 +14,23 @@ $(document).ready(function () {
 
     // Login Page
     $("#login-form").submit(function (e) {
-        if ($("#username").val() === "" && $("#password").val() === "" && $("#email").val() === "") {
+        if (
+            $("#name").val() === "" &&
+            $("#username").val() === "" &&
+            $("#password").val() === "" &&
+            $("#email").val() === ""
+        ) {
             e.preventDefault();
+            var parent = $("#name").parent();
+            parent.removeClass("border-[#808080]");
+            parent.addClass("border-red-700");
+            var ionIcon = $("#name").closest("div").find("ion-icon");
+            ionIcon.removeClass("text-[#808080]");
+            ionIcon.addClass("text-red-700");
+            $("#name").removeClass("placeholder-[#808080]");
+            $("#name").addClass("placeholder-red-700");
+            $("#error-name").removeClass("hidden");
+            $("#error-name").addClass("flex");
             var parent = $("#username").parent();
             parent.removeClass("border-[#808080]");
             parent.addClass("border-red-700");
@@ -46,6 +61,18 @@ $(document).ready(function () {
             $("#email").addClass("placeholder-red-700");
             $("#error-email").removeClass("hidden");
             $("#error-email").addClass("flex");
+        } else if ($("#name").val() === "") {
+            e.preventDefault();
+            var parent = $("#name").parent();
+            parent.removeClass("border-[#808080]");
+            parent.addClass("border-red-700");
+            var ionIcon = $("#name").closest("div").find("ion-icon");
+            ionIcon.removeClass("text-[#808080]");
+            ionIcon.addClass("text-red-700");
+            $("#name").removeClass("placeholder-[#808080]");
+            $("#name").addClass("placeholder-red-700");
+            $("#error-name").removeClass("hidden");
+            $("#error-name").addClass("flex");
         } else if ($("#username").val() === "") {
             e.preventDefault();
             var parent = $("#username").parent();
@@ -82,6 +109,20 @@ $(document).ready(function () {
             $("#email").addClass("placeholder-red-700");
             $("#error-email").removeClass("hidden");
             $("#error-email").addClass("flex");
+        }
+    });
+    $("#name").on("input", function () {
+        if ($(this).val().trim() !== "") {
+            var parent = $("#name").parent();
+            parent.addClass("border-[#808080]");
+            parent.removeClass("border-red-700");
+            var ionIcon = $("#name").closest("div").find("ion-icon");
+            ionIcon.addClass("text-[#808080]");
+            ionIcon.removeClass("text-red-700");
+            $("#name").addClass("placeholder-[#808080]");
+            $("#name").removeClass("placeholder-red-700");
+            $("#error-name").addClass("hidden");
+            $("#error-name").removeClass("flex");
         }
     });
     $("#username").on("input", function () {
@@ -175,7 +216,7 @@ $(document).ready(function () {
         }
     });
 
-    // Download Dropdown 
+    // Download Dropdown
     $("#toggle-download-dropdown").on("click", () => {
         const mainDownloadDropdown = $("#main-download-dropdown");
 
@@ -188,6 +229,21 @@ $(document).ready(function () {
         }
 
         event.stopPropagation();
+    });
+
+    // Send Message 
+    $("#message").on("keyup", () => {
+        var message = $("#message").val();
+        var send = $("#send");
+        var submitMessage = $("#submit-message");
+
+        if (message.length > 0){
+            send.removeClass("text-gray-400").addClass("text-black");
+            submitMessage.prop('disabled', false);
+        } else {
+            send.removeClass("text-black").addClass("text-gray-400");
+            submitMessage.prop('disabled', true);
+        }
     });
 });
 
@@ -297,4 +353,26 @@ document.addEventListener("DOMContentLoaded", function () {
         ],
     });
     calendar.render();
+});
+
+// tab about us
+document.addEventListener("DOMContentLoaded", function () {
+    // Get all tab buttons
+    const tabButtons = document.querySelectorAll("[data-tab]");
+
+    // Get all tab content elements
+    const tabContents = document.querySelectorAll(".tab-content");
+
+    // Add click event listener to each tab button
+    tabButtons.forEach((button) => {
+        button.addEventListener("click", function () {
+            const tabId = this.dataset.tab;
+
+            // Remove 'hidden' class from the selected tab content
+            tabContents.forEach((content) => {
+                content.classList.add("hidden");
+            });
+            document.getElementById(tabId).classList.remove("hidden");
+        });
+    });
 });
