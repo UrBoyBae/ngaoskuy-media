@@ -40,17 +40,17 @@
             </div>
         </div>
         @if (Auth::user()->id == $user_chat)
-            <div class="mt-auto">
+            <div class="mt-auto px-3">
                 <form action="{{ route('member.chat.store', $chat_room) }}" method="post">
                     @csrf
                     <div
-                        class="w-[375px] mx-1.5 md:w-full md:mx-0 lg:w-full lg:mx-0 border border-[rgba(0,0,0,1)] h-11 rounded-full flex items-center justify-between">
+                        class="w-full border border-[rgba(0,0,0,1)] h-11 rounded-full flex items-center justify-between">
                         <input type="text" name="message" id="message"
                             class=" w-full h-full rounded-full focus:border-none focus:outline-none text-base text-[rgba(0,0,0,1)] font-semibold pl-3 bg-transparent"
                             placeholder="Jawab Pertanyaan">
                         <button type="submit"
-                            class="flex items-center justify-center pl-3 pr-4 h-full bg-transparent rounded-full">
-                            <ion-icon name="paper-plane-outline" class="text-xl text-black rotate-45"></ion-icon>
+                            class="flex items-center justify-center pl-3 pr-4 h-full bg-transparent rounded-full" id="submit-message" disabled="true">
+                            <ion-icon name="paper-plane-outline" class="text-xl text-gray-400 rotate-45" id="send"></ion-icon>
                         </button>
                     </div>
                 </form>
