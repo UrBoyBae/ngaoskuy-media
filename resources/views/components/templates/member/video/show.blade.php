@@ -20,7 +20,7 @@
                     </div>
                     <div class="hidden absolute top-10 right-0 bg-[#810000] w-[150px] p-4 rounded-2xl"
                         id="main-download-dropdown">
-                        <a href="" target="_blank">
+                        <a href="{{route('download.pdf',$episode->id)}}" target="_blank">
                             <div
                                 class="flex items-center border-b border-[#d6c3c3]/50 gap-2 bg-[#942626] rounded-t-xl px-3 py-2">
                                 <ion-icon name="document-outline" class="text-white text-lg"></ion-icon>
@@ -43,7 +43,7 @@
                 </div>
                 <div class="flex flex-col gap-1">
                     <span class="font-semibold text-xl">Resume</span>
-                    <p class="font-medium text-lg text-justify">{{ $episode->resume }}</p>
+                    <p class="font-medium text-lg text-justify">{!! nl2br(e($episode->resume)) !!}</p>
                 </div>
             </div>
         </div>

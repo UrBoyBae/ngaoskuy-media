@@ -43,7 +43,7 @@
                 </div>
                 <div class="flex flex-col gap-1">
                     <span class="font-semibold text-xl">Resume</span>
-                    <p class="font-medium text-lg text-justify">{{ $episode->resume }}</p>
+                    <p class="font-medium text-lg text-justify">{!! nl2br(e($episode->resume)) !!}</p>
                 </div>
             </div>
         </div>

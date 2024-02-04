@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\DashboardController as AdminDashboardController;
 use App\Http\Controllers\Admin\EpisodeController;
 use App\Http\Controllers\Admin\SubBabController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\DownloadController;
 use App\Http\Controllers\Member\ArticleController as MemberArticleController;
 use App\Http\Controllers\Member\ChatController;
 use App\Http\Controllers\Member\DashboardController;
@@ -64,7 +65,7 @@ Route::get('/user/video/{param}', [VideoListController::class, 'index'])->name('
 
 Route::get('/user/video-show/{param}', [VideoListController::class, 'show'])->name('user.video.show');
 Route::get('/user/video-display/{param}', [VideoListController::class, 'display'])->name('user.video.display');
-
+Route::get('/download-pdf/{param}',[DownloadController::class,'pdf'])->name('download.pdf');
 //member router
 Route::middleware(['auth', 'user-role:member'])->group(function () {
     Route::get('/member/dashboard', [DashboardController::class, 'index'])->name('member.home.index');
