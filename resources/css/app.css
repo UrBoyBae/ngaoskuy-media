@@ -9,7 +9,7 @@ body {
     padding: 0;
     box-sizing: border-box;
     font-family: "Quicksand", sans-serif !important;
-    /* border: 1px solid black;  */
+    /* outline: 1px solid black; */
 }
 
 :root {

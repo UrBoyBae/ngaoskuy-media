@@ -5,10 +5,10 @@
 <div class="w-full h-2/4 bg-[#CEA59B] lg:w-full lg:h-44 flex items-center mt-auto">
     <div class="w-full flex flex-col md:flex-row pt-8 pb-9 justify-center">
         <div class="flex flex-row justify-center lg:pt-2">
-            <div class="w-[120px] lg:w-full">
-                <p class="text-lg lg:text-[26px] lg:pb-16 text-black font-extrabold">NGAOS KUY</p>
+            <div class="w-[120px] lg:w-[150px]">
+                <p class="text-lg lg:text-[25px] lg:pb-16 text-black font-extrabold">NGAOS KUY</p>
             </div>
-            <div class="pl-16 lg:pl-36 w-[150px] lg:w-full">
+            <div class="pl-16 lg:pl-36 w-[150px] lg:w-[330px]">
                 <p class=" text-base lg:text-lg text-black font-bold">Quick Link</p>
                 <p class="pt-2 text-xs lg:text-sm text-black font-medium"><a href="{{ route($role.'.home.index') }}">Home</a></p>
                 <p class="pt-1 text-xs lg:text-sm text-black font-medium"><a href="{{ route('about-us') }}">About Us</a></p>
@@ -16,7 +16,7 @@
             </div>
         </div>
         <div class="flex flex-row justify-center lg:pt-2 md:pt-0 pt-7 md:pl-20">
-            <div class="lg:pl-24 w-[120px] lg:w-full">
+            <div class="w-[120px] lg:w-full">
                 <p class="text-base lg:text-lg text-black font-bold">Address</p>
                 <p class="pt-2 text-xs w-[120px] lg:w-[200px] lg:text-sm text-black font-medium">Jl. Gumuruh No.69, Gumuruh, Kec. Batununggal, Kota Bandung, Jawa Barat 40275</p>
             </div>
