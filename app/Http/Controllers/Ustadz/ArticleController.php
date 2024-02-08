@@ -25,14 +25,14 @@ class ArticleController extends Controller
         $episode = Episode::all();
         $kitab = Kitab::with(['bab'])->get();
         $article  = Article::all()->sortBy('created_at');
-        return [
+        return view('components.templates.ustadz.article.index',[
             'title' => 'Article',
             'user' => $user,
             'episode' => $episode,
             'kitab' => $kitab,
             'article' => $article,
             'roles' => $this->roles,
-        ];
+        ]);
     }
     
     public function show($id)
@@ -40,13 +40,13 @@ class ArticleController extends Controller
         $user = auth()->user();
         $kitab = Kitab::with(['bab'])->get();
         $article  = Article::where('id', $id)->first();
-        return [
+        return view('components.templates.ustadz.article.show',[
             'title' => $article->name,
             'user' => $user,
             'kitab' => $kitab,
             'article' => $article,
             'roles' => $this->roles,
-        ];
+        ]);
     }
     
     public function create()

@@ -82,7 +82,7 @@ Route::middleware(['auth', 'user-role:member'])->group(function () {
 
     Route::get('/member/video/{param}', [MemberVideoListController::class, 'index'])->name('member.video.index');
     Route::get('/member/video-show/{param}', [MemberVideoListController::class, 'show'])->name('member.video.show');
-    Route::get('/member/video-show/{param}', [MemberVideoListController::class, 'display'])->name('member.video.display');
+    Route::get('/member/video-display/{param}', [MemberVideoListController::class, 'display'])->name('member.video.display');
 });
 
 //admin routes
@@ -154,6 +154,8 @@ Route::middleware(['auth', 'user-role:ustadz'])->group(function () {
 
     Route::get('/ustadz/video/{param}', [VideoController::class, 'index'])->name('ustadz.video.index');
     Route::get('/ustadz/video-show/{param}', [VideoController::class, 'show'])->name('ustadz.video.show');
+    Route::get('/ustadz/video-display/{param}', [VideoController::class, 'show'])->name('ustadz.video.display');
+
 });
 
 Route::get('/about-us', [AboutUsController::class, 'index'])->name('about-us');
