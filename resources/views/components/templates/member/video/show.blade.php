@@ -11,16 +11,19 @@
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                 allowfullscreen></iframe>
             <div class="flex flex-col gap-3">
-                <div class="relative flex items-center justify-between">
-                    <span class="font-semibold text-2xl">{{ $episode->judul->name }} | {{ $episode->name }}</span>
-                    <div class="flex items-center justify-center gap-3 bg-[#810000] px-5 py-1 rounded-2xl cursor-pointer"
+            <div class="relative flex flex-col md:justify-between md:flex-row gap-3">
+                    <div class="relative flex items-center justify-between">
+                        {{-- <span class="font-semibold text-2xl"> menambahkan dropdown download sehingga butuh penyesuaian lagi pada tampilan nya | {{ $episode->name }}</span> --}}
+                        <span class="font-semibold text-2xl">{{ $episode->judul->name }} | {{ $episode->name }}</span>
+                    </div>
+                    <div class="flex items-center justify-center md:w-[150px] gap-3 bg-[#810000] px-5 py-1 rounded-2xl cursor-pointer"
                         id="toggle-download-dropdown">
                         <span class="text-white font-semibold">Download</span>
                         <ion-icon name="chevron-down-outline" class="text-white text-xl"></ion-icon>
                     </div>
-                    <div class="hidden absolute top-10 right-0 bg-[#810000] w-[150px] p-4 rounded-2xl"
+                    <div class="hidden md:absolute md:top-10 md:right-0 bg-[#810000] md:w-[150px] p-4 rounded-2xl"
                         id="main-download-dropdown">
-                        <a href="{{route('download.pdf',$episode->id)}}" target="_blank">
+                        <a href="{{ route('download.pdf', $episode->id) }}" target="_blank">
                             <div
                                 class="flex items-center border-b border-[#d6c3c3]/50 gap-2 bg-[#942626] rounded-t-xl px-3 py-2">
                                 <ion-icon name="document-outline" class="text-white text-lg"></ion-icon>
