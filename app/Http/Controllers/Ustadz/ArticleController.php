@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Article;
 use App\Models\Episode;
 use App\Models\Kitab;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class ArticleController extends Controller
@@ -40,12 +41,14 @@ class ArticleController extends Controller
         $user = auth()->user();
         $kitab = Kitab::with(['bab'])->get();
         $article  = Article::where('id', $id)->first();
+        $formattedDate = Carbon::parse($article->created_at)->format('F d, Y');
         return view('components.templates.ustadz.article.show',[
             'title' => $article->name,
             'user' => $user,
             'kitab' => $kitab,
             'article' => $article,
             'roles' => $this->roles,
+            'formattedDate' => $formattedDate,
         ]);
     }
     
