@@ -5,42 +5,52 @@
         $role = empty($roles) ? 'user' : $roles[0];
     @endphp
     <div class="min-h-screen w-full py-4 px-7">
-        <span class="text-2xl font-bold text-black">Tambah Pertanyaan</span>
+        <span class="font-bold text-lg md:text-2xl text-black">Tambah Pertanyaan</span>
         <div class="min-h-screen w-full mt-3">
             <div class="block w-full p-6 bg-[#EEEBDD] border border-black rounded-lg shadow">
                 <form method="POST" action="{{ route($role . '.question.store') }}">
                     @csrf
-                    <div class="space-y-12">
-                        <div class="pb-6">
-                            <div class="mt-2 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
-                                <div class="sm:col-span-4">
-                                    <label for="subject" class="block text-lg font-bold leading-6 text-black">Subject</label>
-                                    <div class="mt-2">
-                                        <div class="flex rounded-[12px] shadow-sm ring-1 ring-inset ring-gray-500 focus-within:ring-1 focus-within:ring-inset sm:max-w-md">
-                                            <input type="text" name="subject" id="subject" autocomplete="subject" class="block flex-1 border-0 bg-transparent py-3 pl-4 text-gray-700 placeholder-[hsl(0,0%,50%)] font-semibold text-sm sm:text-base focus:outline-none focus:border-none " placeholder="Tuliskan topik pertanyaan di sini">
-                                        </div>
-                                    </div>
+                        <div class="flex flex-col gap-4 lg:gap-5 xl:gap-6">
+                            <div>
+                                <label for="subject" class="text-base font-semibold sm:text-xl">Subject</label>
+                                <div
+                                    class="flex items-center gap-3 border-[1.2px] border-[#000000] rounded-[9px] sm:rounded-[12px] h-8 sm:h-9 pl-2 sm:pl-3 lg:w-[375px] xl:w-[475px]">
+                                    <input type="text" name="subject" id="subject" placeholder="Tuliskan topik pertanyaan disini"
+                                        class="w-full h-full rounded-r-[9px] sm:rounded-[12px] bg-transparent focus:border-none focus:outline-none font-semibold text-sm sm:text-base">
                                 </div>
-                                <div class="col-span-full">
-                                    <label for="question" class="block text-lg font-bold leading-6 text-black">Pertanyaan</label>
-                                    <div class="mt-2">
-                                        <textarea id="question" name="question" rows="3" class="w-[450px] bg-transparent block rounded-[9px] border-b border-gray-300 text-gray-700 shadow-sm ring-1 ring-inset ring-gray-500 placeholder-[hsl(0,0%,50%)] focus:outline-none focus:border-none py-3 pl-4 font-semibold" placeholder="Tuliskan topik pertanyaan di sini"></textarea>
-                                    </div>
+                                <div class="items-center gap-1 mt-[3px] hidden" id="error-subject">
+                                    <ion-icon name="alert-circle" class="text-red-700"></ion-icon>
+                                    <small class="text-red-700 font-semibold sm:text-sm">Subject</small>
                                 </div>
-                                <div class="col-span-full">
-                                    <label for="about" class="block text-lg font-bold leading-6 text-black">Publikasi Pertanyaan</label>
-                                    <div class="flex items-center mb-10">
-                                        <input id="country-option-1" type="radio" name="tipe" value="false" class="w-4 h-4  border-gray-300 focus:ring-2 focus:ring-blue-300 dark:bg-gray-700 dark:border-gray-600" checked>
-                                        <label for="country-option-1" class="block ms-2  text-m font-bold text-black "> Publik </label>
-                                        <input id="country-option-2" type="radio" name="tipe" value="true" class="w-4 h-4 ml-6 border-gray-300 focus:ring-2 focus:ring-blue-300 dark:bg-gray-700 dark:border-gray-600">
-                                        <label for="country-option-2" class="block ms-2 text-m font-bold text-black"> Anonymous </label>
-                                    </div>
-                                </div>       
                             </div>
-                            <button type="button" class="w-28 text-white bg-[#810000] -500 hover:bg-[#810000] -800 focus:outline-none focus:ring-4 focus:ring-red-300 font-bold rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2 dark:bg-[#810000] -500 dark:hover:bg-[#810000] -600 dark:focus:ring-red-900">BACK</button>                     
-                            <button type="submit" class="w-28 text-white bg-[#1F7632] hover:bg-[#1F7632] -800 focus:outline-none focus:ring-4 focus:ring-green-300 font-bold rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2 dark:bg-[#1F7632] -600 dark:hover:bg-[#1F7632] -700 dark:focus:ring-[#1F7632] -800">SEND</button>
+                            <div>
+                                <label for="pertanyaan" class="text-base font-semibold sm:text-xl">Pertanyaan</label>
+                                <div
+                                    class="flex gap-3 border-[1.2px] border-[#000000] rounded-[9px] sm:rounded-[12px] h-24 md:h-[120px] sm:h-9 pl-2 pt-1 sm:pl-3 lg:w-[375px] xl:w-[475px]">
+                                    <textarea name="pertanyaan" id="pertanyaan" placeholder="Tuliskan pertanyaan anda disini"
+                                        class="w-full h-full rounded-r-[9px] sm:rounded-[12px] bg-transparent focus:border-none focus:outline-none font-semibold text-sm sm:text-base"></textarea>
+                                </div>
+                            </div>
+                            <div class="col-span-full">
+                                <label for="about" class="block text-base sm:text-xl font-semibold leading-6 text-black">Publikasi
+                                    Pertanyaan</label>
+                                <div class="flex items-center mb-7">
+                                    <input id="country-option-1" type="radio" name="tipe" value="false"
+                                        class="w-4 h-4 border-gray-300 focus:ring-2 focus:ring-blue-300 dark:bg-gray-700 dark:border-gray-600"
+                                        checked>
+                                    <label for="country-option-1" class="block ms-2  text-m font-bold text-black ">
+                                        Publik </label>
+                                    <input id="country-option-2" type="radio" name="tipe" value="true"
+                                        class="w-4 h-4 ml-6 border-gray-300 focus:ring-2 focus:ring-blue-300 dark:bg-gray-700 dark:border-gray-600">
+                                    <label for="country-option-2" class="block ms-2 text-m font-bold text-black">
+                                        Anonymous </label>
+                                </div>
+                            </div>
                         </div>
-                    </div>
+                            <button type="button"
+                            class="w-28 text-white bg-[#810000] hover:bg-[#810000] focus:outline-none focus:ring-4 focus:ring-red-300 font-bold rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2 dark:bg-[#810000] dark:hover:bg-[#810000] dark:focus:ring-red-900">BACK</button>
+                            <button type="submit"
+                            class="w-28 text-white bg-[#1F7632] hover:bg-[#1F7632] focus:outline-none focus:ring-4 focus:ring-green-300 font-bold rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2 dark:bg-[#1F7632] dark:hover:bg-[#1F7632] dark:focus:ring-[#1F7632]">SEND</button>
                 </form>
             </div>
         </div>
