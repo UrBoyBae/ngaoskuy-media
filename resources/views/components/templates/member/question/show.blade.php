@@ -5,33 +5,32 @@
         $role = empty($roles) ? 'user' : $roles[0];
     @endphp
     <div class="min-h-screen py-4 px-7">
-        <span class="text-center font-bold text-lg md:text-2xl text-black">Status Pertanyaan</span>
+        <span class="font-bold text-lg md:text-2xl text-black">Status Pertanyaan</span>
         <div class="flex flex-col items-center justify-center">
             <div class="mt-4 w-full p-6 bg-[#EEEBDD] border border-black rounded-lg shadow">
                 <form>
                     <div class="flex flex-col gap-4 lg:gap-5 xl:gap-6">
                         <div>
-                            <label for="subject" class="text-base font-semibold sm:text-xl">Subjek</label>
+                            <label for="subject" class="text-base font-semibold sm:text-xl">Subject</label>
                             <div
-                                class="flex items-center gap-3 border-[1.2px] border-[#808080] rounded-[9px] sm:rounded-[12px] h-8 sm:h-9 pl-2 sm:pl-3 lg:w-[375px] xl:w-[475px]">
+                                class="flex items-center gap-3 border-[1.2px] border-[#000000] rounded-[9px] sm:rounded-[12px] h-8 sm:h-9 pl-2 sm:pl-3 lg:w-[375px] xl:w-[475px]">
                                 <input type="text" name="subject" id="subject" placeholder="{{ $question->subject }}"
-                                    class="w-full h-full rounded-r-[9px] sm:rounded-[12px] bg-transparent focus:border-none focus:outline-none placeholder-[#808080] font-semibold text-sm sm:text-base"
+                                    class="w-full h-full rounded-r-[9px] sm:rounded-[12px] bg-transparent focus:border-none focus:outline-none font-semibold text-sm sm:text-base"
                                     disabled>
                             </div>
                             <div class="items-center gap-1 mt-[3px] hidden" id="error-subject">
                                 <ion-icon name="alert-circle" class="text-red-700"></ion-icon>
-                                <small class="text-red-700 font-semibold sm:text-sm">Subjek</small>
+                                <small class="text-red-700 font-semibold sm:text-sm">Subject</small>
                             </div>
                         </div>
                         <div>
                             <label for="pertanyaan" class="text-base font-semibold sm:text-xl">Pertanyaan</label>
                             <div
-                                class="flex gap-3 border-[1.2px] border-[#808080] rounded-[9px] sm:rounded-[12px] h-24 md:h-[120px] sm:h-9 pl-2 pt-1 sm:pl-3 lg:w-[375px] xl:w-[475px]">
+                                class="flex gap-3 border-[1.2px] border-[#000000] rounded-[9px] sm:rounded-[12px] h-24 md:h-[120px] sm:h-9 pl-2 pt-1 sm:pl-3 lg:w-[375px] xl:w-[475px]">
                                 <textarea name="pertanyaan" id="pertanyaan"
                                     class="w-full h-full rounded-r-[9px] sm:rounded-[12px] bg-transparent focus:border-none focus:outline-none font-semibold text-sm sm:text-base"
                                     disabled>{{ $question->question }}</textarea>
                             </div>
-
                         </div>
                     </div>
                     <div class="md:flex flex-row">
