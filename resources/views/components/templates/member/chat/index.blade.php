@@ -45,7 +45,7 @@
                     @csrf
                     <div
                         class="w-full border border-[rgba(0,0,0,1)] h-11 rounded-full flex items-center justify-between">
-                        <input type="text" name="message" id="message"
+                        <input type="text" name="message" id="message" autocomplete="off"
                             class=" w-full h-full rounded-full focus:border-none focus:outline-none text-base text-[rgba(0,0,0,1)] font-semibold pl-3 bg-transparent"
                             placeholder="Jawab Pertanyaan">
                         <button type="submit"

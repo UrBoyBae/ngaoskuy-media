@@ -155,6 +155,8 @@ Route::middleware(['auth', 'user-role:ustadz'])->group(function () {
 
     Route::get('/ustadz/video/{param}', [VideoController::class, 'index'])->name('ustadz.video.index');
     Route::get('/ustadz/video-show/{param}', [VideoController::class, 'show'])->name('ustadz.video.show');
+    Route::get('/ustadz/video-display/{param}', [VideoController::class, 'show'])->name('ustadz.video.display');
+
 });
 
 Route::get('/about-us', [AboutUsController::class, 'index'])->name('about-us');

@@ -29,7 +29,7 @@ class PertanyaanController extends Controller
         $question = Question::where('status', 1)->get();
         $kitab = Kitab::with(['bab'])->get();
         $article  = Article::all();
-        return ([
+        return view('components.templates.ustadz.questions.index',[
             'title' => 'Pertanyaan',
             'user' => $user,
             'episode' => $episode,
@@ -46,14 +46,14 @@ class PertanyaanController extends Controller
         $episode = Episode::all();
         $kitab = Kitab::with(['bab'])->get();
         $chat = ChatDetail::where('id_chat', $id)->get();
-        return [
+        return view('components.templates.ustadz.questions.show',[
             'title' => 'Chat',
             'user' => $user,
             'episode' => $episode,
             'kitab' => $kitab,
             'chat' => $chat,
             'roles' => $this->roles,
-        ];
+        ]);
     }
 
     public function store(Request $request, $id)
