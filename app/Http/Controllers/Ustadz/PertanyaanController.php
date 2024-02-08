@@ -26,7 +26,7 @@ class PertanyaanController extends Controller
     {
         $user = auth()->user();
         $episode = Episode::all();
-        $question = Question::where('status', 1)->get();
+        $question = Question::paginate(9);
         $kitab = Kitab::with(['bab'])->get();
         $article  = Article::all();
         return view('components.templates.ustadz.questions.index',[

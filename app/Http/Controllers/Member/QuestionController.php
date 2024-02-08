@@ -28,7 +28,7 @@ class QuestionController extends Controller
         $question = Question::paginate(9);
         $kitab = Kitab::with(['bab'])->get();
         return view('components.templates.member.question.index', [
-            'title' => 'Question',    
+            'title' => 'Question',
             'user' => $user,
             'question' => $question,
             'kitab' => $kitab,
