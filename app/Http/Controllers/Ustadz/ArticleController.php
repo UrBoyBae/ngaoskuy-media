@@ -24,7 +24,7 @@ class ArticleController extends Controller
         $user = auth()->user();
         $episode = Episode::all();
         $kitab = Kitab::with(['bab'])->get();
-        $article  = Article::all()->sortBy('created_at');
+        $article  = Article::orderByDesc('created_at')->paginate(5);
         return view('components.templates.ustadz.article.index',[
             'title' => 'Article',
             'user' => $user,
