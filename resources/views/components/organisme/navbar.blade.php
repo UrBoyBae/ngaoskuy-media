@@ -18,23 +18,18 @@
                     <ion-icon name="close" id="close-sidebar"
                         class="text-2xl cursor-pointer text-slate-900"></ion-icon>
                 </div>
-                <form method="" action="" id="search-form">
-                    <div class="flex justify-between items-center px-4 mt-6 h-7">
-                        <div
-                            class="w-full h-full border-[#808080] border-[1.2px] flex justify-center items-center pr-3 rounded-xl">
-                            <input type="text" name="search-input" id="search-input" placeholder="Search"
-                                class="w-full h-full pl-3 rounded-l-xl text-sm focus:border-none focus:outline-none placeholder-[#808080] font-medium">
-                            <button type="submit" class="flex justify-center items-center" name="search-button"
-                                name="search-button">
-                                <ion-icon name="search" class="text-[#808080] text-lg"></ion-icon>
-                            </button>
-                        </div>
+                <div class="flex justify-between items-center px-4 mt-6 h-7">
+                    <div
+                        class="w-full h-full border-[#808080] border-[1.2px] flex justify-center items-center pr-3 rounded-xl">
+                        <input type="text" name="search-kitab" id="search-kitab" placeholder="Cari Kitab"
+                            class="w-full h-full pl-3 rounded-l-xl text-sm focus:border-none focus:outline-none placeholder-[#808080] font-medium">
+                        <ion-icon name="search" class="text-[#808080] text-lg"></ion-icon>
                     </div>
-                </form>
+                </div>
             </div>
-            <div class="space-y-5 px-10 pb-10">
+            <div class="space-y-5 px-10 pb-10" id="kitab-list">
                 @foreach ($kitab as $k)
-                    <div>
+                    <div id="kitab">
                         <h5 class="font-bold text-slate-900 text-lg mb-3">{{ $k->name }}</h5>
                         <ul class="space-y-3">
                             <ul class="space-y-6 border-l-2 border-slate-300 ml-1">
@@ -106,10 +101,10 @@
         </div>
 
     </div>
-    <div class="hidden z-50 inset-0 px-4 pt-4"
-        id="main-setting-profile">
+    <div class="hidden z-50 inset-0 px-4 pt-4" id="main-setting-profile">
         <div class="fixed inset-0 bg-black/30 backdrop-blur-sm"></div>
-        <div class="relative bg-[#810000] m-auto w-full max-w-[800px] h-fit rounded-[30px] pt-6 md:pt-12 pb-7 px-6 md:pr-16">
+        <div
+            class="relative bg-[#810000] m-auto w-full max-w-[800px] h-fit rounded-[30px] pt-6 md:pt-12 pb-7 px-6 md:pr-16">
             <form method="" action="" id="update-profile">
                 <div class="flex flex-col gap-5 md:flex-row">
                     <div class="flex flex-col items-center gap-2 md:w-2/6">
@@ -120,30 +115,44 @@
                     <div class="bg-[#942626] rounded-3xl px-7 md:px-10 py-5 md:py-8 flex flex-col gap-4 md:w-4/6">
                         <div class="flex flex-col gap-1">
                             <label class="text-white text-lg font-semibold" for="nama">Nama</label>
-                            <input class="bg-transparent border border-[#d6c3c380] rounded-md w-full h-full text-lg focus:outline-none placeholder-[rgba(214,195,195,0.5)] text-[rgba(214,195,195,0.5)] font-semibold pl-2 py-2" value="Pasha Adelia" type="text" name="nama" id="nama">
+                            <input
+                                class="bg-transparent border border-[#d6c3c380] rounded-md w-full h-full text-lg focus:outline-none placeholder-[rgba(214,195,195,0.5)] text-[rgba(214,195,195,0.5)] font-semibold pl-2 py-2"
+                                value="Pasha Adelia" type="text" name="nama" id="nama">
                         </div>
                         <div class="flex flex-col gap-1">
                             <label class="text-white text-lg font-semibold" for="username">Username</label>
-                            <input class="bg-transparent border border-[#d6c3c380] rounded-md w-full h-full text-lg focus:outline-none placeholder-[rgba(214,195,195,0.5)] text-[rgba(214,195,195,0.5)] font-semibold pl-2 py-2" value="Pasha Adelia" type="text" name="username" id="username">
+                            <input
+                                class="bg-transparent border border-[#d6c3c380] rounded-md w-full h-full text-lg focus:outline-none placeholder-[rgba(214,195,195,0.5)] text-[rgba(214,195,195,0.5)] font-semibold pl-2 py-2"
+                                value="Pasha Adelia" type="text" name="username" id="username">
                         </div>
                         <div class="flex flex-col gap-1">
                             <label class="text-white text-lg font-semibold" for="email">Email</label>
-                            <input class="bg-transparent border border-[#d6c3c380] rounded-md w-full h-full text-lg focus:outline-none placeholder-[rgba(214,195,195,0.5)] text-[rgba(214,195,195,0.5)] font-semibold pl-2 py-2" value="Pasha Adelia" type="email" name="email" id="email">
+                            <input
+                                class="bg-transparent border border-[#d6c3c380] rounded-md w-full h-full text-lg focus:outline-none placeholder-[rgba(214,195,195,0.5)] text-[rgba(214,195,195,0.5)] font-semibold pl-2 py-2"
+                                value="Pasha Adelia" type="email" name="email" id="email">
                         </div>
                         <div class="flex flex-col gap-1">
                             <label class="text-white text-lg font-semibold" for="password">Password</label>
-                            <input class="bg-transparent border border-[#d6c3c380] rounded-md w-full h-full text-lg focus:outline-none placeholder-[rgba(214,195,195,0.5)] text-[rgba(214,195,195,0.5)] font-semibold pl-2 py-2" value="Pasha Adelia" type="password" name="password" id="password">
+                            <input
+                                class="bg-transparent border border-[#d6c3c380] rounded-md w-full h-full text-lg focus:outline-none placeholder-[rgba(214,195,195,0.5)] text-[rgba(214,195,195,0.5)] font-semibold pl-2 py-2"
+                                value="Pasha Adelia" type="password" name="password" id="password">
                         </div>
                         <div class="flex flex-col gap-1">
-                            <label class="text-white text-lg font-semibold" for="confirm-password">Confirm Password</label>
-                            <input class="bg-transparent border border-[#d6c3c380] rounded-md w-full h-full text-lg focus:outline-none placeholder-[rgba(214,195,195,0.5)] text-[rgba(214,195,195,0.5)] font-semibold pl-2 py-2" value="Pasha Adelia" type="password" name="confirm-password" id="confirm-password">
+                            <label class="text-white text-lg font-semibold" for="confirm-password">Confirm
+                                Password</label>
+                            <input
+                                class="bg-transparent border border-[#d6c3c380] rounded-md w-full h-full text-lg focus:outline-none placeholder-[rgba(214,195,195,0.5)] text-[rgba(214,195,195,0.5)] font-semibold pl-2 py-2"
+                                value="Pasha Adelia" type="password" name="confirm-password" id="confirm-password">
                         </div>
-                        <button class="bg-[rgba(27,23,23,0.7)] py-2 w-28 rounded-3xl text-white font-semibold mt-3" id="change-data-profile">CHANGE</button>
+                        <button class="bg-[rgba(27,23,23,0.7)] py-2 w-28 rounded-3xl text-white font-semibold mt-3"
+                            id="change-data-profile">CHANGE</button>
                     </div>
                 </div>
                 <div class="flex gap-5 justify-end mt-6">
-                    <button class="bg-[rgba(27,23,23,0.7)] py-2 w-28 rounded-3xl text-white font-semibold" id="close-main-setting-profile">BACK</button>
-                    <button class="bg-[rgba(27,23,23,0.7)] py-2 w-28 rounded-3xl text-white font-semibold" type="submit">SAVE</button>
+                    <button class="bg-[rgba(27,23,23,0.7)] py-2 w-28 rounded-3xl text-white font-semibold"
+                        id="close-main-setting-profile">BACK</button>
+                    <button class="bg-[rgba(27,23,23,0.7)] py-2 w-28 rounded-3xl text-white font-semibold"
+                        type="submit">SAVE</button>
                 </div>
             </form>
         </div>

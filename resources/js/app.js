@@ -231,21 +231,63 @@ $(document).ready(function () {
         event.stopPropagation();
     });
 
-    // Send Message 
+    // Send Message
     $("#message").on("keyup", () => {
         var message = $("#message").val();
         var send = $("#send");
         var submitMessage = $("#submit-message");
 
-        if (message.length > 0){
+        if (message.length > 0) {
             send.removeClass("text-gray-400").addClass("text-black");
-            submitMessage.prop('disabled', false);
+            submitMessage.prop("disabled", false);
         } else {
             send.removeClass("text-black").addClass("text-gray-400");
-            submitMessage.prop('disabled', true);
+            submitMessage.prop("disabled", true);
         }
     });
+
+    // Search Kitab
+    $("#search-kitab").keyup(() => { searchKitab() });
+    
+    // Search Article
+    $("#search-article").keyup(() => { searchArticle() });
 });
+
+function searchKitab() { 
+    const searchBox = document.getElementById("search-kitab").value.toLowerCase();
+    const kitabList = document.getElementById("kitab-list");
+    const kitab = document.querySelectorAll("#kitab");
+    const titleKitab = kitabList.getElementsByTagName("h5");
+    for (let i = 0; i < titleKitab.length; i++) {
+        const match = kitab[i].getElementsByTagName("h5")[0];
+        if (match) {
+            let textValue = match.textContent || match.innerHTML
+            if (textValue.toLowerCase().indexOf(searchBox) > -1) {
+                kitab[i].classList.remove("hidden");
+            } else {
+                kitab[i].classList.add("hidden");
+            }
+        }
+    }
+}
+
+function searchArticle() { 
+    const searchBox = document.getElementById("search-article").value.toLowerCase();
+    const articleList = document.getElementById("article-list");
+    const article = document.querySelectorAll("#article");
+    const titleArticle = articleList.querySelectorAll("span#article-title");
+    for (let i = 0; i < titleArticle.length; i++) {
+        const match = article[i].querySelectorAll("span#article-title")[0];
+        if (match) {
+            let textValue = match.textContent || match.innerHTML
+            if (textValue.toLowerCase().indexOf(searchBox) > -1) {
+                article[i].classList.remove("hidden");
+            } else {
+                article[i].classList.add("hidden");
+            }
+        }
+    }
+}
 
 function clickOutsideNavProfile(event) {
     const navProfile = $("#navbar-profile");
