@@ -30,13 +30,13 @@
                                 <span class="text-white font-semibold">PDF</span>
                             </div>
                         </a>
-                        <a href="" target="_blank">
+                        <a href="{{ route('download.audio', $episode->id) }}" target="_blank">
                             <div class="flex items-center border-b border-[#d6c3c3]/50 gap-2 bg-[#942626] px-3 py-2">
                                 <ion-icon name="play-forward-outline" class="text-white text-lg"></ion-icon>
                                 <span class="text-white font-semibold">AUDIO</span>
                             </div>
                         </a>
-                        <a href="" target="_blank">
+                        <a href="{{ route('download.video', $episode->id) }}" target="_blank">
                             <div class="flex items-center gap-2 bg-[#942626] rounded-b-xl px-3 py-2">
                                 <ion-icon name="play-circle-outline" class="text-white text-lg"></ion-icon>
                                 <span class="text-white font-semibold">VIDEO</span>

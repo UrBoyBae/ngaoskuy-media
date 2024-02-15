@@ -7,6 +7,7 @@
     "require": {
         "php": "^8.1",
         "ab-alselwi/laravel-arabic-html": "^0.2.0",
+        "athlon1600/youtube-downloader": "^4.0",
         "barryvdh/laravel-dompdf": "^2.0",
         "dompdf/dompdf": "^2.0",
         "google/apiclient": "^2.15",
