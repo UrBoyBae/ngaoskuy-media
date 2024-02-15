@@ -65,7 +65,12 @@ Route::get('/user/video/{param}', [VideoListController::class, 'index'])->name('
 
 Route::get('/user/video-show/{param}', [VideoListController::class, 'show'])->name('user.video.show');
 Route::get('/user/video-display/{param}', [VideoListController::class, 'display'])->name('user.video.display');
+
+//download route
 Route::get('/download-pdf/{param}',[DownloadController::class,'pdf'])->name('download.pdf');
+Route::get('/download-video/{param}', [DownloadController::class, 'video'])->name('download.video');
+Route::get('/download-audio/{param}', [DownloadController::class, 'audio'])->name('download.audio');
+
 //member router
 Route::middleware(['auth', 'user-role:member'])->group(function () {
     Route::get('/member/dashboard', [DashboardController::class, 'index'])->name('member.home.index');
