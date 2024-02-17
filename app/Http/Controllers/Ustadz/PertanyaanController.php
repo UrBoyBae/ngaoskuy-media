@@ -8,6 +8,7 @@ use App\Models\Chat;
 use App\Models\ChatDetail;
 use App\Models\Episode;
 use App\Models\Kitab;
+use App\Models\User;
 use App\Models\Question;
 use Illuminate\Http\Request;
 
@@ -43,15 +44,21 @@ class PertanyaanController extends Controller
     public function show($id)
     {
         $user = auth()->user();
-        $episode = Episode::all();
+        $question = Question::where('id', $id)->first();
+        $chat = Chat::where('id_question', $id)->first();
+        $chatdetails = ChatDetail::with(['user'])->where('id_chat', $chat->id)->get();
+        $user_chat_detail = User::where('id', $chat->id_user)->first();// get sender id
         $kitab = Kitab::with(['bab'])->get();
-        $chat = ChatDetail::where('id_chat', $id)->get();
-        return view('components.templates.ustadz.questions.show',[
+        return view('components.templates.ustadz.questions.show', [
             'title' => 'Chat',
             'user' => $user,
-            'episode' => $episode,
-            'kitab' => $kitab,
+            'question' => $question,
             'chat' => $chat,
+            'chat_room' => $id,
+            'user_chat' => $chat->id_user,
+            'chatdetails' => $chatdetails,
+            'user_chat_detail' => $user_chat_detail,
+            'kitab' => $kitab,
             'roles' => $this->roles,
         ]);
     }
