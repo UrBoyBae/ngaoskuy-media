@@ -22,17 +22,21 @@ class VideoController extends Controller
             return $next($request);
         });
     }
-    public function index()
+    public function index($id)
     {
         $user = auth()->user();
         $episode = Episode::all();
+        $subbab = SubBab::where('id_bab', $id)->first();
         $kitab = Kitab::with(['bab'])->get();
+        $judul = Judul::where('id_subbab', $subbab->id)->paginate(5);
         $article  = Article::all();
-        return ([
+        return view('components.templates.ustadz.video.index',[
             'title' => 'Home',
             'user' => $user,
             'episode' => $episode,
+            'subbab' => $subbab,
             'kitab' => $kitab,
+            'judul' => $judul,
             'article' => $article,
             'roles'=>$this->roles
         ]);
