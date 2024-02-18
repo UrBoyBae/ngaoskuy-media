@@ -17,7 +17,7 @@
                                 class="flex items-center gap-3 border-[1.2px] border-[#000000] rounded-[9px] sm:rounded-[12px] h-8 sm:h-9 pl-2 sm:pl-3 lg:w-[375px] xl:w-[475px]">
                                 <input type="text" name="artikel" id="artikel"
                                     placeholder="Tuliskan judul artikel disini"
-                                    class="w-full h-full rounded-r-[9px] sm:rounded-[12px] bg-transparent focus:border-none focus:outline-none font-semibold text-sm sm:text-base">
+                                    class="w-full h-full rounded-r-[9px] sm:rounded-[12px] bg-transparent focus:border-none focus:outline-none font-semibold text-sm sm:text-base" required>
                             </div>
                             <div class="items-center gap-1 mt-[3px] hidden" id="error-artikel">
                                 <ion-icon name="alert-circle" class="text-red-700"></ion-icon>
@@ -28,7 +28,7 @@
                             <label for="isi artikel" class="text-base font-semibold sm:text-xl">Isi Artikel</label>
                             <div class="mb-7 flex gap-3 border-[1.2px] border-[#000000] rounded-[9px] sm:rounded-[12px] h-24 md:h-[120px] sm:h-9 pl-2 pt-1 sm:pl-3 lg:w-[375px] xl:w-[475px]">
                                 <textarea name="isi artikel" id="isi artikel" placeholder="Tuliskan isi artikel disini"
-                                    class="w-full h-full rounded-r-[9px] sm:rounded-[12px] bg-transparent focus:border-none focus:outline-none font-semibold text-sm sm:text-base"></textarea>
+                                    class="w-full h-full rounded-r-[9px] sm:rounded-[12px] bg-transparent focus:border-none focus:outline-none font-semibold text-sm sm:text-base" required></textarea>
                             </div>
                         </div>
 
