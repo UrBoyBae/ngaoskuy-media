@@ -45,19 +45,24 @@ class VideoController extends Controller
     public function show($id)
     {
         $user = auth()->user();
-        $episode = Episode::all();
+        $judul = Judul::where('id_subbab', $id)->get();
+        // dd($id);
+        $episode = Episode::where('id_judul', $judul->id)->first();
+        $episodevideo = Episode::with(['judul'])->where('id', $id)->first();
+        $episodelist = Episode::where('id_judul', $judul->id)->get();
         $subbab = SubBab::where('id_bab', $id)->get();
         $kitab = Kitab::with(['bab'])->get();
         $article  = Article::all();
-        return [
+        return view('components.templates.ustadz.video.show',[
             'title' => 'Home',
             'user' => $user,
             'episode' => $episode,
+            'episodevideo' => $episodevideo,
             'subbab' => $subbab,
             'kitab' => $kitab,
             'article' => $article,
             'roles' => $this->roles,
-        ];
+        ]);
     }
 
     public function videos($id)
