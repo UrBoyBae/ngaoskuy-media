@@ -56,12 +56,12 @@ class ArticleController extends Controller
     {
         $user = auth()->user();
         $kitab = Kitab::with(['bab'])->get();
-        return [
+        return view('components.templates.ustadz.article.create', [
             'title' => 'Create Article',
             'user' => $user,
             'kitab' => $kitab,
             'roles' => $this->roles,
-        ];
+        ]);
     }
 
     public function store(Request $request)
@@ -78,18 +78,19 @@ class ArticleController extends Controller
 
         return to_route('namarute')->with('success', 'Article Successfuly Created');
     }
+
     public function edit($id)
     {
         $user = auth()->user();
         $article = Article::findOrFail($id);
         $kitab = Kitab::with(['bab'])->get();
-        return [
+        return view('components.templates.ustadz.article.edit',[
             'title' => 'Article Edit',
             'user' => $user,
             'article' => $article,
             'kitab' => $kitab,
             'roles' => $this->roles,
-        ];
+        ]);
     }
     public function update(Request $request, $id)
     {

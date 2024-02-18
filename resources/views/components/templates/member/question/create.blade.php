@@ -47,10 +47,12 @@
                                 </div>
                             </div>
                         </div>
+                        <a href="{{ url()->previous() }}">
                             <button type="button"
-                            class="w-28 text-white bg-[#810000] hover:bg-[#810000] focus:outline-none focus:ring-4 focus:ring-red-300 font-bold rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2 dark:bg-[#810000] dark:hover:bg-[#810000] dark:focus:ring-red-900">BACK</button>
+                                class="w-28 text-white bg-[#810000] hover:bg-[#810000] focus:outline-none focus:ring-4 focus:ring-red-300 font-bold rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2 dark:bg-[#810000] dark:hover:bg-[#810000] dark:focus:ring-red-900">BACK</button>
+                        </a>
                             <button type="submit"
-                            class="w-28 text-white bg-[#1F7632] hover:bg-[#1F7632] focus:outline-none focus:ring-4 focus:ring-green-300 font-bold rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2 dark:bg-[#1F7632] dark:hover:bg-[#1F7632] dark:focus:ring-[#1F7632]">SEND</button>
+                                 class="w-28 text-white bg-[#1F7632] hover:bg-[#1F7632] focus:outline-none focus:ring-4 focus:ring-green-300 font-bold rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2 dark:bg-[#1F7632] dark:hover:bg-[#1F7632] dark:focus:ring-[#1F7632]">SEND</button>
                 </form>
             </div>
         </div>

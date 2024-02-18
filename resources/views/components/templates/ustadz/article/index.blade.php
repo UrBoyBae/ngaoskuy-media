@@ -8,9 +8,10 @@
         <div class="flex justify-center items-center">
             <span class="text-2xl font-bold text-black text-center">Latest Update</span>
         </div>
-        <button type="button"
-            class="w-15 text-white bg-[#810000] hover:bg-[#810000] focus:outline-none focus:ring-4 focus:ring-red-300 font-bold rounded-md text-sm px-2 py-1.5 mt-4 text-center dark:bg-[#810000] dark:hover:bg-[#810000] dark:focus:ring-red-900"><ion-icon
-                name="add" class="text-base font-bold md:text-xl"></ion-icon></button>
+        <a href="{{ route($role . '.article.create') }}">
+            <div class="flex items-center w-15 text-white bg-[#810000] font-bold rounded-md text-sm px-2 py-1.5 mt-4"><ion-icon
+                name="add" class="text-base font-bold md:text-xl"></ion-icon><span class="ml-1">Tambah Artikel</span></div>
+        </a>
         <div class="flex justify-center items-center">
             <div class="flex justify-between items-center px-4 mt-6 h-7 w-[300px] md:w-[370px]">
                 <div class="w-full h-full border-[#808080] border-[1.2px] flex justify-center items-center pr-3 rounded-xl">
