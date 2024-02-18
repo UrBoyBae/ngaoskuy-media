@@ -214,3 +214,9 @@ body {
         left: 35%;
     }
 }
+
+/* Event Kalender */
+.fc-event {
+    background-color: transparent;
+    border: none;
+}
