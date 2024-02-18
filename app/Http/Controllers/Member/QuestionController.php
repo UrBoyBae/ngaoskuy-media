@@ -25,7 +25,7 @@ class QuestionController extends Controller
     public function index()
     {
         $user = auth()->user();
-        $question = Question::paginate(9);
+        $question = Question::latest()->paginate(9);
         $kitab = Kitab::with(['bab'])->get();
         return view('components.templates.member.question.index', [
             'title' => 'Question',
@@ -82,13 +82,13 @@ class QuestionController extends Controller
 
         // Create a new question
         $question = Question::create([
-        'id_user' => $user->id,
-        'subject' => $request->subject,
-        'question' => $request->question,
-        'tipe' => $request->tipe,
-        'status' => false,
+            'id_user' => $user->id,
+            'subject' => $request->subject,
+            'question' => $request->pertanyaan,
+            'tipe' => $request->tipe,
+            'status' => false,
         ]);
-        // dd($question);
+
         // Create a chat associated with the new question
         Chat::create([
             'id_question' => $question->id,
@@ -96,7 +96,6 @@ class QuestionController extends Controller
         ]);
 
         // Redirect to the show page for the newly created question
-        return redirect()->route('member.question.show', $question->id)
-                        ->with('success', 'Question created successfully');
+        return redirect()->route('member.question.show', $question->id)->with('success', 'Question created successfully');
     }
 }
