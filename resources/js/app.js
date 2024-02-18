@@ -174,13 +174,9 @@ $(document).ready(function () {
 
         if (mainSidebar.hasClass("hidden")) {
             mainSidebar.removeClass("hidden").addClass("fixed");
-            window.addEventListener("click", clickOutsideSidebar);
         } else {
             mainSidebar.removeClass("fixed").addClass("hidden");
-            window.addEventListener("click", clickOutsideSidebar);
         }
-
-        event.stopPropagation();
     });
 
     // Profile
@@ -308,23 +304,6 @@ function clickOutsideNavProfile(event) {
     }
 }
 
-// Close sidebar ketika klik diluar
-function clickOutsideSidebar(event) {
-    const mainSidebar = $("#main-sidebar");
-    const toggleSidebar = $("#toggle-sidebar");
-
-    if (
-        !mainSidebar.hasClass("hidden") &&
-        !mainSidebar.is(event.target) &&
-        !mainSidebar.has(event.target).length &&
-        !toggleSidebar.is(event.target) &&
-        !toggleSidebar.has(event.target).length
-    ) {
-        mainSidebar.removeClass("block").addClass("hidden");
-        window.removeEventListener("click", clickOutsideSidebar);
-    }
-}
-
 // Close modal download ketika klik diluar
 function clickOutsideDownloadDropdown(event) {
     const mainDownloadDropdown = $("#main-download-dropdown");
@@ -342,13 +321,23 @@ function clickOutsideDownloadDropdown(event) {
     }
 }
 
-// Modal delete
+// Modal delete artikel
 var triggerModalDelete = document.querySelectorAll("div#trigger-delete-article");
 triggerModalDelete.forEach(function(buttonDelete) {
     buttonDelete.onclick = function() {
+        // Show modal delete artikel
         var dataModalDelete = buttonDelete.getAttribute("data-modal-delete");
         document.getElementById(dataModalDelete).classList.remove("hidden");
         document.getElementById(dataModalDelete).classList.add("flex");
+        
+        // Close modal delete artikel ketika klik diluar
+        var modalDelete = document.getElementById(dataModalDelete);
+        modalDelete.addEventListener("click", function (event) {
+            if (event.target == modalDelete) {
+                modalDelete.classList.remove("flex");
+                modalDelete.classList.add("hidden");
+            } 
+        });
     }
 })
 
@@ -359,6 +348,26 @@ closeModal.forEach(function(buttonClose) {
         buttonClose.closest(".z-50").classList.remove("flex");
         buttonClose.closest(".z-50").classList.add("hidden");
     };
+});
+
+// Close sidebar ketika klik diluar
+var mainSidebar = document.getElementById("main-sidebar");
+var backdropSidebar = document.getElementById("backdrop-sidebar");
+mainSidebar.addEventListener("click", function (event) {
+    if (event.target == backdropSidebar) {
+        mainSidebar.classList.remove("fixed");
+        mainSidebar.classList.add("hidden");
+    }
+});
+
+// Close setting ketika klik diluar
+var mainSettingProfile = document.getElementById("main-setting-profile");
+var backdropSettingProfile = document.getElementById("backdrop-setting-profile");
+mainSettingProfile.addEventListener("click", function (event) {
+    if (event.target == backdropSettingProfile) {
+        mainSettingProfile.classList.remove("fixed");
+        mainSettingProfile.classList.add("hidden");
+    }
 });
 
 // Slider
