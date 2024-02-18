@@ -376,26 +376,104 @@ document.addEventListener("DOMContentLoaded", function () {
         },
         events: [
             {
-                title: "Event Senin",
+                title: "TAFSIR ALMUNIR",
+                daysOfWeek: [0],
+            },
+            {
+                title: "TAHDZIBUL AKHLAQ",
                 daysOfWeek: [1],
-                color: "#31499C",
             },
             {
-                title: "Event Kamis",
+                title: "FATHUL BAARI': KITABUL ADAB",
+                daysOfWeek: [2],
+            },
+            {
+                title: "TAHDZIBUL AKHLAQ",
+                daysOfWeek: [2],
+            },
+            {
+                title: "DALILULFAALIHIN",
+                daysOfWeek: [3],
+            },
+            {
+                title: "FATHUL BAARI': KITABUL IMAN",
                 daysOfWeek: [4],
-                description: "Ini adalah deskripsi event Kamis.",
-                color: "#315B3D",
             },
             {
-                title: "Event Sabtu",
+                title: "FATHUL BAARI': KITABUL MANAQIB",
+                daysOfWeek: [5],
+            },
+            {
+                title: "TAFSIR ALMUNIR",
                 daysOfWeek: [6],
-                description: "Ini adalah deskripsi event Sabtu.",
-                color: "#B03737",
+            },
+            {
+                title: "FATHUL BAARI': KITABUL FITAN",
+                daysOfWeek: [6],
             },
         ],
+        eventContent: function (arg) {
+            var dayOfWeek = arg.event.start.getDay();
+            var eventTitle = arg.event.title;
+            var eventTime = "";
+            var eventLocation = "";
+            var backgroundCard = "";
+            
+            switch (dayOfWeek) {
+                case 0: // Ahad
+                    eventTime = '<div class="flex items-center gap-1"><ion-icon class="font-semibold text-base" name="time-outline"></ion-icon><span class="fc-time text-white font-semibold text-sm">Pukul 20:00 - 22:00</span></div>';
+                    eventLocation = '<div class="flex items-center gap-1"><ion-icon class="font-semibold text-base" name="location-outline"></ion-icon><span class="fc-time text-white font-semibold text-xs">MASJID SABILUSSALAM</span></div>';
+                    backgroundCard = "bg-fuchsia-400";
+                    break;
+                case 1: // Senin
+                    eventTime = '<div class="flex items-center gap-1"><ion-icon class="font-semibold text-base" name="time-outline"></ion-icon><span class="fc-time text-white font-semibold text-sm">Pukul 20:00 - 22:00</span></div>';
+                    eventLocation = '<div class="flex items-center gap-1"><ion-icon class="font-semibold text-base" name="location-outline"></ion-icon><span class="fc-time text-white font-semibold text-xs">PST. TAHDZIBUL WASHIYYAH</span></div>';
+                    backgroundCard = "bg-purple-400";
+                    break;
+                case 2: // Selasa
+                    eventTime = '<div class="flex items-center gap-1"><ion-icon class="font-semibold text-base" name="time-outline"></ion-icon><span class="fc-time text-white font-semibold text-sm">Pukul 20:00 - 22:00</span></div>';
+                    eventLocation = '<div class="flex items-center gap-1"><ion-icon class="font-semibold text-base" name="location-outline"></ion-icon><span class="fc-time text-white font-semibold text-xs">MASJID ALQURANU IMAMI</span></div>';
+                    backgroundCard = "bg-blue-400";
+                    break;
+                case 3: // Rabu
+                    eventTime = '<div class="flex items-center gap-1"><ion-icon class="font-semibold text-base" name="time-outline"></ion-icon><span class="fc-time text-white font-semibold text-sm">Pukul 20:00 - 22:00</span></div>';
+                    eventLocation = '<div class="flex items-center gap-1"><ion-icon class="font-semibold text-base" name="location-outline"></ion-icon><span class="fc-time text-white font-semibold text-xs">MASJID SABILUSSALAM</span></div>';
+                    backgroundCard = "bg-teal-400";
+                    break;
+                case 4: // Kamis
+                    eventTime = '<div class="flex items-center gap-1"><ion-icon class="font-semibold text-base" name="time-outline"></ion-icon><span class="fc-time text-white font-semibold text-sm">Pukul 20:00 - 22:00</span></div>';
+                    eventLocation = '<div class="flex items-center gap-1"><ion-icon class="font-semibold text-base" name="location-outline"></ion-icon><span class="fc-time text-white font-semibold text-xs">MASJID ALQURANU IMAMI</span></div>';
+                    backgroundCard = "bg-green-400";
+                    break;
+                case 5: // Jumat
+                    eventTime = '<div class="flex items-center gap-1"><ion-icon class="font-semibold text-base" name="time-outline"></ion-icon><span class="fc-time text-white font-semibold text-sm">Pukul 20:00 - 22:00</span></div>';
+                    eventLocation = '<div class="flex items-center gap-1"><ion-icon class="font-semibold text-base" name="location-outline"></ion-icon><span class="fc-time text-white font-semibold text-xs">PST. TAHDZIBUL WASHIYYAH</span></div>';
+                    backgroundCard = "bg-orange-400";
+                    break;
+                case 6: // Sabtu
+                    eventTime = '<div class="flex items-center gap-1"><ion-icon class="font-semibold text-base" name="time-outline"></ion-icon><span class="fc-time text-white font-semibold text-sm">Pukul 09:00 - 11:00</span></div>';
+                    eventLocation = '<div class="flex items-center gap-1"><ion-icon class="font-semibold text-base" name="location-outline"></ion-icon><span class="fc-time text-white font-semibold text-xs">MASJID ADZ-DZIKRA</span></div>';
+                    backgroundCard = "bg-red-400";
+                    break;
+            }
+            
+            return { html: '<div class="fc-content w-full rounded-lg px-2 pt-1 pb-2 text-white font-semibold mb-2 text-wrap '+ backgroundCard +'">' + eventTitle + eventTime + eventLocation + '</div>' };
+        },
+        // weekends: false,
+        dayHeaderFormat: {
+            weekday: 'long',
+        },
     });
+    
     calendar.render();
+    
+    if (window.matchMedia("(max-width: 768px)").matches) {
+        calendar.setOption('dayHeaderFormat', {
+            weekday: 'short',
+        });
+    }
 });
+
 
 // tab about us
 document.addEventListener("DOMContentLoaded", function () {
