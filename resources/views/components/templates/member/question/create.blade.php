@@ -28,7 +28,7 @@
                                 <div
                                     class="flex gap-3 border-[1.2px] border-[#000000] rounded-[9px] sm:rounded-[12px] h-24 md:h-[120px] sm:h-9 pl-2 pt-1 sm:pl-3 lg:w-[375px] xl:w-[475px]">
                                     <textarea name="pertanyaan" id="pertanyaan" placeholder="Tuliskan pertanyaan anda disini"
-                                        class="w-full h-full rounded-r-[9px] sm:rounded-[12px] bg-transparent focus:border-none focus:outline-none font-semibold text-sm sm:text-base" required></textarea>
+                                        class="w-full h-full bg-transparent focus:border-none focus:outline-none font-semibold text-sm sm:text-base"></textarea>
                                 </div>
                             </div>
                             <div class="col-span-full">
