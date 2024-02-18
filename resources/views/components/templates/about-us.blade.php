@@ -1,15 +1,15 @@
 @extends('layouts.index')
 
 @section('mainContent')
-    <div class="w-full h-fit bg-[#EEEBDD] content-center px-9">
+    <div class="w-full h-fit py-8 bg-[#EEEBDD] px-9">
         <div class="w-full">
-            <div class="text-center pt-6 pb-3">
+            <div class="text-center pb-3">
                 <p class=" text-black font-bold text-xl">About Us</p>
             </div>
         </div>
         <div class="w-full flex justify-center">
-            <x-atoms.tab-button title="Ngaos Kuy" dataTab="ngaos-kuy"/>
-            <x-atoms.tab-button title="Eunola" dataTab="eunola"/>
+            <x-atoms.tab-button title="Ngaos Kuy" dataTab="ngaos-kuy" />
+            <x-atoms.tab-button title="Eunola" dataTab="eunola" />
         </div>
         <div class="text-center mt-10 tab-content " id="ngaos-kuy">
             <p class="text-black font-bold mb-4">Deskripsi</p>
