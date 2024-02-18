@@ -253,6 +253,7 @@ $(document).ready(function () {
     $("#search-article").keyup(() => { searchArticle() });
 });
 
+// Search kitab
 function searchKitab() { 
     const searchBox = document.getElementById("search-kitab").value.toLowerCase();
     const kitabList = document.getElementById("kitab-list");
@@ -271,6 +272,7 @@ function searchKitab() {
     }
 }
 
+// Search artikel
 function searchArticle() { 
     const searchBox = document.getElementById("search-article").value.toLowerCase();
     const articleList = document.getElementById("article-list");
@@ -289,6 +291,7 @@ function searchArticle() {
     }
 }
 
+// Close modal profile ketika klik diluar
 function clickOutsideNavProfile(event) {
     const navProfile = $("#navbar-profile");
     const toggleNavProfile = $("#toggle-navbar-profile");
@@ -305,6 +308,7 @@ function clickOutsideNavProfile(event) {
     }
 }
 
+// Close sidebar ketika klik diluar
 function clickOutsideSidebar(event) {
     const mainSidebar = $("#main-sidebar");
     const toggleSidebar = $("#toggle-sidebar");
@@ -321,6 +325,7 @@ function clickOutsideSidebar(event) {
     }
 }
 
+// Close modal download ketika klik diluar
 function clickOutsideDownloadDropdown(event) {
     const mainDownloadDropdown = $("#main-download-dropdown");
     const toggleDownloadDropdown = $("#toggle-download-dropdown");
@@ -336,6 +341,25 @@ function clickOutsideDownloadDropdown(event) {
         window.removeEventListener("click", clickOutsideDownloadDropdown);
     }
 }
+
+// Modal delete
+var triggerModalDelete = document.querySelectorAll("div#trigger-delete-article");
+triggerModalDelete.forEach(function(buttonDelete) {
+    buttonDelete.onclick = function() {
+        var dataModalDelete = buttonDelete.getAttribute("data-modal-delete");
+        document.getElementById(dataModalDelete).classList.remove("hidden");
+        document.getElementById(dataModalDelete).classList.add("flex");
+    }
+})
+
+// All close modal delete
+var closeModal = document.querySelectorAll("div#close-modal-delete-article");
+closeModal.forEach(function(buttonClose) {
+    buttonClose.onclick = function () {
+        buttonClose.closest(".z-50").classList.remove("flex");
+        buttonClose.closest(".z-50").classList.add("hidden");
+    };
+});
 
 // Slider
 var TrandingSlider = new Swiper(".tranding-slider", {
