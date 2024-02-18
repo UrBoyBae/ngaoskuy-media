@@ -106,6 +106,6 @@ class ArticleController extends Controller
     {
         $article = Article::findOrFail($id);
         $article->delete();
-        return to_route('namarute')->with('success', 'Article Successfuly Deleted');
+        return to_route('ustadz.article.index')->with('success', 'Article Successfuly Deleted');
     }
 }

@@ -15,13 +15,15 @@
                     @if ($role == 'ustadz' || $role == 'admin')
                         <div class="hidden md:flex md:gap-3">
                             <a href="{{ route($role . '.article.edit', $id) }}">
-                                <div class="w-8 h-8 lg:w-6 lg:h-6 bg-[#810000] flex justify-center items-center rounded-lg lg:rounded-md"><ion-icon
-                                        class="text-white text-lg lg:text-base" name="pencil"></ion-icon></div>
+                                <div
+                                    class="w-8 h-8 lg:w-6 lg:h-6 bg-[#810000] flex justify-center items-center rounded-lg lg:rounded-md">
+                                    <ion-icon class="text-white text-lg lg:text-base" name="pencil"></ion-icon>
+                                </div>
                             </a>
-                            <a href="">
-                                <div class="w-8 h-8 lg:w-6 lg:h-6 bg-[#810000] flex justify-center items-center rounded-lg lg:rounded-md"><ion-icon
-                                        class="text-white text-lg lg:text-base" name="trash-outline"></ion-icon></div>
-                            </a>
+                            <div class="w-8 h-8 lg:w-6 lg:h-6 bg-[#810000] flex justify-center items-center rounded-lg lg:rounded-md cursor-pointer"
+                                id="trigger-delete-article" data-modal-delete="modal-edit-article-{{ $id }}">
+                                <ion-icon class="text-white text-lg lg:text-base" name="trash-outline"></ion-icon>
+                            </div>
                         </div>
                     @endif
                 </div>
@@ -34,10 +36,9 @@
                         <div class="w-8 h-8 bg-[#810000] flex justify-center items-center rounded-lg"><ion-icon
                                 class="text-white text-lg" name="pencil"></ion-icon></div>
                     </a>
-                    <a href="">
-                        <div class="w-8 h-8 bg-[#810000] flex justify-center items-center rounded-lg"><ion-icon
-                                class="text-white text-lg" name="trash-outline"></ion-icon></div>
-                    </a>
+                    <div class="w-8 h-8 bg-[#810000] flex justify-center items-center rounded-lg cursor-pointer"
+                        id="trigger-delete-article" data-modal-delete="modal-edit-article-{{ $id }}"><ion-icon
+                            class="text-white text-lg" name="trash-outline"></ion-icon></div>
                 </div>
             @endif
         </div>
@@ -51,3 +52,20 @@
         </a>
     </div>
 </li>
+<div class="fixed top-0 left-0 h-screen w-full bg-black/30 backdrop-blur-sm hidden justify-center items-center z-50"
+    id="modal-edit-article-{{ $id }}">
+    <div
+        class="bg-[#EEEBDD] w-[335px] h-[200px] md:w-[487px] md:h-[246px] flex flex-col justify-center items-center rounded-3xl">
+        <span class="text-black text-xl md:text-2xl font-semibold w-[246px] text-center">Anda yakin akan menghapus
+            data ini?</span>
+        <form action="{{ route($role . '.article.delete', $id) }}" method="POST">
+            @csrf
+            <div class="flex gap-5 md:gap-12 justify-center mt-8 md:mt-9">
+                <div class="bg-[#810000] py-2 w-28 md:w-36 rounded-3xl text-white font-semibold md:text-xl text-center cursor-pointer"
+                    id="close-modal-delete-article">BACK</div>
+                <button class="bg-[#1F7632] py-2 w-28 md:w-36 rounded-3xl text-white font-semibold md:text-xl"
+                    type="submit">DELETE</button>
+            </div>
+        </form>
+    </div>
+</div>
