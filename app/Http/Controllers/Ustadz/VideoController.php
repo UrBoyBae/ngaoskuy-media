@@ -45,8 +45,8 @@ class VideoController extends Controller
     public function show($id)
     {
         $user = auth()->user();
-        $judul = Judul::where('id_subbab', $id)->get();
-        // dd($id);
+        $judul = Judul::where('id', $id)->first();
+        // dd($judul);
         $episode = Episode::where('id_judul', $judul->id)->first();
         $episodevideo = Episode::with(['judul'])->where('id', $id)->first();
         $episodelist = Episode::where('id_judul', $judul->id)->get();
@@ -58,6 +58,7 @@ class VideoController extends Controller
             'user' => $user,
             'episode' => $episode,
             'episodevideo' => $episodevideo,
+            'episodelist' => $episodelist,
             'subbab' => $subbab,
             'kitab' => $kitab,
             'article' => $article,
