@@ -22,6 +22,7 @@ use App\Http\Controllers\User\VideoListController;
 use App\Http\Controllers\Ustadz\ArticleController as UstadzArticleController;
 use App\Http\Controllers\Ustadz\DashboardController as UstadzDashboardController;
 use App\Http\Controllers\Ustadz\PertanyaanController;
+use App\Http\Controllers\Ustadz\QuestionController as UstadzQuestionController;
 use App\Http\Controllers\Ustadz\VideoController;
 use Illuminate\Support\Facades\Route;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
@@ -154,9 +155,9 @@ Route::middleware(['auth', 'user-role:ustadz'])->group(function () {
     Route::post('/ustadz/artikel/edit/{param}', [UstadzArticleController::class, 'update'])->name('ustadz.article.update');
     Route::post('/ustadz/artikel/delete/{param}', [UstadzArticleController::class, 'delete'])->name('ustadz.article.delete');
 
-    Route::get('/ustadz/question', [PertanyaanController::class, 'index'])->name('ustadz.question.index');
-    Route::get('/ustadz/question/{param}', [PertanyaanController::class, 'show'])->name('ustadz.question.show');
-    Route::post('/ustadz/question/{param}', [PertanyaanController::class, 'store'])->name('ustadz.question.store');
+    Route::get('/ustadz/question', [UstadzQuestionController::class, 'index'])->name('ustadz.question.index');
+    Route::get('/ustadz/question/{param}', [UstadzQuestionController::class, 'show'])->name('ustadz.question.show');
+    Route::post('/ustadz/question/{param}', [UstadzQuestionController::class, 'store'])->name('ustadz.question.store');
 
     Route::get('/ustadz/video/{param}', [VideoController::class, 'index'])->name('ustadz.video.index');
     Route::get('/ustadz/video-show/{param}', [VideoController::class, 'show'])->name('ustadz.video.show');

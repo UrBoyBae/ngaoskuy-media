@@ -12,7 +12,7 @@ use App\Models\User;
 use App\Models\Question;
 use Illuminate\Http\Request;
 
-class PertanyaanController extends Controller
+class QuestionController extends Controller
 {
     protected $roles;
     public function __construct()
@@ -23,7 +23,7 @@ class PertanyaanController extends Controller
             return $next($request);
         });
     }
-    public function index(Request $request)
+    public function index()
     {
         $user = auth()->user();
         $episode = Episode::all();
@@ -66,17 +66,16 @@ class PertanyaanController extends Controller
     public function store(Request $request, $id)
     {
         $user = auth()->user();
-        $user = auth()->user();
-        $chat = ChatDetail::all()->where('id_chat', $id)->first();
+        $chat = Chat::where('id_question', $id)->first();
         $request->validate([
-            'isi' => 'required|text',
+            'message' => 'required|string',
         ]);
-        Chat::create([
+        ChatDetail::create([
             'id_chat' => $chat->id,
             'id_user' => $user->id,
-            'isi' => $request->isi,
+            'isi' => $request->message,
         ]);
 
-        return to_route('namarute')->with('success', 'Chat created succesfully');
+        return to_route('ustadz.question.show', $id)->with('success', 'Chat created succesfully');
     }
 }
