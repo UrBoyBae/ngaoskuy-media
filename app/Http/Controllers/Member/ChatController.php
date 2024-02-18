@@ -22,6 +22,7 @@ class ChatController extends Controller
             return $next($request);
         });
     }
+
     public function index($id)
     {
         $user = auth()->user();
@@ -46,7 +47,6 @@ class ChatController extends Controller
     public function store(Request $request, $id)
     {
         $user = auth()->user();
-        // $chat = ChatDetail::all()->where('id_chat', $id)->first();
         $request->validate([
             'message' => 'required|string',
         ]);
