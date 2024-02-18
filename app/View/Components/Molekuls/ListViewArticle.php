@@ -17,6 +17,7 @@ class ListViewArticle extends Component
     public string $created_at;
     public string $updated_at;
     public string $route;
+    public string $role;
     
     public function __construct($data, $route)
     {
@@ -26,6 +27,8 @@ class ListViewArticle extends Component
         $this->created_at = isset($data->created_at)?$data->created_at:"";
         $this->updated_at = isset($data->updated_at)?$data->updated_at:"";
         $this->route = isset($route)?$route:"";
+        $arr_route = explode(".", $this->route);
+        $this->role = $arr_route[0];
     }
 
     /**
