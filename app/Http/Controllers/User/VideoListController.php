@@ -4,6 +4,7 @@ namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
 use App\Models\Article;
+use App\Models\Bab;
 use App\Models\Episode;
 use App\Models\Judul;
 use App\Models\Kitab;
@@ -28,6 +29,7 @@ class VideoListController extends Controller
         $user = auth()->user();
         $subbab = SubBab::where('id_bab', $id)->first();
         // $judul = Judul::with(['episode'])->where('id_subbab', $subbab->id)->get();
+        $bab = Bab::with(['kitab'])->where('id',$subbab->bab->id)->first();
         $judul = Judul::with(['episode'])->where('id_subbab', $subbab->id)->paginate(5);
         $kitab = Kitab::with(['bab'])->get();
         // $judul->load('episode')->paginate(5);
@@ -35,6 +37,7 @@ class VideoListController extends Controller
             'title' => 'Video',
             'user' => $user,
             'judul' => $judul,
+            'bab' => $bab,
             'subbab' => $subbab,
             'kitab' => $kitab,
             'roles' => $this->roles,
