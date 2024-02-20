@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Ustadz;
 
 use App\Http\Controllers\Controller;
 use App\Models\Article;
+use App\Models\Bab;
 use App\Models\Episode;
 use App\Models\Judul;
 use App\Models\Kitab;
@@ -26,7 +27,8 @@ class VideoController extends Controller
     {
         $user = auth()->user();
         $episode = Episode::all();
-        $subbab = SubBab::where('id_bab', $id)->first();
+        $subbab = SubBab::with(['bab'])->where('id_bab', $id)->first();
+        $bab = Bab::with(['kitab'])->where('id',$subbab->bab->id)->first();
         $kitab = Kitab::with(['bab'])->get();
         $judul = Judul::where('id_subbab', $subbab->id)->paginate(5);
         $article  = Article::all();
@@ -35,6 +37,7 @@ class VideoController extends Controller
             'user' => $user,
             'episode' => $episode,
             'subbab' => $subbab,
+            'bab' => $bab,
             'kitab' => $kitab,
             'judul' => $judul,
             'article' => $article,
@@ -65,7 +68,24 @@ class VideoController extends Controller
             'roles' => $this->roles,
         ]);
     }
-
+    public function display($id)
+    {
+        $user = auth()->user();
+        $episode = Episode::with(['judul'])->where('id', $id)->first();
+        $judul = Judul::where('id',$episode->judul->id)->first();
+        $episodevideo = Episode::with(['judul'])->where('id', $id)->first();
+        $episodelist = Episode::with(['judul'])->where('id_judul', $judul->id)->get();
+        $kitab = Kitab::with(['bab'])->get();
+        return view('components.templates.ustadz.video.show',[
+            'title' => 'Video Player',
+            'user' => $user,
+            'episode' => $episode,
+            'episodevideo' => $episodevideo,
+            'episodelist' => $episodelist,
+            'kitab' => $kitab,
+            'roles' => $this->roles,
+        ]);
+    }
     public function videos($id)
     {
         $user = auth()->user();
