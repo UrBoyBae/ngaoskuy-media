@@ -5,7 +5,7 @@
 <div class="w-full py-3 px-5 bg-[#810000] flex justify-between items-center">
     <ion-icon name="menu" class="cursor-pointer text-white text-2xl" id="toggle-sidebar"></ion-icon>
     <div class="hidden z-50 inset-0" id="main-sidebar">
-        <div class="fixed inset-0 bg-black/30 backdrop-blur-sm"></div>
+        <div class="fixed inset-0 bg-black/30 backdrop-blur-sm" id="backdrop-sidebar"></div>
         <div class="relative bg-white w-72 h-screen overflow-y-auto">
             <div class="sticky top-0 backdrop-blur-sm bg-white/30 px-6 pt-6 pb-7">
                 <div class="flex justify-between items-center">
@@ -102,7 +102,7 @@
 
     </div>
     <div class="hidden z-50 inset-0 px-4 pt-4" id="main-setting-profile">
-        <div class="fixed inset-0 bg-black/30 backdrop-blur-sm"></div>
+        <div class="fixed inset-0 bg-black/30 backdrop-blur-sm" id="backdrop-setting-profile"></div>
         <div
             class="relative bg-[#810000] m-auto w-full max-w-[800px] h-fit rounded-[30px] pt-6 md:pt-12 pb-7 px-6 md:pr-16">
             <form method="" action="" id="update-profile">

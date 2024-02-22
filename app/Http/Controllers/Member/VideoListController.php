@@ -25,6 +25,7 @@ class VideoListController extends Controller
     {
         $user = auth()->user();
         $subbab = SubBab::where('id_bab', $id)->first();
+        $bab = Bab::with(['kitab'])->where('id',$subbab->bab->id)->first();
         $judul = Judul::where('id_subbab', $subbab->id)->paginate(5);
         $kitab = Kitab::with(['bab'])->get();
             return view('components.templates.member.video.index',[
@@ -32,6 +33,7 @@ class VideoListController extends Controller
             'user' => $user,
             'judul' => $judul,
             'subbab' => $subbab,
+            'bab' => $bab,
             'kitab' => $kitab,
             'roles' => $this->roles,
         ]);
@@ -40,7 +42,8 @@ class VideoListController extends Controller
     public function show($id)
     {
         $user = auth()->user();
-        $judul = Judul::where('id_subbab', $id)->get();
+        $judul = Judul::where('id', $id)->first();
+        
         $episode = Episode::where('id_judul', $judul->id)->first();
         $episodevideo = Episode::with(['judul'])->where('id', $id)->first();
         $episodelist = Episode::where('id_judul', $judul->id)->get();
