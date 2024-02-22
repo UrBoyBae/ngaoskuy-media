@@ -1,10 +1,13 @@
 @extends('layouts.index')
 
 @section('mainContent')
+    <div class="pt-3">
+        @include('components.atoms.notification-live')
+    </div>
     <div class="w-full h-fit py-8 bg-[#EEEBDD] px-9">
         <div class="w-full">
             <div class="text-center pb-3">
-                <p class=" text-black font-bold text-xl">About Us</p>
+                <p class=" text-black font-bold text-2xl">About Us</p>
             </div>
         </div>
         <div class="w-full flex justify-center">

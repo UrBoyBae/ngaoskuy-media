@@ -4,7 +4,10 @@
     @php
         $role = empty($roles) ? 'user' : $roles[0];
     @endphp
-    <div class="w-full pt-7 pb-12 bg-[#EEEBDD] px-7 md:px-10 flex flex-col items-center">
+    <div class="pt-3">
+        @include('components.atoms.notification-live')
+    </div>
+    <div class="w-full pt-8 pb-12 bg-[#EEEBDD] px-7 md:px-10 flex flex-col items-center">
         <div class="flex justify-center items-center">
             <span class="text-2xl font-bold text-black text-center">Latest Update</span>
         </div>

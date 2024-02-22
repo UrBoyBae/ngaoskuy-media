@@ -4,6 +4,9 @@
     @php
         $role = empty($roles) ? 'user' : $roles[0];
     @endphp
+    <div class="pt-3">
+        @include('components.atoms.notification-live')
+    </div>
     <div class="w-full pt-8 pb-12 bg-[#EEEBDD] px-7 lg:px-12 flex flex-col lg:flex-row gap-8">
         <div class="w-full flex flex-col gap-5">
             <iframe class="w-full aspect-video rounded-xl" src="https://www.youtube.com/embed/{{ $episode->video_link }}"
