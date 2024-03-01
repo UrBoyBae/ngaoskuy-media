@@ -4,10 +4,8 @@
     @php
         $role = empty($roles) ? 'user' : $roles[0];
     @endphp
-    <div class="pt-3">
-        @include('components.atoms.notification-live')
-    </div>
     <div class="w-full pt-8 bg-[#EEEBDD]">
+        @include('components.atoms.notification-live')
         @include('components.organisme.episode-slider')
         <div class="w-full mt-5 md:mt-10">
             <div class="flex items-center justify-between pl-8 pr-8 md:pr-12 md:pl-12">
