@@ -29,7 +29,7 @@ class VideoListController extends Controller
         $user = auth()->user();
         $subbab = SubBab::where('id_bab', $id)->first();
         // $judul = Judul::with(['episode'])->where('id_subbab', $subbab->id)->get();
-        $bab = Bab::with(['kitab'])->where('id',$subbab->bab->id)->first();
+        $bab = Bab::with(['kitab'])->where('id',$subbab->id_bab)->first();
         $judul = Judul::with(['episode'])->where('id_subbab', $subbab->id)->paginate(5);
         $kitab = Kitab::with(['bab'])->get();
         // $judul->load('episode')->paginate(5);
@@ -51,6 +51,8 @@ class VideoListController extends Controller
         $episodevideo = Episode::with(['judul'])->where('id', $id)->first();
         $episodelist = Episode::with(['judul'])->where('id_judul', $id)->get();
         $kitab = Kitab::with(['bab'])->get();
+        $subbab = SubBab::where('id', $episode->judul->id_subbab)->first();
+        $bab = Bab::with(['kitab'])->where('id',$subbab->id_bab)->first();
         return view('components.templates.user.video.show',[
             'title' => 'Video Player',
             'user' => $user,
@@ -58,6 +60,7 @@ class VideoListController extends Controller
             'episodevideo' => $episodevideo,
             'episodelist' => $episodelist,
             'kitab' => $kitab,
+            'bab' => $bab,
             'roles' => $this->roles,
         ]);
     }
@@ -69,6 +72,8 @@ class VideoListController extends Controller
         $episodevideo = Episode::with(['judul'])->where('id', $id)->first();
         $episodelist = Episode::with(['judul'])->where('id_judul', $judul->id)->get();
         $kitab = Kitab::with(['bab'])->get();
+        $subbab = SubBab::where('id', $episode->judul->id_subbab)->first();
+        $bab = Bab::with(['kitab'])->where('id',$subbab->id_bab)->first();
         return view('components.templates.user.video.show',[
             'title' => 'Video Player',
             'user' => $user,
@@ -76,6 +81,7 @@ class VideoListController extends Controller
             'episodevideo' => $episodevideo,
             'episodelist' => $episodelist,
             'kitab' => $kitab,
+            'bab' => $bab,
             'roles' => $this->roles,
         ]);
     }

@@ -4,10 +4,8 @@
     @php
         $role = empty($roles) ? 'user' : $roles[0];
     @endphp
-    <div class="pt-3">
-        @include('components.atoms.notification-live')
-    </div>
     <div class="w-full pt-8 bg-[#EEEBDD]">
+        @include('components.atoms.notification-live')
         @include('components.organisme.episode-slider')
         <div class="w-full mt-5 md:mt-10">
             <div class="flex items-center justify-between pl-8 pr-8 md:pr-12 md:pl-12">
@@ -24,10 +22,10 @@
                 @foreach ($question as $data)
                     <x-molekuls.question-card :data="$data" route="{{ $role }}.question.show" width="300px" />
                 @endforeach
-                <a href="{{route($role .'.question.create')}}">
+                <a href="{{ route($role . '.question.create') }}">
                     <div
                         class="bg-[#2E2E2E] min-w-[300px] max-w-[300px] h-[175px] rounded-xl border-[5px] border-dashed flex items-center justify-around px-3 pt-2 pb-3 snap-center">
-                        <span class="text-center font-bold text-2xl text-[#5D5D5D]">Tambah<br/>Pertanyaan</span>
+                        <span class="text-center font-bold text-2xl text-[#5D5D5D]">Tambah<br />Pertanyaan</span>
                         <ion-icon name="add" class="text-8xl text-[#5D5D5D]"></ion-icon>
                     </div>
                 </a>
