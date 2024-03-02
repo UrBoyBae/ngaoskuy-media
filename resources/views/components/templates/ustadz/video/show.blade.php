@@ -27,7 +27,7 @@
                             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                 d="m1 9 4-4-4-4" />
                         </svg>
-                        <a href="{{ route($role . '.video.index', $episode->judul->id_subbab) }}"
+                        <a href="{{ route($role . '.video.index', $bab->id) }}"
                             class="ms-1 text-sm font-bold text-black hover:text-blue-600 md:ms-2 dark:text-black dark:hover:text-[#810000]">{{ $bab->kitab->name}}</a>
                     </div>
                 </li>
