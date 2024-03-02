@@ -47,8 +47,6 @@ class VideoListController extends Controller
         $episodevideo = Episode::with(['judul'])->where('id', $id)->first();
         $episodelist = Episode::where('id_judul', $judul->id)->get();
         $kitab = Kitab::with(['bab'])->get();
-        $subbab = SubBab::where('id', $episode->judul->id_subbab)->first();
-        $bab = Bab::with(['kitab'])->where('id',$subbab->id_bab)->first();
         return view('components.templates.member.video.show',[
             'title' => 'Video Player',
             'user' => $user,
@@ -56,7 +54,6 @@ class VideoListController extends Controller
             'episodevideo' => $episodevideo,
             'episodelist' => $episodelist,
             'kitab' => $kitab,
-            'bab' => $bab,
             'roles' => $this->roles,
         ]);
     }
@@ -68,8 +65,6 @@ class VideoListController extends Controller
         $episodevideo = Episode::with(['judul'])->where('id', $id)->first();
         $episodelist = Episode::with(['judul'])->where('id_judul', $judul->id)->get();
         $kitab = Kitab::with(['bab'])->get();
-        $subbab = SubBab::where('id', $episode->judul->id_subbab)->first();
-        $bab = Bab::with(['kitab'])->where('id',$subbab->id_bab)->first();
         return view('components.templates.member.video.show',[
             'title' => 'Video Player',
             'user' => $user,
@@ -77,7 +72,6 @@ class VideoListController extends Controller
             'episodevideo' => $episodevideo,
             'episodelist' => $episodelist,
             'kitab' => $kitab,
-            'bab' => $bab,
             'roles' => $this->roles,
         ]);
     }
