@@ -174,8 +174,11 @@ $(document).ready(function () {
 
         if (mainSidebar.hasClass("hidden")) {
             mainSidebar.removeClass("hidden").addClass("fixed");
+            $("body").addClass("overflow-hidden");
+            
         } else {
             mainSidebar.removeClass("fixed").addClass("hidden");
+            $("body").removeClass("overflow-hidden");
         }
     });
 
@@ -185,9 +188,11 @@ $(document).ready(function () {
 
         if (navProfile.hasClass("hidden")) {
             navProfile.removeClass("hidden").addClass("block");
+            $("body").addClass("overflow-hidden");
             window.addEventListener("click", clickOutsideNavProfile);
         } else {
             navProfile.removeClass("block").addClass("hidden");
+            $("body").removeClass("overflow-hidden");
             window.removeEventListener("click", clickOutsideNavProfile);
         }
 
@@ -300,6 +305,7 @@ function clickOutsideNavProfile(event) {
         !toggleNavProfile.has(event.target).length
     ) {
         navProfile.removeClass("block").addClass("hidden");
+        $("body").removeClass("overflow-hidden");
         window.removeEventListener("click", clickOutsideNavProfile);
     }
 }
@@ -323,17 +329,20 @@ function clickOutsideDownloadDropdown(event) {
 
 // Modal delete artikel
 var triggerModalDelete = document.querySelectorAll("div#trigger-delete-article");
+var body = document.getElementsByTagName("body");
 triggerModalDelete.forEach(function(buttonDelete) {
     buttonDelete.onclick = function() {
         // Show modal delete artikel
         var dataModalDelete = buttonDelete.getAttribute("data-modal-delete");
         document.getElementById(dataModalDelete).classList.remove("hidden");
         document.getElementById(dataModalDelete).classList.add("flex");
+        body[0].classList.add("overflow-hidden");
         
         // Close modal delete artikel ketika klik diluar
         var modalDelete = document.getElementById(dataModalDelete);
         modalDelete.addEventListener("click", function (event) {
             if (event.target == modalDelete) {
+                body[0].classList.remove("overflow-hidden");
                 modalDelete.classList.remove("flex");
                 modalDelete.classList.add("hidden");
             } 
@@ -347,16 +356,19 @@ closeModal.forEach(function(buttonClose) {
     buttonClose.onclick = function () {
         buttonClose.closest(".z-50").classList.remove("flex");
         buttonClose.closest(".z-50").classList.add("hidden");
+        body[0].classList.remove("overflow-hidden");
     };
 });
 
 // Close sidebar ketika klik diluar
 var mainSidebar = document.getElementById("main-sidebar");
 var backdropSidebar = document.getElementById("backdrop-sidebar");
+var body = document.getElementsByTagName("body");
 mainSidebar.addEventListener("click", function (event) {
     if (event.target == backdropSidebar) {
         mainSidebar.classList.remove("fixed");
         mainSidebar.classList.add("hidden");
+        body[0].classList.remove("overflow-hidden");
     }
 });
 
