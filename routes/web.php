@@ -168,3 +168,8 @@ Route::middleware(['auth', 'user-role:ustadz'])->group(function () {
 Route::get('/about-us', [AboutUsController::class, 'index'])->name('about-us');
 
 Route::get('/photo-gallery', [PhotoGalleryController::class, 'index'])->name('photo-gallery');
+
+// Note untuk data yang saat ini dipassing ke view itu adalah data yang harus ada saat pembuatan controller nanti
+Route::get('/settings', function(){
+    return view('components.templates.settings', ['role' => 'Member', 'navbar_visibility' => '0', 'footer_visibility' => '0']);
+})->name('settings');

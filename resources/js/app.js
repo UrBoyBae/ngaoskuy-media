@@ -199,24 +199,6 @@ $(document).ready(function () {
         event.stopPropagation();
     });
 
-    // Setting Profile
-    $("#setting-profile").on("click", () => {
-        const navProfile = $("#navbar-profile");
-        const settingProfile = $("#main-setting-profile");
-
-        navProfile.removeClass("block").addClass("hidden");
-        if (settingProfile.hasClass("hidden")) {
-            settingProfile.removeClass("hidden").addClass("fixed");
-        }
-    });
-    $("#close-main-setting-profile").on("click", () => {
-        const settingProfile = $("#main-setting-profile");
-
-        if (settingProfile.hasClass("fixed")) {
-            settingProfile.removeClass("fixed").addClass("hidden");
-        }
-    });
-
     // Download Dropdown
     $("#toggle-download-dropdown").on("click", () => {
         const mainDownloadDropdown = $("#main-download-dropdown");
@@ -252,6 +234,64 @@ $(document).ready(function () {
     
     // Search Article
     $("#search-article").keyup(() => { searchArticle() });
+
+    // Change Password
+    $("#change-password").on("click", () => {
+        var formChangePassword = $("#form-change-password");
+        var triggerChangePassword = $("#change-password");
+        var newPassword = $("#new-password");
+        var confirmPassword = $("#confirm-password");
+
+        if (formChangePassword.hasClass("hidden")) {
+            formChangePassword.removeClass("hidden").addClass("flex");
+            newPassword.prop("required", true);
+            confirmPassword.prop("required", true);
+            triggerChangePassword.children("span").text("Cancel");
+            triggerChangePassword.children("ion-icon").remove();
+        } else {
+            formChangePassword.removeClass("flex").addClass("hidden");
+            newPassword.prop("required", false);
+            confirmPassword.prop("required", false);
+            newPassword.val("");
+            confirmPassword.val("");
+            triggerChangePassword.children("span").text("Change Password");
+            triggerChangePassword.children("span").before("<ion-icon class='text-white text-lg' name='pencil'></ion-icon>");
+        }
+    })
+
+    // New Password 
+    $("#confirm-password").on("keyup", () => {
+        var newPassword = $("#new-password");
+        var confirmPassword = $("#confirm-password");
+
+        if(newPassword.val() !== confirmPassword.val()) {
+            confirmPassword.removeClass("border-black");
+            confirmPassword.addClass("border-red-700");
+            confirmPassword.removeClass("placeholder-black");
+            confirmPassword.addClass("placeholder-red-700");
+            $("#error-confirm-password").removeClass("hidden");
+            $("#error-confirm-password").addClass("flex");
+        } else {
+            confirmPassword.removeClass("border-red-700");
+            confirmPassword.addClass("border-black");
+            confirmPassword.removeClass("placeholder-red-700");
+            confirmPassword.addClass("placeholder-black");
+            $("#error-confirm-password").removeClass("flex");
+            $("#error-confirm-password").addClass("hidden");
+        }
+    })
+
+    // Close sidebar ketika klik diluar
+    var $mainSidebar = $("#main-sidebar");
+    var $backdropSidebar = $("#backdrop-sidebar");
+    var $body = $("body");
+    $mainSidebar.on("click", function (event) {
+        if (event.target === $backdropSidebar[0]) {
+            $mainSidebar.removeClass("fixed");
+            $mainSidebar.addClass("hidden");
+            $body.removeClass("overflow-hidden");
+        }
+    });
 });
 
 // Search kitab
@@ -361,26 +401,16 @@ closeModal.forEach(function(buttonClose) {
 });
 
 // Close sidebar ketika klik diluar
-var mainSidebar = document.getElementById("main-sidebar");
-var backdropSidebar = document.getElementById("backdrop-sidebar");
-var body = document.getElementsByTagName("body");
-mainSidebar.addEventListener("click", function (event) {
-    if (event.target == backdropSidebar) {
-        mainSidebar.classList.remove("fixed");
-        mainSidebar.classList.add("hidden");
-        body[0].classList.remove("overflow-hidden");
-    }
-});
-
-// Close setting ketika klik diluar
-var mainSettingProfile = document.getElementById("main-setting-profile");
-var backdropSettingProfile = document.getElementById("backdrop-setting-profile");
-mainSettingProfile.addEventListener("click", function (event) {
-    if (event.target == backdropSettingProfile) {
-        mainSettingProfile.classList.remove("fixed");
-        mainSettingProfile.classList.add("hidden");
-    }
-});
+// var mainSidebar = document.getElementById("main-sidebar");
+// var backdropSidebar = document.getElementById("backdrop-sidebar");
+// var body = document.getElementsByTagName("body");
+// mainSidebar.addEventListener("click", function (event) {
+//     if (event.target == backdropSidebar) {
+//         mainSidebar.classList.remove("fixed");
+//         mainSidebar.classList.add("hidden");
+//         body[0].classList.remove("overflow-hidden");
+//     }
+// });
 
 // Slider
 var TrandingSlider = new Swiper(".tranding-slider", {
@@ -519,7 +549,6 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 });
 
-
 // tab about us
 document.addEventListener("DOMContentLoaded", function () {
     // Get all tab buttons
@@ -541,3 +570,35 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 });
+
+// Change Profile
+const selectProfile = document.querySelector('#select-profile');
+const fileProfile = document.querySelector('#file-profile');
+const previewProfile = document.querySelector('#preview-profile');
+selectProfile.addEventListener("click", function () {
+    fileProfile.click();
+})
+fileProfile.addEventListener("change", function () {
+    const profile = this.files[0];
+    const profileExtension = profile.name.split(".");
+    const permittedExtension = ["jpg", "jpeg", "png"];
+    if(permittedExtension.indexOf(profileExtension[1].toLowerCase()) !== -1) {
+        if (profile.size < 2000000) {
+            const reader = new FileReader();
+            reader.onload = () => {
+                const profileUrl = reader.result;
+                previewProfile.src = profileUrl;
+            }
+            reader.readAsDataURL(profile);
+        } else {
+            alert("Image size more than 2MB");
+        }
+    } else {
+        alert("The file extension must be jpg, jpeg, or png");
+    }
+})
+
+// window.addEventListener("beforeunload", (event) => {
+//     event.preventDefault();
+//     event.returnValue = "";
+// })
