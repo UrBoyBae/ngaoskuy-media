@@ -239,8 +239,8 @@ $(document).ready(function () {
     $("#change-password").on("click", () => {
         var formChangePassword = $("#form-change-password");
         var triggerChangePassword = $("#change-password");
-        var newPassword = $("#new-password");
-        var confirmPassword = $("#confirm-password");
+        var newPassword = $("#new_password");
+        var confirmPassword = $("#confirm_password");
 
         if (formChangePassword.hasClass("hidden")) {
             formChangePassword.removeClass("hidden").addClass("flex");
@@ -260,9 +260,9 @@ $(document).ready(function () {
     })
 
     // New Password 
-    $("#confirm-password").on("keyup", () => {
-        var newPassword = $("#new-password");
-        var confirmPassword = $("#confirm-password");
+    $("#confirm_password").on("keyup", () => {
+        var newPassword = $("#new_password");
+        var confirmPassword = $("#confirm_password");
 
         if(newPassword.val() !== confirmPassword.val()) {
             confirmPassword.removeClass("border-black");
