@@ -14,7 +14,8 @@
             </a>
             <span class="text-2xl font-bold text-black">Settings</span>
         </div>
-        <form method="" action="" id="update-profile">
+        <form method="POST" action="{{ route('settings.store') }}" id="update-profile">
+            @csrf
             <div class="md:px-9 lg:px-[76px]">
                 <div class="mt-8">
                     <div class="flex-col">
@@ -48,21 +49,21 @@
                             <label class="text-black text-lg font-semibold" for="nama">Name</label>
                             <input
                                 class="bg-transparent border border-black rounded-md w-full h-full text-lg focus:outline-none placeholder-black text-black font-semibold pl-2 py-2"
-                                placeholder="Masukkan Nama" value="Ali Akbar Abdillah" type="text" name="name"
+                                placeholder="Masukkan Nama" value="{{ $detail_user->name }}" type="text" name="name"
                                 id="name" required>
                         </div>
                         <div class="flex flex-col gap-1">
                             <label class="text-black text-lg font-semibold" for="username">Username</label>
                             <input
                                 class="bg-transparent border border-black rounded-md w-full h-full text-lg focus:outline-none placeholder-black text-black font-semibold pl-2 py-2"
-                                placeholder="Masukkan Username" value="YourBoyBae_" type="text" name="username"
+                                placeholder="Masukkan Username" value="{{ $user->username }}" type="text" name="username"
                                 id="username" required>
                         </div>
                         <div class="flex flex-col gap-1">
                             <label class="text-black text-lg font-semibold" for="email">Email</label>
                             <input
                                 class="bg-[rgb(0,0,0,0.1)] border border-black rounded-md w-full h-full text-lg focus:outline-none placeholder-black text-black font-semibold pl-2 py-2 cursor-not-allowed"
-                                placeholder="Masukkan Email" value="aliakbara@ymail.com" type="email" name="email"
+                                placeholder="Masukkan Email" value="{{ $user->email }}" type="email" name="email"
                                 id="email" readonly required>
                         </div>
                     </div>
@@ -76,19 +77,19 @@
                     <div class="mt-3 flex flex-col gap-3">
                         <div class="hidden flex-col gap-3" id="form-change-password">
                             <div class="flex flex-col gap-1">
-                                <label class="text-black text-lg font-semibold" for="new-password">New Password</label>
+                                <label class="text-black text-lg font-semibold" for="new_password">New Password</label>
                                 <input
                                     class="bg-transparent border border-black rounded-md w-full h-full text-lg focus:outline-none placeholder-black text-black font-semibold pl-2 py-2"
-                                    placeholder="Masukkan Password" value="" type="password" name="new-password"
-                                    id="new-password">
+                                    placeholder="Masukkan Password" value="" type="password" name="new_password"
+                                    id="new_password">
                             </div>
                             <div class="flex flex-col gap-1">
-                                <label class="text-black text-lg font-semibold" for="confirm-password">Confirm
+                                <label class="text-black text-lg font-semibold" for="confirm_password">Confirm
                                     Password</label>
                                 <input
                                     class="bg-transparent border border-black rounded-md w-full h-full text-lg focus:outline-none placeholder-black text-black font-semibold pl-2 py-2"
                                     placeholder="Masukkan Confirm Password" value="" type="password"
-                                    name="confirm-password" id="confirm-password">
+                                    name="confirm_password" id="confirm_password">
                             </div>
                             <div class="items-center gap-1 mt-[2px] hidden" id="error-confirm-password">
                                 <ion-icon name="alert-circle" class="text-red-700"></ion-icon>
