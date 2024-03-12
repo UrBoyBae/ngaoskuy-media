@@ -170,6 +170,16 @@ Route::get('/about-us', [AboutUsController::class, 'index'])->name('about-us');
 
 Route::get('/photo-gallery', [PhotoGalleryController::class, 'index'])->name('photo-gallery');
 
-// Note untuk data yang saat ini dipassing ke view itu adalah data yang harus ada saat pembuatan controller nanti
 Route::get('/settings', [SettingController::class, 'index'])->middleware('auth')->name('settings.index');
 Route::post('/settings', [SettingController::class, 'store'])->middleware('auth')->name('settings.store');
+
+// Semua Alur Route Reset Password
+Route::get('/send-request', function(){
+    return view('authentication.send-request', ['navbar_visibility' => '0', 'footer_visibility' => '0']);
+})->name('send-request');
+Route::get('/check-email', function(){
+    return view('authentication.check-email', ['navbar_visibility' => '0', 'footer_visibility' => '0']);
+})->name('check-email');
+Route::get('/reset-password', function(){
+    return view('authentication.reset-password', ['navbar_visibility' => '0', 'footer_visibility' => '0']);
+})->name('reset-password');

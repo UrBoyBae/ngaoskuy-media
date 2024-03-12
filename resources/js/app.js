@@ -264,7 +264,23 @@ $(document).ready(function () {
         var newPassword = $("#new_password");
         var confirmPassword = $("#confirm_password");
 
+        var resetPassword = $("#reset_password");
+
         if(newPassword.val() !== confirmPassword.val()) {
+
+            resetPassword.prop("disabled", true);
+            if(resetPassword.hasClass("cursor-pointer")){
+                resetPassword.removeClass("cursor-pointer");
+            }
+            resetPassword.removeClass("cursor-not-allowed");
+            resetPassword.addClass("cursor-not-allowed");
+            var parent = $("#confirm_password").parent();
+            parent.removeClass("border-[#808080]");
+            parent.addClass("border-red-700");
+            var ionIcon = $("#confirm_password").closest("div").find("ion-icon");
+            ionIcon.removeClass("text-[#808080]");
+            ionIcon.addClass("text-red-700");
+
             confirmPassword.removeClass("border-black");
             confirmPassword.addClass("border-red-700");
             confirmPassword.removeClass("placeholder-black");
@@ -272,6 +288,17 @@ $(document).ready(function () {
             $("#error-confirm-password").removeClass("hidden");
             $("#error-confirm-password").addClass("flex");
         } else {
+
+            resetPassword.prop("disabled", false);
+            resetPassword.removeClass("cursor-not-allowed");
+            resetPassword.addClass("cursor-pointer");
+            var parent = $("#confirm_password").parent();
+            parent.removeClass("border-red-700");
+            parent.addClass("border-[#808080]");
+            var ionIcon = $("#confirm_password").closest("div").find("ion-icon");
+            ionIcon.removeClass("text-red-700");
+            ionIcon.addClass("text-[#808080]");
+
             confirmPassword.removeClass("border-red-700");
             confirmPassword.addClass("border-black");
             confirmPassword.removeClass("placeholder-red-700");
@@ -290,6 +317,80 @@ $(document).ready(function () {
             $mainSidebar.removeClass("fixed");
             $mainSidebar.addClass("hidden");
             $body.removeClass("overflow-hidden");
+        }
+    });
+
+    // Check email dan username di Reset password page
+    $("#send-request").submit(function (e) {
+        if (
+            $("#email_reset_password").val() === "" &&
+            $("#username_reset_password").val() === ""
+        ) {
+            e.preventDefault();
+            var parent = $("#email_reset_password").parent();
+            parent.removeClass("border-[#808080]");
+            parent.addClass("border-red-700");
+            var ionIcon = $("#email_reset_password").closest("div").find("ion-icon");
+            ionIcon.removeClass("text-[#808080]");
+            ionIcon.addClass("text-red-700");
+            $("#email_reset_password").removeClass("placeholder-[#808080]");
+            $("#email_reset_password").addClass("placeholder-red-700");
+            var parent = $("#username_reset_password").parent();
+            parent.removeClass("border-[#808080]");
+            parent.addClass("border-red-700");
+            var ionIcon = $("#username_reset_password").closest("div").find("ion-icon");
+            ionIcon.removeClass("text-[#808080]");
+            ionIcon.addClass("text-red-700");
+            $("#username_reset_password").removeClass("placeholder-[#808080]");
+            $("#username_reset_password").addClass("placeholder-red-700");
+            $("#error-reset-password").removeClass("hidden");
+            $("#error-reset-password").addClass("flex");
+        }
+    });
+
+    $("#email_reset_password").on("input", function () {
+        if ($(this).val().trim() !== "") {
+            var parent = $("#email_reset_password").parent();
+            parent.addClass("border-[#808080]");
+            parent.removeClass("border-red-700");
+            var ionIcon = $("#email_reset_password").closest("div").find("ion-icon");
+            ionIcon.addClass("text-[#808080]");
+            ionIcon.removeClass("text-red-700");
+            $("#email_reset_password").addClass("placeholder-[#808080]");
+            $("#email_reset_password").removeClass("placeholder-red-700");
+            $("#error-reset-password").removeClass("flex");
+            $("#error-reset-password").addClass("hidden");
+            var secondInputParent = $("#username_reset_password").parent();
+            secondInputParent.addClass("border-[#808080]");
+            secondInputParent.removeClass("border-red-700");
+            var secondInputionIcon = $("#username_reset_password").closest("div").find("ion-icon");
+            secondInputionIcon.addClass("text-[#808080]");
+            secondInputionIcon.removeClass("text-red-700");
+            $("#username_reset_password").addClass("placeholder-[#808080]");
+            $("#username_reset_password").removeClass("placeholder-red-700");
+        }
+    });
+    
+    $("#username_reset_password").on("input", function () {
+        if ($(this).val().trim() !== "") {
+            var parent = $("#username_reset_password").parent();
+            parent.addClass("border-[#808080]");
+            parent.removeClass("border-red-700");
+            var ionIcon = $("#username_reset_password").closest("div").find("ion-icon");
+            ionIcon.addClass("text-[#808080]");
+            ionIcon.removeClass("text-red-700");
+            $("#username_reset_password").addClass("placeholder-[#808080]");
+            $("#username_reset_password").removeClass("placeholder-red-700");
+            $("#error-reset-password").removeClass("flex");
+            $("#error-reset-password").addClass("hidden");
+            var secondInputParent = $("#email_reset_password").parent();
+            secondInputParent.addClass("border-[#808080]");
+            secondInputParent.removeClass("border-red-700");
+            var secondInputionIcon = $("#email_reset_password").closest("div").find("ion-icon");
+            secondInputionIcon.addClass("text-[#808080]");
+            secondInputionIcon.removeClass("text-red-700");
+            $("#email_reset_password").addClass("placeholder-[#808080]");
+            $("#email_reset_password").removeClass("placeholder-red-700");
         }
     });
 });

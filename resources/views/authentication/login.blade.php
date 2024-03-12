@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ngaos Kuy!</title>
+    <title>NGAOS KUY</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap"
@@ -47,6 +47,9 @@
                             <div class="items-center gap-1 mt-[3px] hidden" id="error-password">
                                 <ion-icon name="alert-circle" class="text-red-700"></ion-icon>
                                 <small class="text-red-700 font-semibold sm:text-sm">Masukkan Password</small>
+                            </div>
+                            <div class="mt-3">
+                                <a href="{{ route('send-request') }}" class="text-sm font-bold text-[#942626]">Forgot your password ?</a>
                             </div>
                         </div>
                     </div>
