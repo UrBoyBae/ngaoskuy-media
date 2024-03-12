@@ -80,7 +80,7 @@
                                 <label class="text-black text-lg font-semibold" for="new_password">New Password</label>
                                 <input
                                     class="bg-transparent border border-black rounded-md w-full h-full text-lg focus:outline-none placeholder-black text-black font-semibold pl-2 py-2"
-                                    placeholder="Masukkan Password" value="" type="password" name="new_password"
+                                    placeholder="Masukkan Password Baru" value="" type="password" name="new_password"
                                     id="new_password">
                             </div>
                             <div class="flex flex-col gap-1">
