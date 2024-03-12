@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Article;
 use App\Models\Bab;
+use App\Models\DetailUser;
 use App\Models\Episode;
 use App\Models\Kitab;
 use App\Models\Question;
@@ -24,6 +25,8 @@ class DashboardController extends Controller
     public function index()
     {
         $user = auth()->user();
+        $userDetail = DetailUser::where('id_user', $user->id)->first();
+        session(['full_name' => $userDetail->name]);
         $episode = Episode::all();
         $question = Question::all();
         $roles = $user->getRoleNames();
@@ -60,7 +63,7 @@ class DashboardController extends Controller
         ]);
         return to_route('namarute')->with('success', 'Kitab created succesfully');
     }
-    
+
     public function editKitab($id)
     {
         $kitab = Kitab::findOrFail($id);
@@ -73,7 +76,7 @@ class DashboardController extends Controller
             'roles'=>$this->roles,
         ];
     }
-    
+
     public function updateKitab(Request $request, $id)
     {
         $kitab = Kitab::findOrFail($id);
@@ -83,14 +86,14 @@ class DashboardController extends Controller
         ]);
         return to_route('namarute')->with('success', 'Kitab updated succesfully');
     }
-    
+
     public function deleteKitab($id)
     {
         $kitab = Kitab::findOrFail($id);
         $kitab->delete();
         return to_route('namarute')->with('success', 'Kitab deleted succesfully');
     }
-    
+
     //Bab
     public function createBab()
     {
@@ -112,7 +115,7 @@ class DashboardController extends Controller
         ]);
         return to_route('namarute')->with('success', 'Bab created succesfully');
     }
-    
+
     public function editBab($id)
     {
         $user = auth()->user();
@@ -126,7 +129,7 @@ class DashboardController extends Controller
             'roles'=>$this->roles,
         ];
     }
-    
+
     public function updateBab(Request $request, $id)
     {
         $bab = Bab::findOrFail($id);
@@ -135,7 +138,7 @@ class DashboardController extends Controller
         ]);
         return to_route('namarute')->with('success', 'Bab updated succesfully');
     }
-    
+
     public function deleteBab($id)
     {
         $bab = Bab::findOrFail($id);

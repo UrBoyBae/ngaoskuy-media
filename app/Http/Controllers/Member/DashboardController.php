@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Member;
 
 use App\Http\Controllers\Controller;
 use App\Models\Article;
+use App\Models\DetailUser;
 use App\Models\Episode;
 use App\Models\Kitab;
 use App\Models\Question;
@@ -23,6 +24,8 @@ class DashboardController extends Controller
     public function index()
     {
         $user = auth()->user();
+        $userDetail = DetailUser::where('id_user', $user->id)->first();
+        session(['full_name' => $userDetail->name]);
         $episode = Episode::all();
         $question = Question::latest()->paginate(4);
         $kitab = Kitab::with(['bab'])->get();

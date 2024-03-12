@@ -65,7 +65,7 @@
                     <span class="text-base font-bold text-[#d6c3c3]/50">{{ Auth::user()->email }}</span>
                 </div>
                 <div class="w-full rounded-[30px] bg-[#942626] mt-3">
-                    <a href="{{ route('settings') }}">
+                    <a href="{{ route('settings.index') }}">
                         <div class="flex items-center cursor-pointer px-6 py-4 gap-3 border-b border-[#d6c3c3]/50 hover:bg-[#d6c3c3]/10 hover:rounded-t-[30px]">
                             <ion-icon name="settings-outline"
                                 class="text-xl font-bold text-white"></ion-icon>

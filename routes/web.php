@@ -15,6 +15,7 @@ use App\Http\Controllers\Member\QuestionController as MemberQuestionController;
 use App\Http\Controllers\Member\VideoListController as MemberVideoListController;
 use App\Http\Controllers\PhotoGalleryController;
 use App\Http\Controllers\RegistrasionController;
+use App\Http\Controllers\SettingController;
 use App\Http\Controllers\User\ArticleController;
 use App\Http\Controllers\User\DashboardController as UserDashboardController;
 use App\Http\Controllers\User\QuestionController;
@@ -170,6 +171,5 @@ Route::get('/about-us', [AboutUsController::class, 'index'])->name('about-us');
 Route::get('/photo-gallery', [PhotoGalleryController::class, 'index'])->name('photo-gallery');
 
 // Note untuk data yang saat ini dipassing ke view itu adalah data yang harus ada saat pembuatan controller nanti
-Route::get('/settings', function(){
-    return view('components.templates.settings', ['role' => 'Member', 'navbar_visibility' => '0', 'footer_visibility' => '0']);
-})->name('settings');
+Route::get('/settings', [SettingController::class, 'index'])->middleware('auth')->name('settings.index');
+Route::post('/settings', [SettingController::class, 'store'])->middleware('auth')->name('settings.store');
