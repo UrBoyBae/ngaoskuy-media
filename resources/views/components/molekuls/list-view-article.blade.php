@@ -1,5 +1,5 @@
 <li class="flex justify-center pb-[14px]" id="article">
-    <div class="hidden md:block md:pt-1">
+    <div class="hidden md:flex md:pt-1 min-w-[152px] justify-end">
         <span
             class="text-lg text-[#808080] font-medium">{{ \Carbon\Carbon::parse($created_at)->format('F d, Y') }}</span>
     </div>
