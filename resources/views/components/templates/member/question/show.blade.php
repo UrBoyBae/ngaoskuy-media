@@ -37,7 +37,7 @@
                     <div class="md:flex flex-row">
                         @if ($question->status == false)
                             <button type="button"
-                                class="text-black bg-[#D9D9D9] border-4 border-[#FFF500] font-bold rounded-[23px] h-[46px] w-[220px] md:w-[250px] mt-5 lg:mr-5 text-sm md:text-lg px-5 py-2.5 flex items-center justify-center me-2 mb-2">
+                                class="text-black bg-[#D9D9D9] border-4 border-[#FFF500] font-bold rounded-[23px] h-[46px] w-[220px] md:w-[250px] mt-5 lg:mr-5 text-sm md:text-lg px-5 py-2.5 flex items-center justify-center me-2 mb-2 cursor-auto">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 30 30"
                                     fill="none" class="mr-2">
                                     <path

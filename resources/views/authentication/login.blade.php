@@ -48,8 +48,8 @@
                                 <ion-icon name="alert-circle" class="text-red-700"></ion-icon>
                                 <small class="text-red-700 font-semibold sm:text-sm">Masukkan Password</small>
                             </div>
-                            <div class="mt-3">
-                                <a href="{{ route('send-request') }}" class="text-sm font-bold text-[#942626]">Forgot your password ?</a>
+                            <div class="flex flex-row-reverse mt-3">
+                                <a href="{{ route('send-request') }}" class="text-sm font-bold underline text-[#942626]">Forgot your password ?</a>
                             </div>
                         </div>
                     </div>
