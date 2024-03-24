@@ -5,9 +5,9 @@
         $role = empty($roles) ? 'user' : $roles[0];
     @endphp
     {{-- breadcrumb --}}
-    <div class="w-full h-fit py-6 px-7">
+    <div class="w-full h-fit pt-4 pb-6 px-7">
         @include('components.atoms.notification-live')
-        <nav class="flex" aria-label="Breadcrumb">
+        <nav class="flex pt-4" aria-label="Breadcrumb">
             <ol class="inline-flex items-center space-x-1 md:space-x-2 rtl:space-x-reverse">
                 <li class="inline-flex items-center">
                     <a href="{{ route($role.'.home.index') }}"

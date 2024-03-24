@@ -4,9 +4,9 @@
     @php
         $role = empty($roles) ? 'user' : $roles[0];
     @endphp
-    <div class="min-h-screen py-4 px-7">
+    <div class="min-h-screen pt-4 px-7">
         @include('components.atoms.notification-live')
-        <span class="font-bold text-lg md:text-2xl text-black">Status Pertanyaan</span>
+        <span class="font-bold text-lg md:text-2xl text-black pt-4">Status Pertanyaan</span>
         <div class="flex flex-col items-center justify-center">
             <div class="mt-4 w-full p-6 bg-[#EEEBDD] border border-black rounded-lg shadow">
                 <form>
