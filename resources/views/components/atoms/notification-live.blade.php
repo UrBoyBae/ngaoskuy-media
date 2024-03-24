@@ -1,4 +1,4 @@
-<div class="py-4 lg:px-4 absolute left-[12%] md:left-[29%] lg:left-[35%]">
+<div class="py-2 lg:px-4 flex justify-center">
     <div class="p-2 bg-[#CEA59B] items-center text-white leading-none rounded-full inline-flex" role="alert">
         <span class="flex rounded-full bg-[#810000] uppercase px-2 py-1 text-xs font-bold mr-3"><ion-icon
                 name="notifications-outline" class="text-xl"></ion-icon></span>

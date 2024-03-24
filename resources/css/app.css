@@ -54,7 +54,7 @@ body {
 /* CSS Episode Terbaru dan Responsive nya */
 .container-episode {
     max-width: 124rem;
-    padding: 0;
+    padding-top: 16px;
 }
 
 .text-center {

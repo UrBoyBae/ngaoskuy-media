@@ -4,7 +4,7 @@
     @php
         $role = empty($roles) ? 'user' : $roles[0];
     @endphp
-    <div class="w-full pt-8 bg-[#EEEBDD]">
+    <div class="w-full pt-4 bg-[#EEEBDD]">
         @include('components.atoms.notification-live')
         @include('components.organisme.episode-slider')
         <div class="w-full mt-5 md:mt-10">

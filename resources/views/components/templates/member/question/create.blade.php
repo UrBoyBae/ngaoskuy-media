@@ -4,9 +4,9 @@
     @php
         $role = empty($roles) ? 'user' : $roles[0];
     @endphp
-    <div class="min-h-screen w-full py-4 px-7">
+    <div class="min-h-screen w-full pt-4 px-7">
         @include('components.atoms.notification-live')
-        <span class="font-bold text-lg md:text-2xl text-black">Tambah Pertanyaan</span>
+        <span class="font-bold text-lg md:text-2xl text-black pt-4">Tambah Pertanyaan</span>
         <div class="min-h-screen w-full mt-3">
             <div class="block w-full p-6 bg-[#EEEBDD] border border-black rounded-lg shadow">
                 <form method="POST" action="{{ route($role . '.question.store') }}">

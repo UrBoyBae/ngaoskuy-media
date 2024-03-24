@@ -4,7 +4,7 @@
     @php
         $role = empty($roles) ? 'user' : $roles[0];
     @endphp
-    <div class="w-full pt-8 bg-[#EEEBDD]">
+    <div class="w-full pt-4 bg-[#EEEBDD]">
         @include('components.atoms.notification-live')
         @include('components.organisme.episode-slider')
         <div class="w-full mt-5 md:mt-10">
@@ -15,7 +15,7 @@
                         <span class="text-base font-semibold md:text-xl">See All</span>
                         <ion-icon name="chevron-forward-outline" class="text-base md:text-xl"></ion-icon>
                     </div>
-                </a>
+                </a>    
             </div>
             <div class="w-full min-h-[190px] mt-3 flex gap-5 overflow-x-auto snap-mandatory snap-x custom-x-scrollbar px-5">
                 {{-- Masukkan variabel yang menampung data pertanyaan kedalam foreach --}}
