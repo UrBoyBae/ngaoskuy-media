@@ -34,7 +34,7 @@
                         </div>
 
                     </div>
-                    <a href="{{ url()->previous() }}">
+                    <a href="{{ route($role.'.article.index') }}">
                         <button type="button"
                             class="w-28 text-white bg-[#810000] font-bold rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2">BACK</button>
                     </a>
